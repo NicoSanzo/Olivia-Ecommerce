@@ -1,0 +1,61 @@
+.function
+{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        flex-wrap:nowrap;
+      
+            .icon{
+                
+                width: 90px;
+                height: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+                border-radius: 50%;
+                box-shadow: 0 0 4px 0 black;
+                img{
+                    width: 60px;
+                    height: 60px;   
+                    object-fit: contain; 
+                }
+            }           
+            h2{
+                width: 150px;
+                height: fit-content;
+                overflow: hidden;
+                font-family: "Questrial", sans-serif;
+                font-size:large;
+                text-align: center;
+                line-height: 25px;
+                overflow: hidden;         
+            }
+    }
+
+
+/**** ADAPTABILIDAD DE MEDIA PARA CELULARES *****/
+
+
+@media (min-width: 220px) and (max-width: 500px)
+{
+    .functions{
+        .function
+        {
+            height: 100%;
+            .icon{ 
+                width: 50px;
+                height: 50px;
+                img{
+                    width: 20px;
+                    height: 60px;   
+                    object-fit: contain; 
+                }
+            }   
+            h2
+            {font-size:small;}
+        }
+    } 
+}

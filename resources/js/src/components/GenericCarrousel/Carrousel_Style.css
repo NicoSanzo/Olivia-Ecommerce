@@ -1,0 +1,118 @@
+
+#carrousel-images
+{
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;  
+    height: 92%;
+    width: 93% ;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0 #aaaaaa;
+    position:absolute;    
+  
+}
+
+#carrouseles{
+    
+    height: 100%;
+    display: flex;  
+    position: absolute; 
+}
+
+.images
+{width: 100%;
+position: relative;}
+
+.images img
+{
+    object-fit: cover;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%; 
+}
+
+#visual-points{
+
+    align-self:flex-end;
+    height: 4%; 
+    width: fit-content;
+    gap: 16px;
+    align-items: center;
+    position: relative;
+    display: flex;
+    padding: 3px; 
+
+}
+
+.image-points
+{
+        box-shadow: 1px 1px 1px 0px #bbbbbb;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: white;    
+}
+
+#back-arrow
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-right: 96%;
+    background-image: url(./Images/Back-Arrow.jpg) ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border:solid thin;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 #bbbbbb ;     
+}
+
+#back-arrow:hover{
+    color: aliceblue;
+    border:solid thin pink ;  
+}
+
+
+#next-arrow
+{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: 96%;
+    background-image: url(./Images/Back-Arrow.jpg) ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    rotate: 180deg;
+    border:solid thin;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 #bbbbbb ;
+}
+
+#next-arrow:hover{
+    color: aliceblue;
+    border:solid thin pink ;
+    
+}
+
+
+
+/**** ADAPTABILIDAD DE MEDIA PARA CELULARES *****/
+
+@media (min-width: 320px) and (max-width: 500px)
+{
+   
+        #back-arrow
+        { margin-right:91%}
+        #next-arrow
+        { margin-left:91%}
+        .image-points
+        {
+            width: 5px;
+            height: 5px;;
+        }
+
+}
+
+

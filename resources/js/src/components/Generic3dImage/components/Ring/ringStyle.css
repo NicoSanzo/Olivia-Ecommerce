@@ -1,0 +1,91 @@
+.Ring {
+    width: 68px;
+    height: 70px;
+    position: relative;
+    border-radius: 30%;
+    transform: rotateY(-90deg) rotateX(90deg) translate3d(-20px, 9px, 0);
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+
+    .ring-element {
+        width: 6px;
+        border: solid 2px;
+        border-top: none;
+        border-bottom: none;
+        position: absolute;
+        box-shadow: 0 0 1px 0 black;
+    }
+    
+    .leafy {
+        width: 11px;
+        height: 11px;
+        background-color: #101010;
+        position: absolute;
+        box-shadow: 0 0 2px 0 black;
+        border-radius: 50%;
+    }
+
+    .leafy-right {
+        transform: rotateY(90deg) rotateX(90deg) translate3d(2px, 54px, -26px);
+    }
+
+    .leafy-left {
+        transform: rotateY(90deg) rotateX(90deg) translate3d(2px, 54px, 25px);
+    }
+    
+    .RingFront {
+        height: 40px;
+        transform: rotateY(90deg) rotateX(180deg) translate3d(2px, 0px, 4.2px);
+    }
+    
+    .corner-left-front {
+        height: 20.5px;
+        transform: rotateY(90deg) rotateX(135deg) translate3d(2px, 21px, 17px);
+    }
+
+    .RingLeft {
+        height: 38.2px;
+        transform: rotateY(90deg) rotateX(90deg) translate3d(2px, 29px, 34px);
+    }
+
+    .corner-front-right {
+        height: 20.5px;
+        transform: rotateY(90deg) rotateX(-135deg) translate3d(2px, -21.2px, 17px);
+    }
+
+    .RingRight {
+        height: 38.2px;
+        transform: rotateY(90deg) rotateX(90deg) translate3d(2px, 29px, -34px);
+    }
+
+    .corner-left-back {
+        height: 20px;
+        transform: rotateY(90deg) rotateX(45deg) translate3d(2px, 20px, 58px);
+    }
+
+    .RingBack {
+        height: 40px;
+        transform: rotateY(90deg) rotateX(180deg) translate3d(2px, 0px, -62.2px);
+    }
+
+    .corner-right-back {
+        height: 20px;
+        transform: rotateY(90deg) rotateX(-45deg) translate3d(2px, -20px, 58px);
+    }
+
+    .RingBottom, .RingTop {
+        width: 68px;
+        height: 70px;
+        position: absolute;
+        border-radius: 30%;
+        
+        border: solid 3px;
+        transform-style: preserve-3d;
+        display: flex;
+        align-items: center;
+    }
+
+    .RingBottom{transform: rotateY(180deg) rotateX(180deg) translate3d(2px, 0px,-5px);}
+     .RingTop {transform: rotateY(180deg) rotateX(180deg) translate3d(2px, 0px, 0px);}
+}

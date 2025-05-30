@@ -1,0 +1,20 @@
+.charging{
+    
+    border: solid 3px #ff80ce;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: 0 0 1px 0;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+    align-self: center; 
+    z-index: 5;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform: rotate(360deg); 
+    }
+}

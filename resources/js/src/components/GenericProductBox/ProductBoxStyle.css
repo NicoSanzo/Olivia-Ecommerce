@@ -1,0 +1,23 @@
+
+.contenedorDeProductos{
+
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta el tamaño de las columnas */
+    grid-template-rows: repeat(auto-fit, minmax(550px, 1fr));
+    justify-content: center; 
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .contenedorDeProductos {
+        grid-template-columns: 100%;
+        grid-template-rows:450px;
+        gap: 10px; 
+        padding: 10px; 
+        justify-content: center;
+        height:  fit-content;
+    }
+}
+

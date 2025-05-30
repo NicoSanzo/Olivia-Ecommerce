@@ -1,0 +1,276 @@
+
+.venta-container{
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0 0 3px 0 #555555;
+    border-radius: 5px;
+    position: relative;  
+    flex-direction: column;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    font-family: "Quicksand", sans-serif;
+
+}
+
+.venta-container-head{
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+    align-items: center;
+    font-size: 12px;
+    border-bottom: solid thin #cccccc ;
+}
+
+
+.venta-second-container-head
+{
+
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    font-size: 12px;
+    
+
+}
+
+.buton-container-venta{
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    button{
+        width: 170px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px  #f5a2d5 ;
+        background-color: #ffe9f6;
+        font-family: "Quicksand", sans-serif;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        font-weight: 450;
+        transition: 0.2s ease-in-out;
+        margin: 5px;
+    }
+    button:hover{
+        background-color: #fcabdd ;
+        transition: 0.2s ease-in-out;
+        width: 172px;
+        cursor: pointer;
+    }
+
+}
+
+.estado-entrega-container-venta{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 5px;
+    margin: 2px;
+    
+    
+}
+.estado-entrega-venta ,.estado-entrega-fecha-venta
+{
+    padding: 3px; 
+    height: fit-content ;
+    font-size: 16px;
+    align-items: center;
+}
+
+.estado-entrega-fecha-venta{
+    font-size: 13px;
+    font-weight: 550;
+    display: flex;
+    align-items: center;
+}
+
+
+.fecha-id-venta-container{
+
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    flex-wrap: wrap;
+    .data-fecha-id-venta{
+        font-size: 14px;   
+        font-weight: 500;
+    }  
+}
+
+.nombre-user-venta-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: fit-content;
+    .data-user-nombre-venta{
+        font-size: 14px;   
+        font-weight: 500;
+        text-transform: capitalize;
+    }  
+}
+
+
+.products-venta-container{
+
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    align-items: center;
+    padding: 1%;
+    padding-top: 0;
+    gap: 5px;
+    
+} 
+
+.venta-product-card
+{   
+    box-shadow: 0 0 3px 0 #cccccc;
+    width: 100%;
+    display: flex;
+    height: fit-content;     
+    align-items: center;
+    border-radius: 5px; 
+    padding: 3px;
+    padding-right: 18px;
+    justify-content: space-between;
+  
+}
+
+.product-description-venta{
+  
+     display: flex;
+     width: 60%;
+     flex-direction: row;
+     justify-content: left;
+     align-items: center;
+     gap:10px;
+
+     .image-container-venta{
+        width:70px;
+        height: 70px; 
+        max-height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 5px;
+        margin: 1px;
+        margin-left: 3px; 
+    
+        .product-image-venta {
+            width:60px;
+            height: 60px;
+            object-fit: contain;    
+        }
+    }
+
+   
+    
+}  
+.titulo-publicacion-venta {
+      
+    height: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 5px;   
+}
+
+
+
+
+.product-stock-venta , .product-price-venta,.product-sku-venta{
+  
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+  
+}  
+
+
+      .stock-producto-venta,.price-producto-venta,.sku-product-venta{
+        height: fit-content;
+         font-size: 14px;
+         font-weight: 600;
+         display: flex;
+         align-items: center;
+         color: #888888;
+         padding: 5px;  
+     }
+
+
+        
+
+
+
+
+
+@media (max-width: 1100px){
+
+    .venta-container{
+        width: 100%;
+               
+    }
+    .venta-container-head{
+       
+        flex-direction: column ;
+        justify-content: center;
+    }
+    .products-venta-container{
+        
+        margin-bottom: 10px;
+        gap: 7px;
+        
+    }
+    .fecha-id-venta-container{
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+    .buton-container-venta{
+        button{
+            width: 90px;
+            font-size: 13px;
+        }
+    }
+    .product-description-venta{
+        width: 100%;
+        justify-content: center;
+        .image-container-venta{
+            width: 50px;
+            height: 50px;
+            .product-image-venta{
+                width: 40px;
+                height: 40px;
+            }
+        }
+        h2{
+            font-size: 13px;
+        }
+    }
+   
+    .venta-product-card{
+        flex-wrap: wrap;
+
+    }
+
+    
+    
+}

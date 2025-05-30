@@ -1,0 +1,31 @@
+.networks{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 30%;
+    align-self: center;  
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+      
+    .instagram {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        background-image: url(../../assets/Instagram_icon.jpg); 
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center; 
+    }
+
+    .facebook{
+        width: 25px;
+        height: 25px;
+        display: flex;
+        background-image: url(../../assets/Facebook_Icon.jpg); 
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

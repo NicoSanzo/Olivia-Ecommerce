@@ -1,0 +1,29 @@
+.container-delete-button{
+  display: flex;
+  justify-content: center;
+}
+
+.delete-button {
+  height: 35px;
+  width: 35px;
+  padding: 10px;
+  font-family: "Questrial", sans-serif;
+  border-radius: 3px;
+  background-color: white;
+  background-position: center;
+  background-size: 29px 29px;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 3px 0 var(--shadow-dark);
+  transition: all 0.1s ease-in-out;
+  background-image: url("../../../../../assets/delete_icon_red.svg");
+}
+
+.delete-button:hover {
+    width: 40px;
+    height: 40px;
+    transition: all 0.1s ease-in-out;
+    background-size: 32px 32px;
+}

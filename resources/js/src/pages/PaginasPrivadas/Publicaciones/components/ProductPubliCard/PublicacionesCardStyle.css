@@ -1,0 +1,202 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+/* Variables CSS */
+:root {
+  --shadow-light: #eaeaea;
+  --shadow-dark: #a9a9a9;
+  --pink-hover: #f8bae0;
+  --green-hover: #8db19d;
+  --red-hover : #b25656;
+}
+
+/* Reset */
+a {
+  text-decoration: none;
+}
+
+/* Publicación Card */
+.publicacion-card {
+  display: grid;
+  grid-template-columns: 0.4fr 4fr 1fr 0.8fr 1.2fr ;
+  grid-auto-flow: row;
+  grid-template-rows:65px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px  var(--shadow-dark) ;
+  align-items: center;
+  cursor: pointer;
+  gap:15px;
+  padding: 10px;
+  transition: grid-template-rows 0.2s ease-in-out;
+  border-right: solid var(--green-hover);
+}
+
+.publicacion-card.paused {
+  grid-template-columns: 0.4fr 4fr 1fr 0.8fr 1.2fr ;
+  background-color: var(--shadow-light);
+  box-shadow: 0px 0px 4px  var(--shadow-dark) ;
+  border-right: solid var(--red-hover);
+  grid-template-rows: 65px ;
+  gap:5px;
+}
+
+.pause-text{
+  text-align: center;
+  font-family: Quicksand ;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--red-hover);
+  grid-column: 5/6;
+  text-align: center;
+  position: relative;
+}
+
+
+.publicacion-card:hover {
+    grid-template-rows:75px;
+}
+
+.publicacion-card .image-container {
+  min-width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 3px var(--shadow-light);
+}
+
+.publicacion-card .image-container .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+}
+
+
+/* Título */
+.publicacion-card .tituloStyle {
+  font-family: "Questrial", sans-serif;
+  font-weight: 250;
+  font-size: 1.9vh;
+  height: 80%;
+  align-items: center;
+  color: black;  
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-left: solid 1px var(--shadow-light);
+  padding: 5px;
+}
+
+/* Precio */
+.publicacion-card .stylePrice {
+  font-family: "Questrial", sans-serif;
+  font-weight: bolder;
+  color: #87AA96;
+  font-size: 1.9vh;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  text-align: center;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: solid 1px var(--shadow-light);
+  border-right: solid 1px var(--shadow-light);
+  padding: 5px;
+}
+
+
+/* Stock */
+.publicacion-card .stockStyle {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.3vh;
+  letter-spacing: 3px;
+  color: black;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 0 3px var(--shadow-light);
+  border-radius: 10px;
+  padding: 5px;
+  font-weight: 650;
+}
+
+
+.buttons-container{
+
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+    align-items: center;
+
+}
+
+
+/* Media Queries */
+@media (max-width: 1000px) {
+    .publicacion-card {
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+      align-items: center;
+      justify-content: center;
+      grid-template-rows: 100px auto auto  ;
+      gap: 15px;
+      grid-template-areas:
+      " imagen imagen imagen "
+      " titulo titulo titulo"
+      " precio stock botones "
+
+      
+  }
+
+  .publicacion-card.paused {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: 100px auto auto  ;
+    gap: 15px;
+    grid-template-areas:
+    " imagen imagen imagen "
+    " titulo titulo titulo"
+    " precio stock botones "
+    "pausada pausada pausada"
+   
+}
+
+  .publicacion-card:hover {
+    grid-template-rows: 103px auto auto;
+    
+  }
+
+  .image-container{
+    grid-area: imagen;
+    
+  }
+  .publicacion-card .tituloStyle{
+    grid-area: titulo;
+    font-size: 15px;
+    border: none;
+  }
+     
+  .publicacion-card .stylePrice {
+    font-size: 20px;
+    grid-area: precio;
+  }
+
+  .publicacion-card .stockStyle {
+    font-size: 12px;
+    grid-area: stock;
+  }
+
+  .publicacion-card .buttons-container{
+    grid-area: botones;
+  }
+  
+  .pause-text{
+    grid-area: pausada;
+  }
+
+
+}
+

@@ -1,0 +1,78 @@
+
+.Container-Agrega-Carrito-Button-detail{
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    display: flex;
+    height: 100%;
+}
+
+
+.AgregarAlCarrito-detail{
+       box-shadow: 0 0 3px 0 black;
+       border-radius: 10px;
+       height: 100%;
+       width: 100%;
+       cursor: pointer;
+       display: flex;
+       flex-direction: row;
+       background-color: #F1F0EC;
+       border: none;
+       cursor:pointer;
+       align-items: center;
+       justify-content: center;
+       position: relative; 
+       overflow: hidden;
+       font-size: 19px;
+       font-weight: 500;
+       color:#6b8978;
+       gap: 15px;
+       transition: background-color 0.4s ease;
+       font-family: 'Quicksand';
+       img {
+
+        width: 35px;
+        height: 35px;
+       }
+}
+
+.Cantidad-Agregada-detail{
+
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: solid thin #87AA96;
+        position: absolute;
+        background-color: #DBEAE2 ;
+        text-align: center;     
+        top:-5px;
+        right: -5px;
+        z-index: 6;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        
+}
+
+.AgregarAlCarrito-detail::before {
+    content: 'Agregar'; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+    position: absolute; 
+    top: 0;
+    left: -100%; 
+    height: 100%; 
+    width: 100%;
+    color:#6b8978 ;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #DBEAE2 ;
+    transition: left 0.4s ease; 
+}
+
+.AgregarAlCarrito-detail:hover::before {
+    left: 0; 
+}
+
+

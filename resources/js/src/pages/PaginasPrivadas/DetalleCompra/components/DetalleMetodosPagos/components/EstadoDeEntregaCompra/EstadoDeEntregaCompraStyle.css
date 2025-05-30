@@ -1,0 +1,38 @@
+.detalle-entrega-container{
+        
+    padding: 1%; 
+
+    p{
+        strong{
+            font-weight: 600;
+        }
+        margin: 5px;
+        font-weight: 500; 
+    }
+    
+}
+
+.detalle-entrega{
+     border: solid thin #dddddd;
+     border-radius: 5px;  
+     padding: 1%; 
+     display: flex;
+     flex-direction: column;
+     height: fit-content; 
+     gap: 10px;
+
+    p{
+        display: flex;
+        gap: 10px; 
+    
+        span{
+           padding: 2px;
+           border-radius: 5px;
+           box-shadow: 0 0 2px;   
+        }
+    }
+     
+    strong{
+         font-weight: 500;
+    }
+}

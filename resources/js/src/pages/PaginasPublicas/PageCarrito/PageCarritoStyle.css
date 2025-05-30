@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.carrito-page-container{
+
+    width: 70%;
+    height:fit-content;
+    margin:auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 5px;
+    background-color: #ffffff33;
+    padding: 2%;
+    border: none;
+    box-shadow: 0 0 5px #666666;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+
+    span{
+        font-family: "Quicksand", sans-serif;
+        width: fit-content;
+        align-self: center;
+        padding: 1%;
+        text-align: center;
+        box-shadow: 0 0 2px 0 black;
+        border-radius: 5px;
+        font-size: 15px;      
+        
+    }
+
+
+}
+
+.datos-de-compra{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 35%;
+    height: fit-content;
+}
+
+
+@media (max-width:1300px){
+
+    .carrito-page-container{
+        width: 95%;
+        flex-wrap: wrap;
+    }
+    .datos-de-compra{
+        width: 95%;
+    }
+
+}

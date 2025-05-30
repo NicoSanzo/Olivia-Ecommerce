@@ -1,0 +1,99 @@
+.input-selects {
+    display: flex;
+    flex-direction: column;
+    font-family: "Quicksand", sans-serif;
+    width: 100%;     
+  
+
+    /* Estilo para los selectores */
+    select {
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border: solid thin;
+        padding: 5px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 16px;
+        border:none;
+        box-shadow: 0 0 3px 0 #aaaaaa;
+        padding: 5px;
+    }
+
+    .requerido{
+
+        font-size: 15px;
+        color: #FF5EC0;
+    }
+
+    /* Estilo para el contenedor Agregar */
+    .Agregar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 15px;
+        gap: 5px;
+        font-weight: 500;
+        width: fit-content;
+    }
+
+    /* Estilo para ocultar el checkbox */
+    .Agregar input[type="checkbox"] {
+        display: none;
+    }
+      
+    /* Estilo para la marca del checkbox */
+    .Agregar .checkmark {
+        width: 20px; /* Tamaño del checkbox */
+        height: 20px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        display: inline-block;
+        position: relative;
+        transition: all 0.3s ease;
+        background-color: white; /* Color de fondo cuando no está marcado */
+    }
+  
+    /* Cambios cuando el checkbox está marcado */
+    .Agregar input[type="checkbox"]:checked + .checkmark {
+        background-color: #87AA96; /* Color de fondo cuando está marcado */
+        border-color: #87AA96;
+    }
+  
+    /* Icono de verificación */
+    .Agregar input[type="checkbox"]:checked + .checkmark::after {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 3px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    /* Estilo para el botón Agregar */
+    .div-button-agregar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+
+        button {
+            border-radius: 15px;
+            width: 35%;
+            height: 40px;
+            border: solid thin;
+            align-self: flex-end;
+            font-family: "Quicksand", sans-serif;
+            background-color: #FDC7E8;
+            cursor: pointer;
+        }
+        button:hover{
+
+            background-color:#FF5EC0; 
+        }
+    }
+}

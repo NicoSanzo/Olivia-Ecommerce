@@ -1,0 +1,32 @@
+.shopping-cart
+        {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 35px;
+            height: 35px;
+            background-image: url(../../assets/shopping_cart_icon.svg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            
+
+            .shopping-cart-count
+            {
+                width: 18px;
+                height: 18px; 
+                border-radius: 50%;
+                background-color: transparent;
+                margin: 0 0 0 70%;
+                position: relative;
+                align-self: flex-end;
+                text-align: center;
+                background-color: #FF5EC0;
+                font-size: 12px;
+                border: none;
+                color: white;  
+                font-weight: bolder;
+                outline: none;            
+            }   
+        }      
+

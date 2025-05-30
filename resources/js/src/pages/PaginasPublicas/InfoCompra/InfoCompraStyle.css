@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
+
+.info-container{
+
+    position: relative;
+    width: 50%;
+    box-shadow: 0 0 4px 0 #aaaaaa;
+    padding: 5%;
+    border-radius: 15px;
+    height: fit-content;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    margin: 2% auto 2% auto;
+    background-color: #F1F0EC;
+    font-family: "Quicksand", sans-serif;
+    
+    
+    .parrafo{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    ul{
+        display: flex;
+        flex-direction: column; 
+        gap: 15px ;
+        align-items: end;
+        list-style-type:decimal;
+
+            li {width: 95%;}
+    }
+    
+    h2{
+        font-family: "Questrial";
+        font-size: 17px;
+        color: #597D69;
+    }
+
+    a{
+        text-decoration: none;
+        color: #FF5EC0  ;
+        font-weight: bold;
+    }
+  
+}
+
+@media (min-width: 220px) and (max-width: 900px)
+{
+    .info-container{width: 90%;}
+}
+
+
+@media (min-width: 900px) and (max-width: 1200px)
+{
+    .info-container{width: 90%;}
+}
+
+@media (min-width: 1200px) and (max-width: 1400px)
+{
+    .info-container{width: 70%;}
+}

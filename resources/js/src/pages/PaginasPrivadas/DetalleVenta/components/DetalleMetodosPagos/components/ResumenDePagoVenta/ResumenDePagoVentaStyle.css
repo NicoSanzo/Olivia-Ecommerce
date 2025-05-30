@@ -1,0 +1,78 @@
+.resumen-de-pago{
+        
+    width: 100%;
+    padding: 1%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+
+    p{
+        strong{
+            font-weight: 600;
+        }
+        margin: 8px;
+        font-weight: 500; 
+    }
+}
+
+.tarjeta-producto-resumen{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    .nombre-producto{
+        max-width: 250px;
+        font-size: 13px;
+        color: #999999;
+    }
+    .precio-producto{
+        font-size: 13px;
+        color: #999999;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+    }
+  
+}
+
+.flecha-abajo {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #aaaaaa; /* El color de la flecha */
+    position: absolute;
+    right: 18px;
+    cursor: pointer;
+  }
+.flecha-abajo:hover{
+    border-top: 6px solid black; /* El color de la flecha */
+}
+
+.total-productos{
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+.descuento{
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #FF5EC0;
+    padding-right: 10px;
+}
+.total-final{
+
+    font-size: 20px;
+    display: flex;
+    font-weight: 900;
+    flex-direction: row;
+    justify-content: space-between;
+}
+  

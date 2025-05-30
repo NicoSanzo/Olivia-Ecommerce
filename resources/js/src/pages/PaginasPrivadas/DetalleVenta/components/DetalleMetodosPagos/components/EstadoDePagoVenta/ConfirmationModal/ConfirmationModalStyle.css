@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.confirmation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.39);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    font-family: "Quicksand", sans-serif;
+  }
+  
+
+  .confirmation-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .confirmation-actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+
+  }
+  
+
+  .confirmation-actions .Cancelar {
+    padding: 10px 20px;
+    background: rgb(246, 117, 117);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+ .confirmation-actions .Confirmar{
+    padding: 10px 20px;
+    background: #87AA96;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+ }
+  
+  .confirmation-actions .Cancelar:hover {
+    background:red;
+  }
+
+  .confirmation-actions .Confirmar:hover {
+    background:rgb(95, 171, 95);
+  }

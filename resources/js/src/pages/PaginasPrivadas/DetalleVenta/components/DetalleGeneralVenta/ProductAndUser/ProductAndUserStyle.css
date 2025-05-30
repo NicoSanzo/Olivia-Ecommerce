@@ -1,0 +1,105 @@
+
+.container-productanduser-general-detalle
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.username-name-container
+{
+
+        box-shadow: 0 0 2px ;
+        border-radius: 5px;
+        background-color: white;
+        display: flex;
+        height: fit-content;
+        align-items: center;
+        padding: 2%;
+        gap: 20px;
+        flex-direction: row;
+        margin-top: 30px;
+        position: relative;
+        
+        
+}
+
+
+.user-Icon{
+    width: 50px;
+    height: 50px;
+    border: solid thin;
+    background-color: #FDC7E8;
+    box-shadow: 0 0 3px 0 black;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    font-weight: 900;
+    border-radius: 50%;
+    text-transform:uppercase;
+    -webkit-text-stroke: 1px #aaaaaa;
+}
+
+
+.name-lastname-user-detalleventa{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name-lastname-detalleventa, .user-dni-cuit-detalleventa{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    p{ font-weight: 600; 
+    }
+
+}
+.user-dni-cuit-detalleventa
+{text-transform: uppercase;
+    p{font-weight: 400; }
+}
+
+.boton-mensaje-a-comprador{
+
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-family: "Quicksand", sans-serif;
+    cursor: pointer;
+    box-shadow: 0 0 3px 0 #aaaaaa;
+    background-color: #DBEAE2 ;
+    text-decoration: none;
+    display: flex;
+    color: black;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    position: absolute;
+    right: 40px;
+    transition: 0.3s ease;
+    
+    p{
+      display: flex;  
+      flex: row;
+      font-size: 13px;
+    }
+    img{
+        object-fit:fill;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        
+    }
+}
+
+.boton-mensaje-a-comprador:hover{
+
+    box-shadow: 0 0 3.5px 0 #555555 ;
+    transition: 0.3s ease;
+   
+}

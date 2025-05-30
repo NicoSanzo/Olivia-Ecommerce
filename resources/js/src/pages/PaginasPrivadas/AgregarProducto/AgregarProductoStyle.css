@@ -1,0 +1,193 @@
+.principal-container-agregar{
+   
+
+    box-shadow: 0 0 5px 0 #666666;
+    border-radius: 15px;
+    height: fit-content;
+    width: 55%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    gap:25px;
+    font-family: "Quicksand", sans-serif;
+    margin-top: 35px;
+    margin-bottom:35px;
+    border: solid 2px #FDC7E8;
+
+
+    .titulo-principal{
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 35px;
+        height: 10%;
+        color:white;
+        font-size: 45px;
+        text-transform: capitalize;
+        width: 100%;
+        background-color:#FDC7E8; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    
+    h2{
+        font-family: "Quicksand", sans-serif;
+        width:75%;
+        color: #87AA96;
+        font-size: 30px;
+        text-transform: capitalize;
+        font-weight: 500;
+       
+        
+    }
+    label{
+
+        font-size: 25px;
+        text-transform: capitalize;
+        margin: 10px 10px 2px 5px;
+        border:none;
+        border-radius: 5px;
+        width: fit-content;
+        background-color: #f4f4f4;;
+        margin-bottom: 5px;
+        padding: 4px;
+        box-shadow: 0 0 2px 0 #aaaaaa;
+
+    }
+    input{
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+        border:none;
+        box-shadow: 0 0 3px 0 #aaaaaa;
+        padding: 5px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 16px;
+    }
+
+    .Caracteristicas-publicacion , .Especificaciones, .div-titulo-publi, .foto-container{
+
+        display: grid;
+        gap: 30px;
+        width: 85% ;
+        background-color: #F1F0EC;
+        border-radius: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adaptable */
+        grid-auto-rows:fit-content;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        background-color: #F1F0EC;
+        box-shadow: 0 0 3px 0 #aaaaaa;
+        padding: 35px;
+
+    }
+
+        .foto-container{
+
+            display: flex;
+            flex-direction: column;
+       
+
+        }
+    .error-message{
+
+        color: red;
+        
+    }
+
+
+    .Verificar-Campos{
+
+        color: red;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 35px;
+        height: fit-content;
+        width: fit-content;
+        text-align: center;
+        margin: 3px;
+        margin-bottom: 2%;
+        
+        
+    }
+
+    .div-titulo-publi
+    {
+        width: 90%;
+        display: flex;
+        padding: 20px;
+    }
+
+    .Descripcion{
+
+        width: 95%;
+        height: 300px;
+        resize: none;
+        background-color: #F1F0EC;
+        box-shadow: 0 0 3px 0 #aaaaaa;
+        padding: 35px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 18px;
+
+    }
+
+    .botton-submit-agregar{
+
+        box-shadow: 0 0 3px 0 #aaaaaa;
+        border-radius: 40px;
+        height: 50px;
+        width: 260px;
+        cursor: pointer;
+        margin-bottom: 25px;
+        align-self: center;
+        background-color: #FDC7E8;
+        color: #333333;
+        margin-top: 10px;
+        border: none;
+        z-index: 10;
+        cursor:pointer;
+        font-family: "Quicksand", sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+        
+        
+    }
+ 
+}
+
+.botton-submit-agregar:hover{
+
+    background-color: #ff80ce ;
+    transition: 0.2s ease-in-out;
+    color: white;
+    border-bottom: solid medium white ;
+    animation: pulse 0.5s ;
+    
+ }
+
+ @keyframes pulse {
+    0%, 100% {
+        transform: scale(1); /* Tamaño original */
+    }
+    50% {
+        transform: scale(1.1); /* Aumentar tamaño */
+    }
+
+}
+
+
+@media (max-width:900px) {
+.principal-container-agregar{
+    width: 95%;
+}
+   
+}

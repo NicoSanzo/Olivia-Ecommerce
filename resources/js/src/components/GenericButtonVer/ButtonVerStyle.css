@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.Container-ver-button{
+   width: 100%;
+    position: relative;
+    height: fit-content;
+    display: flex;
+    height: 100%;
+}
+
+.button-Ver
+{   
+   box-shadow: 0 0 3px 0 black;
+   border-radius: 40px;
+   height: 100%;
+   width: 100%;
+   cursor: pointer;
+   background-color: #FDC7E8 ;
+   border: none;
+   z-index: 5;
+   cursor:pointer;
+   position: relative;   
+
+}   
+
+
+.buttonVer:hover{
+
+   background-color: #ff80ce ;
+   transition: 0.2s;
+   
+}

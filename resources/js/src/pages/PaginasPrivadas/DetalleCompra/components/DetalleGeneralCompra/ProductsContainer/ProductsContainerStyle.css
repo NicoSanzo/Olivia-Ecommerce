@@ -1,0 +1,81 @@
+.products-container-detalle-compra
+{
+
+    box-shadow: 0 0 2px ;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    gap: 6px;
+    
+    p{
+        strong{
+            font-weight: 600;
+        }
+        margin: 5px;
+        font-weight: 500; 
+    }
+    
+}
+
+.compra-product-card{
+
+    box-shadow: 0 0 4px 0 #bbbbbb;
+    width: 98%;
+    display: flex;   
+    align-items: center;
+    border-radius: 5px; 
+    margin: 2px;
+    padding: 1px;
+    background-color: white;
+    margin: auto;
+}
+
+.image-container{
+    width:70px;
+    height: 70px; 
+    max-height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 0 3px #cccccc;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    padding: 5px;
+    margin: 8px;
+
+    .product-image {
+        width:65px;
+        height:65px; 
+        object-fit: contain;    
+    }
+}
+
+
+
+.product-description{
+  
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    padding: 5px;
+}
+
+.titulo-publicacion , .stock-producto{
+                
+    height: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 5px;   
+}
+
+.stock-producto{
+    align-items:flex-start;
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 0px;
+    font-size: 13px;
+}  

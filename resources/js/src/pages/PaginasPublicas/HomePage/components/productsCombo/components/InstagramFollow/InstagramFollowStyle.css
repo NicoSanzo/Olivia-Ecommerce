@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.follow{
+
+    height: fit-content ;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+   
+    
+    div{ 
+        height: fit-content;
+        width: fit-content;
+        position: relative;
+        padding: 3px;
+        display: flex;
+        gap:10px;
+
+        img {width: 55px;}
+
+        h2{
+            font-family: "Quicksand", sans-serif;
+            color: black ;
+            font-size: xx-large;
+            padding: 3px;
+        }
+    }
+    h2
+    {   
+        font-family:  "Questrial", sans-serif;
+        height: fit-content;
+        width: fit-content;
+        color: black ;
+        text-transform: none;
+        font-size: 15px;
+        padding: 3px;    
+    } 
+ }

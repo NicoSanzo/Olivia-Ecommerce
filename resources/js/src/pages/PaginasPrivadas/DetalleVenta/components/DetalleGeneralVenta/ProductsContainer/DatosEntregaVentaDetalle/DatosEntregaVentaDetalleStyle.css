@@ -1,0 +1,36 @@
+.datos-envio-detalle-container
+{
+
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding: 2%;
+        margin:none; 
+        gap: 3px;
+        justify-content:left; 
+        
+    hr{
+        margin: 10px 0px 10px 0px;
+        align-self: center;
+        border: solid 0.4px #dddddd;
+        border-bottom:none;
+    }
+        
+    h2{
+        margin-bottom: 10px; 
+        font-family: "Quicksand",sans-serif;  
+        font-size: 16px;
+        
+    }
+    p{
+        font-size: 15px;
+        strong{
+            font-weight: 700;
+            font-size: 15px;
+            
+        }
+    }
+}
+
+

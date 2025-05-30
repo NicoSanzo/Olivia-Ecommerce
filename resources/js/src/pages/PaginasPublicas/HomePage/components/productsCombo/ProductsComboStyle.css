@@ -1,0 +1,36 @@
+
+.comboProducts
+{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    justify-content: center;
+    align-items: center;
+
+    .productsTitle{
+
+        height: fit-content;
+        text-transform: uppercase;
+        display: flex;
+        font-family: "Questrial", sans-serif;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        align-items: self-end;
+        font-size: 40px;
+        color: #87AA96;
+        padding: 1.5%;     
+
+     }
+
+     hr
+    {
+      width: 90%;
+      margin: 2% 3% 2% 5%;
+    }
+}
+
+

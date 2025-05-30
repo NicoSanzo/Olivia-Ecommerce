@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.Carrito-principal-Container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+}
+
+.Products-Container {
+  
+    position: absolute;   
+    bottom: 0;
+    top: 100%;
+    left: -550%;
+    margin-top: 10px;
+    width: 350px;
+    height: fit-content;
+    background-color: white;  
+    display: none; 
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 ;
+   
+}
+
+.punta{
+
+    position: absolute;
+    right: 125px;
+    top: -15px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+
+}
+
+.shopping-cart {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url(../../../../../assets/shopping_cart_icon.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.shopping-cart-count {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0 0 0 70%;
+    position: relative;
+    align-self: flex-end;
+    text-align: center;
+    background-color: #FF5EC0;
+    font-size: 12px;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    outline: none;
+}
+
+.total{
+
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3%;
+    letter-spacing: 1px;
+    
+}
+
+.empty-cart
+{
+  font-family: "Quicksand", sans-serif;
+   font-size: 15px;
+   font-weight: 400;
+   padding: 1%;
+   border-radius: 5px;
+   text-align: center;
+   margin: 15px;
+   box-shadow: 0 0 3px ;
+
+}
+
+.footer-container{
+
+    width: 100%;
+
+    display: flex;
+    height: fit-content;
+    gap: 45px;
+    justify-content: center;
+    align-items: center;
+}
+
+.vaciar-carrito
+{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: black ;
+    box-shadow: 0 0 2px 0;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+}
+
+.vaciar-carrito:hover{
+
+    background-color: #777777 ;
+}
+
+.Carrito-principal-Container:hover .Products-Container {
+    display: flex;  
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    padding-top: 15%;
+    align-items: center;
+    opacity: 1;  
+}
+
+.shopping-cart:hover .Products-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+@media (max-width: 1200px)
+{  
+    .Products-Container
+    {
+        left:-800%; 
+    }
+
+    .punta{        
+        right: 35px;           
+    }
+}

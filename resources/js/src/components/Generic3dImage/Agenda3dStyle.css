@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
+
+
+.Principal{
+
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    cursor:grab;
+    flex-direction: column;
+    background-color: white;
+    
+}
+
+.Agenda{
+    width: 300px;
+    height: 400px;
+    position:relative;
+    display: flex;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.Front, .Back{
+    width: 300px;
+    height: 400px;
+    background-color: #fdc7e8;
+    position: absolute;
+    border: solid thin; 
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 black; 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.Back{transform: rotateY(180deg) translateZ(25px);}
+.Front{transform: rotateY(0deg)translateZ(25px);}
+
+.Side{
+    width: 49px;
+    height: 390px;
+    background-color: #f9f9f9;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: rotateY(90deg) translateZ(-9px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 3px;
+}
+
+
+.Pattern{
+    background-image: 
+    repeating-linear-gradient(
+    90deg,
+    #bbbbbb 0px,
+    white 3px
+    );
+    
+}
+
+.Pages{
+    width: 49px;
+    height: 390px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    z-index: 10;
+    transform: rotateY(270deg) translateZ(-270px); 
+}
+
+.Pages-top, .Pages-bottom{
+    width: 49px;
+    height: 281.5px;
+    background-color: #f9f9f9;
+    border-radius: 3px; 
+}
+
+.Pages-top{
+    transform: rotateY(270deg) rotateX(90deg) translateY(-81.5px) translateZ(-195px) 
+}
+
+.Pages-bottom{
+    transform: rotateY(270deg) rotateX(90deg) translateY(-33px) 
+    translateZ(194px) 
+}
+
+
+.add-principal-container{
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-bottom: -50px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    
+
+    .frontContainer, .backContainer{
+        width: 80px;
+        height: auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;   
+        flex-direction: column; 
+    }
+    h2{
+        position: relative;
+        width: min-content;
+        font-size: 12px;
+        text-align: center;
+        font-family: "Questrial";
+        color: #f57ac6;;
+        font-weight: 100;
+    }
+
+    label{
+       height: 49px;
+       width:  50px;
+       border: solid thin #fdc7e8;
+       border-radius: 10px;
+       background-image: url("../../assets/Plus_icon.svg");
+       background-repeat: no-repeat;
+       cursor: pointer;
+    }
+    
+    .add-front, .add-back{
+       display: none;  
+    }
+
+    .ImageDeleteFront,.ImageDeleteBack{
+        border: solid thin ;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        margin: 0 0 85% 60%;
+        background-color: rgb(218, 65, 65);
+        display: none;
+        cursor: pointer;
+        background-image: url(../../assets/Wrong_icon.svg);
+        background-size: contain;  
+    }
+    .ImageDeleteFront:hover, .ImageDeleteBack:hover{
+        width: 17px;
+        height: 17px;
+        transition: 0.1s ease-in;      
+    }
+
+   
+}
+
+
+
+@media (max-width:900px){
+
+    
+  .Principal
+  {
+    width: 100%;
+  }
+
+}

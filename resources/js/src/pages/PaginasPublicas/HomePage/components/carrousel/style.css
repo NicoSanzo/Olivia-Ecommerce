@@ -1,0 +1,18 @@
+.welcome{
+    height: 700px;
+    width: 100%;
+    background-color: #F1F0EC;
+    position: relative;
+    display: flex;
+    justify-content: center ;
+    align-items: center; 
+    transition: 0.3s ease-in-out;
+}
+
+@media (min-width: 320px) and (max-width: 500px)
+{
+    .welcome{   
+        transition: 0.3s ease-in-out;
+        height:250px;
+    }
+}

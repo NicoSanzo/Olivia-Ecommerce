@@ -1,0 +1,164 @@
+.principal-container-upload-factura-detalle-venta{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+ 
+}
+
+.boton-descripcion-upload-container-factura-detalle-venta{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.file-upload-factura-detalle-venta {
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    box-shadow: 0 0 2px 0 ;
+    margin: 2px;
+    border-radius:  5px;
+    
+}
+
+.custom-label-factura-detalle-venta {
+    position: relative;
+    display: block;
+    
+    
+}
+
+.image-factura-detalle-venta {
+    width: 35px; /* Ajusta el tamaño de la imagen */
+    height: 35px;
+    transition: 0.5s ease-in-out;
+    
+    
+}
+
+.file-input-factura-detalle-venta { display: none; }
+
+.mensaje-exitoso-factura-detalle-venta{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   
+    
+}
+
+.save-button-factura-detalle-venta{
+    height: 25px;
+    width: fit-content;
+    padding: 5px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 3px;
+    background-color:#FDC7E8 ;
+    cursor: pointer;
+    
+    
+}
+.save-button-factura-detalle-venta:hover
+{
+    background-color:#FF5EC0 ;
+    color: white;
+}
+
+
+
+.principal-file-container-factura-detalle-venta {
+    display: flex;
+    align-items: center;
+    .error-msg-factura-detalle-venta{
+        align-self: center;
+        color: red;
+        font-size: 12px;
+    }
+}
+
+.file-container-factura-detalle-venta {
+
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    display: flex; 
+    align-items: center;
+    flex-direction: row; 
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 #aaaaaa;
+    
+    
+
+    .image-container-comprobante-factura-detalle-venta{
+        
+        display: flex;
+        align-items: center; 
+        text-decoration: none;    
+            
+        img{
+            width: 40px;
+            height: 40px;
+            
+        }
+        p{
+            text-align: center;
+            display: flex;
+            width: max-content;
+            color: black;          
+        }
+    }
+
+   
+    .pdf-preview-factura-detalle-venta{
+       
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        
+        
+        
+        img{
+            width: 40px;
+            height: 40px;
+            
+        }
+        p{
+            text-align: center;
+            display: flex;
+            width: max-content;
+            color: black;             
+        }
+    }
+}
+
+.requerido{
+
+    font-size: 15px;
+    color: #FF5EC0;
+}
+
+
+.remove-button-factura-detalle-venta {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+    z-index: 1;
+}

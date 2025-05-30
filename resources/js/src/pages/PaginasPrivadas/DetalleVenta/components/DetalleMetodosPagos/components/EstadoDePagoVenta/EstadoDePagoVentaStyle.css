@@ -1,0 +1,108 @@
+.detalle-pago-container{   
+    padding: 1%; 
+    display: flex;
+    flex-direction: column;
+    
+    p{
+        strong{
+            font-weight: 600;
+        }
+        margin: 5px;
+        font-weight: 500; 
+    }
+    
+}
+
+.carga-estado-pago{
+    align-items: center;
+    justify-content: center;
+ 
+    display: flex;
+}
+
+.detalle-pago{
+    border: solid thin #dddddd;
+    border-radius: 5px;  
+    padding: 1%; 
+    display: flex;
+    flex-direction: column;
+    height: fit-content; 
+    gap: 10px;
+
+    p{
+        display: flex;
+        gap: 10px;      
+        span{
+            padding: 2px;
+            border-radius: 5px;
+            box-shadow: 0 0 2px;   
+           }
+     } 
+     
+    strong{
+        font-weight: 500;
+     }
+}
+
+ .Fecha-Pago{
+    font-size: 16px;
+    align-items: center;
+    strong{
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        
+     }
+ }
+       
+       
+ .comprobante-container{
+     
+     display: flex ;
+     margin: 5px;
+     width: fit-content;
+     align-self: center;
+     box-shadow: 0 0 2px 0;
+     flex-direction: column;
+     height: fit-content;
+     align-items: center;
+     border-radius: 5px;
+     padding: 2%; 
+ }
+   
+
+.comprobante-validado{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+}
+
+hr{
+    width: 100%;
+    margin: auto;
+}
+
+.boton-validar-comprobante-pago{
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    font-family: "Quicksand";
+    cursor: pointer;
+    background-color: #FDC7E8  ;
+    font-weight: 600;
+    box-shadow: 0 0 2px;
+    transition: 0.2s;
+    align-self: center;
+}
+
+.boton-validar-comprobante-pago:hover{
+    background-color: #ffade0  ;
+    color: white;
+    box-shadow: 0 0 2px black;
+    transition: 0.2s;
+}
+

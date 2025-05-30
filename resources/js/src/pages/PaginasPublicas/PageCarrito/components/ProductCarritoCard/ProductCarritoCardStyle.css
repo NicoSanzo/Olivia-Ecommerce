@@ -1,0 +1,177 @@
+.Product-Carrito-card
+{
+
+    width: 100%;
+    box-shadow: 0 0 2px 0; 
+    border-radius: 8px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1%;
+    position: relative;
+    
+
+
+    .image-container{
+        width:90px;
+        height: 70px; 
+        max-height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        padding: 5px;
+       
+        .product-image {
+            width:100%;
+            height: 100%; 
+            object-fit: contain;
+        }
+    }
+   
+    .delete-button{
+
+        position: absolute;
+        top:-2px;
+        right: -4px;
+        border-radius: 50%;
+        width: 20px;
+        border: none;
+        height: 20px;
+        background-color: black;
+        color:white;
+        cursor: pointer;
+        text-align: center;
+    }
+    .delete-button:hover{
+        background-color: #888888;
+    }
+
+    .stylePrice {
+        font-family: "Questrial", sans-serif;
+        font-weight: bolder;
+        color: black;
+        text-transform: none;
+        text-align: center;
+        font-size: 15px;
+        letter-spacing: 1px;
+        display: flex;
+        text-wrap: nowrap;
+        border-radius: 10px;
+        padding: 5px;   
+    }
+    
+    .stockStyle {
+        font-family: "Quicksand", sans-serif;
+        color: black;
+        text-transform: none;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 3px; 
+        width: 20%;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        padding: 2px;
+      
+    }   
+    .tituloStyle {
+        font-family: "Questrial", sans-serif;
+        font-weight: 300;
+        color: black;
+        text-transform: none;
+        height: fit-content;
+        text-align: center;
+        font-size: 15px;     
+        padding: 1%;
+        width: 75%;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        padding: 5px; 
+    }
+
+    .container-spin-button{
+
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .custom-spin-button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        
+      }
+      
+      .custom-spin-button input[type=number] {
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 15px;
+        font-weight: 500;
+        font-family: "Quicksand", sans-serif;
+        text-align: center;
+      }
+
+      .stock-disponble{
+        font-family: "Questrial", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+      
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none; /* Ocultar en navegadores basados en WebKit */
+        margin: 0;
+       }
+      
+      .custom-spin-button button {
+        background-color: #FDC7E8;
+        color: white;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      
+      .custom-spin-button button:hover {
+        background-color: #FF5EC0;
+      }
+      
+
+
+}
+
+
+@media (max-width:1300px){
+
+  .Product-Carrito-card{
+    
+      flex-wrap: wrap;
+      gap: 10px;
+      height: fit-content;
+      
+      .tituloStyle{
+        font-size: 12px;
+        width: 60%;
+      }
+      .container-spin-button{
+        margin-top: 0px;
+      }
+  }
+
+  
+}

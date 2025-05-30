@@ -1,0 +1,99 @@
+.shop-product-card {
+    display: flex;
+    flex-direction: row;
+    width: 99%;
+    height: 100px; 
+    max-height: 230;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #dddddd;
+    align-items: center;
+    justify-self: center;
+    gap: 15px;
+    cursor: pointer;
+    position: relative;
+    
+
+    .image-container{
+        width:100px;
+        height: 50px; 
+        max-height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        padding: 5px;
+        margin: 10px;
+       
+        .product-image {
+            width:100%;
+            height: 100%; 
+            object-fit: contain;
+        }
+    }
+   
+    .delete-button{
+
+        position: absolute;
+        top:1%;
+        right: 1%;
+        border-radius: 50%;
+        width: 20px;
+        border: none;
+        height: 20px;
+        background-color: black;
+        color:white;
+        cursor: pointer;
+        text-align: center;
+    }
+    .delete-button:hover{
+        background-color: #888888;
+    }
+
+    .stylePrice {
+        font-family: "Questrial", sans-serif;
+        font-weight: bolder;
+        color: black;
+        text-transform: none;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 1px;
+        display: flex;
+        text-wrap: nowrap;
+        border-radius: 10px;
+        padding: 5px;   
+    }
+    
+    .stockStyle {
+        font-family: "Quicksand", sans-serif;
+        color: black;
+        text-transform: none;
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 3px; 
+        width: 20%;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        padding: 2px;
+      
+    }   
+    .tituloStyle {
+        font-family: "Questrial", sans-serif;
+        font-weight: 300;
+        color: black;
+        text-transform: none;
+        height: fit-content;
+        text-align: center;
+        font-size: 11px;     
+        padding: 1%;
+        width: 100%;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        padding: 5px;
+      
+         
+    }
+
+}

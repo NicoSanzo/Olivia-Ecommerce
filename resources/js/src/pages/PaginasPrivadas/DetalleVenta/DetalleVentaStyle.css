@@ -1,0 +1,39 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+.principal-page-ventas{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.principal-detalle-ventas-container{
+
+height: 100% ;
+width: 75%;
+justify-content: center;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap-reverse;
+gap: 1%;
+font-family: "Quicksand", sans-serif;
+
+}
+
+@media (max-width: 1000px){
+
+    .principal-detalle-ventas-container{
+        width: 100%;
+
+    }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1300px){
+
+    .principal-detalle-ventas-container{
+        width: 80%;
+    }
+
+
+}

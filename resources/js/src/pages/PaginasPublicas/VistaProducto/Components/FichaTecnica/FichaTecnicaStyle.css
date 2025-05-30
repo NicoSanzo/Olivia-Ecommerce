@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
+.specifications{
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    width: 350px;
+      
+    
+    .specs-box{
+        border-radius: 15px;
+        box-shadow: 0 0 1px 0;
+        overflow: hidden;
+        letter-spacing: 1px;
+        
+    }
+    
+}
+
+.titulo{
+    justify-self:normal;
+}
+
+.item-box{
+    
+    display: flex;
+    height: 45px;
+    align-items: center;
+    gap: 35px;
+    padding: 2%;
+
+    .item-title{
+       font-size: 16px; 
+       text-transform: uppercase;
+    }
+
+    h2{
+         font-size: 16px;
+         font-weight: 500;
+         text-transform: capitalize;
+         width: 50%;
+         
+    }
+    
+}
+
+
+.contendor-boton-agenda{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    
+  
+
+    .DiseñarAgenda{
+
+        border: none;
+        width: 160px;
+        background-color: white;
+        height: 160px;
+        align-self: center;
+        background-image: url("../../../../../assets/Agenda3d.png");
+        background-position: center;
+        background-size: 120px 140px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        color: #FF5EC0;
+        padding: 0.8em 2.2em;
+        border-radius: 15px;
+        border: 3px solid#FDC7E8 ;
+        box-shadow: 0px 8px #e575ba;
+        margin-top: 60px;
+        
+       
+    }
+
+
+      button:active {
+        position: relative;
+        top: 8px;
+        border: 3px solid #FF5EC0;
+        box-shadow: 0px 0px;
+      }
+      
+
+    
+    h2{
+        margin-top: 20px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        
+        box-shadow: 0 0 2px #777777;
+        padding: 1.5%;
+        border-radius: 10px;
+
+    }
+}
+
+
+.item-box:nth-child(odd) {
+    background-color:#F1F0EC;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.input-div{
+        display: flex;
+        flex-direction: column;
+        font-family: "Quicksand", sans-serif;
+        width: 100%;        
+     
+        .requerido{
+                font-size: 15px;
+                color: #FF5EC0;
+                text-align: end;
+        }
+}

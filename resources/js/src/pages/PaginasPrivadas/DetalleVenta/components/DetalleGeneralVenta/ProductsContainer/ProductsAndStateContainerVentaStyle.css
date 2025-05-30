@@ -1,0 +1,191 @@
+.products-container-detalle-venta
+{
+    box-shadow: 0 0 2px ;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    gap: 6px;
+  
+}
+
+.Estado-container-venta
+{
+    box-shadow: 0 0 2px ;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    gap: 6px;
+    p{
+      strong{
+          font-weight: 600;
+      }
+      margin: 5px;
+      font-weight: 500; 
+    }
+}
+
+.estado-card-venta
+{   
+    
+    width: 98%;
+    display: flex;   
+    border-radius: 5px; 
+    margin: 2px;
+    padding: 1px;
+    background-color: white;
+    margin: auto;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    position: relative;
+    p{ 
+        margin: 5px;
+        font-weight: 500; 
+    }
+    
+}
+
+.estado-entrega-venta{
+    font-size: 17px; 
+    display: flex;
+    border-radius: 5px;
+    padding:2px;
+    width: fit-content;
+    
+    strong{
+        font-weight: 550;
+    }
+}
+
+.metodo-entrega-detalle
+{
+    font-size: 15px; 
+    display: flex;
+    border-radius: 5px;
+    padding:2px;
+    width: fit-content;
+    
+    strong{
+        font-weight: 900;
+        margin-left: 5px;
+    }
+}
+
+.boton-entregado{
+    width: 150px;
+    height: 35px;
+    position: absolute;
+    border-radius: 8px;
+    border: none;
+    background-color: #DBEAE2 ;
+    box-shadow: 0 0 2px 0 #bbbbbb;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 500;
+    right: 0;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.boton-entregado:hover{
+
+    background-color: #87AA96   ;
+    font-size: 15px;
+    color: white;
+    transition: 0.2s;
+}
+
+
+.venta-product-card-detalle
+{   
+    box-shadow: 0 0 3px 0 #cccccc;
+    width: 96%;
+    display: flex;
+    height: fit-content;     
+    align-items: center;
+    border-radius: 5px; 
+    padding: 5px;
+    padding-right: 18px;
+    justify-content: space-between;
+    align-self: center;
+  
+}
+
+.product-description-venta-detalle{
+  
+     display: flex;
+     width: 60%;
+     flex-direction: row;
+     justify-content: left;
+     align-items: center;
+     gap:10px;
+
+     .image-container-venta-detalle{
+        width:70px;
+        height: 70px; 
+        max-height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 0 3px #cccccc;
+        border-radius: 10px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 5px;
+        margin: 1px;
+        margin-left: 3px; 
+    
+        .product-image-venta-detalle {
+            width:60px;
+            height: 60px;
+            object-fit: contain;    
+        }
+    }  
+}  
+
+.titulo-publicacion-venta-detalle {   
+    height: fit-content;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 5px;   
+}
+
+
+
+
+.product-stock-venta-detalle , .product-price-venta-detalle,.product-sku-venta-detalle{
+  
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+  
+}  
+
+
+.stock-producto-venta-detalle,.price-producto-venta-detalle,.sku-product-venta-detalle{
+    height: fit-content;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #888888;
+    padding: 5px;  
+}
+
+
+

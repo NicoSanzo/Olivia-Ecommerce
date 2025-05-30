@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+  --primary-color: #739C84;
+  --focus-color: #FDC7E8;
+  --font-title: "Quicksand", sans-serif;
+  --font-body: "Questrial", sans-serif;
+}
+
+.contact-container {
+  width: fit-content;
+  height: 90%;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.contact-container .title {
+  width: 75%;
+  font-size: 3.4rem;
+  font-weight: 400;
+  color: var(--primary-color);
+  font-family: var(--font-title);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  width: 28rem;
+  gap: 2rem;
+  margin-bottom: 10%;
+}
+
+.contact-items .box-wpp,
+.contact-items .mail-box,
+.contact-items .box-redes {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  height: 3.125rem;
+}
+
+.contact-items img {
+  width: 2.5rem;
+  height: 100%;
+  object-fit: contain;
+}
+
+.contact-items .instagram { width: 1.75rem; }
+.contact-items .like { width: 3.125rem; }
+.contact-items .facebook { width: 2.2rem; }
+
+.contact-items .text-box {
+  width: 100%;
+  align-items: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 31.25rem;
+  gap: 1rem;
+  position: relative;
+}
+
+.contact-form .input-style,
+.contact-form .textarea-style {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  border: 1px solid black;
+  transition: border-color 0.3s, outline-color 0.3s;
+}
+
+.contact-form .input-style:focus,
+.contact-form .textarea-style:focus {
+  border: 2px solid var(--focus-color);
+  outline: none;
+}
+
+.contact-form .label-style {
+  width: 100%;
+  font-family: var(--font-body);
+  height: 1.875rem;
+  font-weight: bold;
+}
+
+.item-name {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.item-name .name-style,
+.item-name .lastname-style {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0.3125rem;
+}
+
+.item-mail,
+.item-mensaje {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0.3125rem;
+  justify-content: center;
+}
+
+.contact-form .textarea-style {
+  height: 9.375rem;
+  resize: none;
+}
+
+.msjBox {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  width: fit-content;
+  height: fit-content;
+  transition: 0.3s ease-in;
+}
+
+.submit-button {
+  width: 7.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .contact-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .contact-container .title {
+    justify-content: center;
+  }
+
+  .contact-items {
+    gap: 0;
+    align-items: flex-start;
+    width: fit-content;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}

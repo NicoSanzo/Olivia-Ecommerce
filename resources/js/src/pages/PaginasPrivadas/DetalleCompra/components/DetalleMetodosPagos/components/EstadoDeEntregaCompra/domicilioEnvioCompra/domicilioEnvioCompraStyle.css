@@ -1,0 +1,38 @@
+.Datos-Envio{
+    border: solid thin #dddddd;
+    border-radius: 5px;  
+    padding: 1%; 
+    display: flex;
+    flex-direction: column;
+    height: fit-content; 
+    
+    .datos-dom{
+        display: flex;
+        height: 20px;
+        align-items: center;
+        
+
+    }
+    p{
+        display: flex;
+        font-size: 14px;
+        height: min-content;
+    }
+    h2{
+        width: fit-content;
+        text-align: left;
+        border-radius: 5px;
+        padding: 2px;
+        font-size: 15px;
+        margin: 5px;
+        font-weight: 500;
+        box-shadow: 0 0 2px 0;
+
+    }
+
+    .label{
+        font-weight: 800;
+    }
+    
+    strong {font-weight: 500;}
+    }

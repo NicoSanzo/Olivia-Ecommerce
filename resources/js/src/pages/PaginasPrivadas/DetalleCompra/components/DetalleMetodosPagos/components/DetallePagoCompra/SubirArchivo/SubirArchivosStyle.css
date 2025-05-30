@@ -1,0 +1,156 @@
+.principal-container-upload-datos{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+ 
+}
+
+
+
+.boton-descripcion-upload-container{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    box-shadow: 0 0 2px 0 ;
+    margin: 2px;
+    border-radius:  5px;
+    
+}
+
+.custom-label {
+    position: relative;
+    display: block;
+    
+    
+}
+
+.image {
+    width: 35px; /* Ajusta el tamaño de la imagen */
+    height: 35px;
+    transition: 0.5s ease-in-out;
+}
+
+.file-input { display: none; }
+
+.mensaje-exitoso{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   
+    
+}
+
+.save-button{
+    height: 25px;
+    width: 80px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 3px;
+    background-color:#FDC7E8 ;
+    cursor: pointer;
+    
+}
+.save-button:hover
+{
+    background-color:#FF5EC0 ;
+    color: white;
+}
+
+.principal-file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .error-msg{
+
+        color: red;
+        font-size: 12px;
+    }
+}
+
+.file-container {
+
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    display: flex; 
+    flex-direction: row; 
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 #aaaaaa;
+    
+
+    .image-container-comprobante{
+        
+        display: flex;
+        align-items: center; 
+        text-decoration: none;    
+            
+        img{
+            width: 40px;
+            height: 40px;
+            
+        }
+        p{
+            text-align: center;
+            display: flex;
+            width: max-content;
+            color: black;          
+        }
+    }
+
+    .pdf-preview{
+       
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        
+        img{
+            width: 40px;
+            height: 40px;
+        }
+        p{
+            text-align: center;
+            display: flex;
+            width: max-content;
+            color: black;             
+        }
+    }
+}
+
+.requerido{
+
+    font-size: 15px;
+    color: #FF5EC0;
+}
+
+
+.remove-button {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+    z-index: 1;
+}

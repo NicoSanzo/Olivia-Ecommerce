@@ -1,0 +1,271 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.compra-container{
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0 0 3px 0 #555555;
+    border-radius: 5px;
+    position: relative;  
+    flex-direction: column;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "Quicksand", sans-serif;
+    
+
+    .compra-container-head{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1%;
+        align-items: center;
+        font-size: 12px;
+        border-bottom: solid thin #cccccc ;
+
+        .ID{
+            font-size: 16px; 
+            font-weight: 700;
+            .id{font-weight: 400;}
+        }
+
+        .fecha{font-size: 13px; }
+    }
+
+    span{
+        border-radius: 5px;
+        box-shadow: 0 0 2px 0;
+        font-size: 15px;
+        padding: 2px;
+    }
+
+    .compra-container-footer{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1%;
+        align-items: center;
+        font-size: 12px;
+        border-top: solid thin #cccccc ;
+
+        .estado-pago , .metodo-pago,.estado-pago-pendiente,.estado-pago-entregado{
+            font-size: 14px; 
+            font-weight: 700;
+            
+
+            span{
+                font-weight: 500; 
+                margin-left: 6px;   
+                   
+            }
+        }
+        .estado-pago-pendiente{
+            color:rgba(0, 0, 0, 0.43);  
+        }
+        .estado-pago-entregado{
+            color:#30d17b;  
+        }
+
+    }
+
+    .compra-product-card
+    {   
+        box-shadow: 0 0 3px 0 #cccccc;
+        width: 98%;
+        display: flex;
+        height: fit-content;     
+        align-items: center;
+        border-radius: 5px; 
+        margin: 2px;
+        padding: 2px;
+        justify-content: space-between;
+
+        .image-container{
+            width:100px;
+            height: 100px; 
+            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 0 3px #cccccc;
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            padding: 5px;
+            margin: 10px;
+           
+            .product-image {
+                width:100%;
+                height: 100%; 
+                object-fit: contain;    
+            }
+        }
+
+        .product-description{
+  
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            justify-content: center;
+            padding: 5px;
+            
+            .estado-entrega{
+                height: fit-content;
+                font-size: 13px;
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                padding: 5px;
+                border-radius: 5px;
+                color:rgba(0, 0, 0, 0.43) ;
+                
+            }
+
+            .titulo-publicacion , .stock-producto{
+             
+                height: fit-content;
+                font-size: 16px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                padding: 5px;   
+            }
+
+            .stock-producto{
+                align-items:flex-start;
+                flex-direction: column;
+                height: fit-content;
+                padding-top: 0px;
+                font-size: 13px;
+            }      
+        }
+
+       .buttons{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        display: flex;
+        width: fit-content;
+        padding: 1%;
+        align-items: center;
+        gap: 25px;
+
+        .contacto{
+            width: fit-content;    
+            display: flex;
+            gap: 5px;
+            height: 32px;
+            justify-content: center; 
+            align-items: center;   
+            text-decoration: none;
+            box-shadow: 1px 1px 2px 1px #87AA96 ;
+            border-radius: 5px;
+            padding: 2px;
+            color: black;
+
+            img{
+                width: 25px;
+                object-fit: contain;
+                height: 25px;
+               
+            }
+            h2{
+                width: fit-content;
+                font-family: "Quicksand", sans-serif;
+                font-size: 13px;
+                font-weight: 600;
+                text-align: center;
+            }     
+           
+        }
+        .contacto:hover{
+
+            background-color: #DBEAE2;
+        }   
+
+            button{
+                width: 170px;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                box-shadow: 1px 1px 2px 1px #FDC7E8 ;
+                background-color: #fcf3f8;
+                font-family: "Quicksand", sans-serif;
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                font-weight: 500;
+                transition: 0.2s ease-in-out;
+            }
+            button:hover{
+                background-color: #FDC7E8 ;
+                transition: 0.2s ease-in-out;
+                width: 172px;
+                cursor: pointer;
+            }
+        
+        }
+      
+    }
+
+
+
+}
+
+@media (max-width: 1000px){
+
+    .compra-container{
+        
+        .compra-container-footer{
+         
+            .estado-pago , .metodo-pago{
+                font-size: 14px;
+                display: flex;
+                flex-direction: column;
+                padding: 5px;
+                gap: 3px;
+                align-items: center;
+            }
+            span{
+                font-size: 14px;
+            }            
+        }
+
+        .compra-product-card{
+            .buttons{
+         
+                justify-content:center;
+                font-size: 13px;
+                width: min-content;
+                flex-wrap: wrap;
+
+                .contacto{   
+                    width: 58px;  
+                    h2{display: none;}        
+                }
+
+                button{
+                    width: 60px;
+                    height: 35px;   
+                    font-size: 11px;
+                    padding: 5px;  
+                    text-wrap: wrap;         
+                }
+                button:hover{
+                    width: 60px;
+                    
+                }
+            }
+
+            .product-description{
+  
+                .titulo-publicacion {
+             
+                    font-size: 14px;
+                     
+                }
+            }
+        }    
+    } 
+}

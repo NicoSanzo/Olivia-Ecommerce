@@ -1,0 +1,133 @@
+
+.products-carrito-container
+{
+   box-shadow: 0 0 3px 0 ;
+   width: 70% ;
+   border-radius: 10px;
+   padding: 2%;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   background-color: #F1F0EC  ;
+   gap: 10px;
+}
+
+.titulo{
+    text-align: center;
+    font-family: "Questrial";
+    color: #87AA96;
+}
+
+.Products-container{
+
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 3px 0;
+    border-radius: 5px;
+    height: fit-content;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.carrito-page-footer
+{
+    width: 100%;
+    height: 50px;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.vaciar-carrito-page-button
+{
+    width: 150px;
+    height: 35px;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    box-shadow: 0 0 2px 0 black;
+    font-family: "Questrial";
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.vaciar-carrito-page-button:hover{
+
+    
+    width: 152px;
+    height: 37px;
+    font-size: 17px;
+    background-color: #666666;
+}
+
+.empty-container{
+    width: 100%;
+    box-shadow: 0 0 2px 0; 
+    border-radius: 8px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1%;
+    position: relative;
+
+    img{
+        width:110px;
+        height: 80px; 
+        max-height: 300px;
+        border-radius: 15px;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+       align-self: left;
+       
+    }
+    h2{
+        font-family: "Questrial";
+        font-size: 16px;
+        font-weight: 500;
+      
+    }
+
+    button{
+
+        width: 135px;
+        padding: 5px;
+        height: fit-content;
+        border: none;
+        box-shadow: 0 0 2px #777777;
+        cursor: pointer;
+        background-color: #FDC7E8 ;
+        color: black;
+        border-radius: 5px;
+        font-family: "Questrial";
+        margin-left: 60px;
+
+    }   
+    button:hover{
+        background-color: #FF5EC0  ;
+        color: white;
+    }
+}
+
+
+@media (max-width:1300px){
+
+    .products-carrito-container{
+        width: 95%;
+    }
+
+    .empty-container{
+        flex-wrap: wrap;
+        height: fit-content;
+        button{
+            margin: 0;
+        }
+        
+    }
+}

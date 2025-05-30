@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
+
+.user-container{
+
+    width: max-content;
+    height: min-content;
+    position: relative;
+    font-family: "Questrial";
+    cursor: pointer;
+    border-radius: 10px;
+
+
+    .items-container, .items{
+       
+        position: relative;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #FF5EC0;
+        flex-direction: column;
+
+        .items {flex-direction: row;}
+
+        .downarrow{
+            height: 30px;
+            width: min-content;
+        }  
+
+        img{
+            height: 55px;
+            width: 40px;
+            object-fit: cover;
+        }
+        h2{
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            width: min-content;
+            font-size: 14px;
+            font-weight: 2px ;   
+            display: flex;
+            flex-direction: row;
+            
+            align-items: center;
+            img{
+                height: 30px;
+                width: min-content;
+            }         
+        }
+        
+        .Desplegable{
+            box-shadow: 0 0 3px 0 black;
+            border-radius: 15px; 
+            display: none;
+            background-color: #F1F0EC;
+            align-self: flex-end;    
+            top:100%;
+            left: 0;
+            width: 250px;
+
+            a{
+                text-decoration: none;
+                height: 100%;
+                width: 100%;
+                color: black;
+                display: flex;
+                align-items: center;
+
+                
+            }
+                 
+            li{
+                height: 35px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 15px;     
+                text-transform: uppercase; 
+                letter-spacing: 2px;
+                font-size: 14px;
+                color:black;
+                font-weight: 500;
+                padding-left: 10px;
+    
+       
+            }
+    
+            li:hover{
+                background-color: #739C84; 
+                color:white;
+                border: solid thin ;
+            }
+        }           
+    }
+
+}
+
+.user-container:hover{
+    .Desplegable{
+        display: block;
+        position: absolute;
+    }
+}
+
+
+@media (min-width: 220px) and (max-width: 900px)
+{  
+    .user-container{
+       
+       width: fit-content;
+        .items-container{  
+            display: flex;
+            flex-direction: row;
+            
+            img{
+                height: 40px;
+                width: 100%;   
+                object-fit: contain; 
+            }
+            h2{font-size: 10px;}
+            .Desplegable{
+            width: 150px;
+            li{font-size: 12px;}
+            }
+        }
+    }
+}

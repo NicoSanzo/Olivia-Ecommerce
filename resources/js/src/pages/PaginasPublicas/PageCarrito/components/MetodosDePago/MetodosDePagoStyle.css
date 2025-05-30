@@ -1,0 +1,138 @@
+
+.metodos-pago-container{
+
+    box-shadow: 0 0 2px 0 ;
+    width: 100% ;
+    border-radius: 10px;
+    height: fit-content ;
+    background-color: #F1F0EC  ;
+    padding: 2%;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+    
+    .container-metodos-pago{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .Metodos-Pago{
+        display: flex;
+        flex-direction: row;  
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+
+    }
+    .pago{
+        font-family: "Questrial";
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: start;
+     
+    }
+
+ .checkbox{
+
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-family: "Questrial";
+
+    a{
+        text-decoration: none;
+        color: #FF5EC0 ;
+        display: flex;
+        flex-wrap: nowrap;
+        font-size: 16px;
+        font-family: "Questrial";
+        width: fit-content;
+  
+    }
+ }
+
+}
+
+/*Personalizacion minima del boton de MP*/
+/*#wallet_container 
+
+{
+    #walletBrick_container{   
+        button
+        {     
+           border: solid 1px  #87AA96  ;
+              
+           .svelte-h6o0kp{     
+             box-shadow: none;
+             display: flex;
+             justify-content: center;          
+           }
+          
+           .text-3x3I0b ,.loading-text{
+             margin: 6px;
+             box-shadow: 0 0 1px black;
+             background-color:#DBEAE2 ;
+           }  
+        }   
+
+        .svelte-1wbwr8x{
+            text-wrap: nowrap;
+        }
+    }
+}*/
+
+
+.pagar-transfer-button
+{
+
+    height: 48px;
+    border-radius: 5px;
+    width: 260px;
+    padding: 8px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 3px 0;
+    cursor: pointer;
+    background-color: black;
+    font-weight: 600;
+    color:white;
+    transition: 0.2s ease-in-out;
+}
+
+.pagar-transfer-button:hover
+{
+
+    background-color: rgba(4, 4, 4, 0.855);
+}
+
+.terminar-comprar-button{
+
+    height: 40px;
+    border-radius: 10px;
+    width: 150px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 3px 0;
+    cursor: pointer;
+    background-color: #DBEAE2;
+    font-weight: 550;
+    transition: 0.2s ease-in-out;
+}
+
+
+.terminar-comprar-button:hover{
+    background-color: #87AA96;
+    width: 160px;
+    color: white;
+    font-weight: 500;
+
+}

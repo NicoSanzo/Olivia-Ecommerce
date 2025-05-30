@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
+
+.filter-box{
+
+    width: 85%;
+    height: 230px;
+    border-radius: 10px; 
+    display: flex;
+    padding: 3%;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F1F0EC;
+    box-shadow: 0 0 1px 0 ;
+
+    h2{
+        width: 100%;
+        font-family: "Questrial";
+        font-size: 17px;
+        text-transform: uppercase;
+    }
+    .categories-box
+    {
+        width: 100% ;
+        border: solid thin;
+        height: 100%;
+        border-radius: 15px; 
+        background-color: white;
+        display: flex;
+        padding: 3%;   
+    }
+
+
+}
