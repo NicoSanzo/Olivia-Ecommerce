@@ -1,46 +1,44 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "../../../hooks/PedidoFetchGenerico";
+import { useQuery } from "@tanstack/react-query";
+import { fetchGenerico } from "../../../utils/fetchGenerico";
 
 export function UseProductoDetail() {
  
-    const [triggerFetch, setTriggerFetch] = useState(false);
-    const [dataPublicacion, setDataPublicacion] = useState(null);
-    const [imagenes,setImagenes]=useState([])
+  const [dataPublicacion, setDataPublicacion] = useState(null);
+  const [imagenes,setImagenes]=useState([])
 
-    const urlActiva = new URLSearchParams (location.search)
-    const itemKey =  urlActiva.get('ID');
-    const {data, loading, error:fetchError } = useFetch("/api/detalle","POST",{itemKey} ,triggerFetch);
+  const urlActiva = new URLSearchParams (location.search)
+  const itemKey =  urlActiva.get('ID');
 
+  const {data, isLoading, error:fetchError }= useQuery({
+    queryKey : ['detallePublicacion' , itemKey],
+    queryFn: ()=> fetchGenerico('/api/detalle/' ,'POST' , {itemKey})
+  })
 
-      useEffect(() => {
-        setTriggerFetch(true)
-      }, []);
+     setTimeout(() => {
+     window.scrollTo({ top: 0,behavior: 'smooth'});
+  }, 0);
 
-      useEffect(() => {
-
-        if (data || fetchError) {
-          if (data.status === 'success') {
-              setDataPublicacion(data.publicacion);
-
-              setImagenes(data.publicacion?.imagenes.map(imagen => ({
-                  publicacion_key: dataPublicacion?.publicacion?.id,
-                  id: imagen.id,
-                  src: imagen.image_url
-              })));
-
-          } else {
-              setError(data.message || fetchError);
-              setDataPublicacion(null);
-          }
-          setTriggerFetch(false);
-      }
-
-      }, [data,loading,fetchError]);
+  useEffect(() => {
+      if (data || fetchError) {
+        if (data.status === 'success') {
+            setDataPublicacion(data.publicacion);
+            setImagenes(data.publicacion?.imagenes.map(imagen => ({
+                publicacion_key: dataPublicacion?.publicacion?.id,
+                id: imagen.id,
+                src: imagen.image_url
+            })));
+        } else {
+            setError(data.message || fetchError);
+            setDataPublicacion(null);
+        }
+    }
+  }, [data,isLoading,fetchError]);
          
-      return {
-        dataPublicacion,
-        imagenes,
-        loading
-      };
+  return {
+    dataPublicacion,
+    imagenes,
+    isLoading
+  };
     
 }

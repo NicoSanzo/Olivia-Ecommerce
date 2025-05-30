@@ -16,8 +16,6 @@ export const Productos = () =>{
     
     usePublicaciones();
 
-    //console.log(FoundData)
-
     return (
         <>
             <div className="principal-container">
