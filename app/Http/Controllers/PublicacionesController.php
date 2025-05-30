@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
 
+
 class PublicacionesController extends Controller
 {
     public function publicaciones(Request $request)
@@ -45,9 +46,9 @@ class PublicacionesController extends Controller
                 ->where('paused', 0)
                 ->where(function ($query) use ($searchData) {
                     $query->where('titulo', 'LIKE', '%' . $searchData . '%');
-                    $query->orWhere('id', $searchData);
-                  
-                    
+                    if (is_numeric($searchData)) {
+                        $query->orWhere('id', $searchData);
+                    }
                 })
                 ->orderBy($column, $direction)
                 ->get();

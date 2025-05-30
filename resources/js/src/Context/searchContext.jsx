@@ -6,7 +6,6 @@ export const SearchProvider = ({ children }) => {
     const [FoundData, setFoundData] = useState(null);
     const [searchData, setSearchData] = useState('');
     const [loading,setLoading]= useState(false);
-    const [realizarBusqueda, setRealizarBusqueda] = useState(false);
     const [inputOrder,setinputOrder]=useState("");  // se utliza para realizar la busqueda al entrar a productos,desde el componenten de Ordenaminto y para el componente de la barra de busqueda
     const [Error,setError]=useState(null);
     const [inputSearchValue, setInputSearchValue] = useState('');
@@ -20,7 +19,7 @@ export const SearchProvider = ({ children }) => {
             loading,setLoading,
             Error,setError,
             inputSearchValue, setInputSearchValue, 
-            realizarBusqueda, setRealizarBusqueda}}>
+           }}>
 
         {children}
         </SearchContext.Provider>

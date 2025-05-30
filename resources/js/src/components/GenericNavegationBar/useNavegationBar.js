@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export function UseNavegationBar() {
 
     const navigate = useNavigate();
-    const {setSearchData,inputSearchValue, setInputSearchValue,setRealizarBusqueda} =useSearch();
+    const {setSearchData,inputSearchValue, setInputSearchValue} =useSearch();
     
     const visualizarContenido = (event) => {
         setInputSearchValue(event.target.value);
@@ -17,11 +17,9 @@ export function UseNavegationBar() {
             navigate(`/Productos?search=${inputSearchValue}`);
     };
 
-
     const ApretarEnter = (event) => {
         if (event.key === 'Enter') { // Verifica que no esté vacío
-            setRealizarBusqueda(true)
-            realizarConsulta(); // Ejecuta la consulta al presionar Enter        
+            realizarConsulta();    
         }
     };
 
@@ -32,5 +30,4 @@ export function UseNavegationBar() {
             realizarConsulta
     }
       
-    
 }

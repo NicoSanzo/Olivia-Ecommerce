@@ -1,49 +1,36 @@
-import { useEffect, useState } from "react";
-
-
-import { useFetch } from "../../../hooks/PedidoFetchGenerico";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useSearch } from "../../../Context/searchContext";
+import { fetchGenerico } from "../../../utils/fetchGenerico";
 
 export function usePublicaciones() {
+  const { inputOrder,setFoundData,searchData,setLoading, setError,} = useSearch();
 
-// Estados globales utilizados en un contexto (Componente: SearchContext)
-    const {
-        inputOrder,
-        setFoundData,
-        searchData,
-        setRealizarBusqueda,
-        realizarBusqueda,
-        setLoading,
-        setError
-      } = useSearch();
 
-    const [triggerFetchPublicaciones,setTriggerFetchPublicaciones]=useState(true);
-   
-    const {data,loading,error:fetchError}= useFetch ('/api/publicacion', 'POST', {inputOrder,searchData}, triggerFetchPublicaciones)
+  const { data,isLoading,error} = useQuery({
+    queryKey: ['publicaciones', inputOrder, searchData],
+    queryFn: () => fetchGenerico('/api/publicacion','POST', {inputOrder, searchData}),
+    enabled: true, // se ejecuta al recargar el componente
+  });
 
-    useEffect(() => {  
-        if(realizarBusqueda===true){
-            setTriggerFetchPublicaciones(true);   
-        }     
-    }, [realizarBusqueda]);
-    
-    
-    useEffect(() => {
-        setLoading(loading);
-        setRealizarBusqueda(false)
 
-        if (data || fetchError) {
-            if (data?.status === 'success') {
-                setFoundData(data.publicaciones);
-                
-            } else {
-                setError(data?.message || fetchError);
-                setFoundData(null);
-            }
-            setTriggerFetchPublicaciones(false);
-        }
-        
-    }, [data, loading, fetchError]);
+  useEffect(() => {
+    setLoading(isLoading);
 
+    if (data) {
+      if (data.status === 'success') {
+        setFoundData(data.publicaciones);
+        setError(null);
+      } else {
+        setError(data.message || 'Error inesperado');
+        setFoundData(null);
+      }
+    }
+
+    if (error) {
+      setError(error.message);
+      setFoundData(null);
+    }
+  }, [data, error, isLoading]);
 
 }

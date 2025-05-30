@@ -16,7 +16,6 @@ class PerfilUserController extends Controller
         $user= JWTAuth::parseToken()->authenticate();
         $user= new UserResource($user);
     
-
         return response()->json(['user'=>$user,
                             'status' => 'success'
                  ]);

@@ -1,5 +1,5 @@
 import '../css/app.css'
-import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReactDOM from 'react-dom/client';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { HeaderA } from './src/pages/PaginasPublicas/HomePage/components/header/headerSeccionA/headerA';
@@ -25,38 +25,41 @@ import { AppContextProviders } from './src/Context/Providers';
 import { Footer } from './src/pages/PaginasPublicas/HomePage/components/footer/Footer';
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  
-<Router>
-  <AppContextProviders>
-          <HeaderA />
-          <HeaderB />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="productos/productoDetail" element={<ProductoDetail />} />
-            <Route path="/infocompra" element={<InfoCompra />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/carrito" element={<PageCarrito />} />
-            <Route element={<PrivateRouteAdmin />}>
-              <Route path="/AgregarProducto" element={<AgregarProducto />} />
-              <Route path="/Publicaciones" element={<Publicaciones />} />
-              <Route path="/Ventas" element={<Ventas />}/>
-              <Route path="Ventas/Detalle" element={<DetalleVenta />} />
-            </Route>
-            <Route element={<PrivateRouteClient />}>
-              <Route path="/Miperfil" element={<MiPerfil />} />    
-              <Route path="/compras" element={<Compras />}/>
-              <Route path="compras/detalle" element={<DetalleCompra />} />               
-              <Route path="/CompraExitosa" element={<CompraExitosa />} />        
-            </Route>
-            <Route path="*" element={<Navigate to="/home" />}/>
-          </Routes>
-          <LoginModal/>     
-        <Footer />
-      </AppContextProviders>
-</Router>
 
+const queryClient= new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+<QueryClientProvider client={queryClient}>
+  <Router>
+    <AppContextProviders>
+            <HeaderA />
+            <HeaderB />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/productos" element={<Productos />} />
+              <Route path="productos/productoDetail" element={<ProductoDetail />} />
+              <Route path="/infocompra" element={<InfoCompra />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/carrito" element={<PageCarrito />} />
+              <Route element={<PrivateRouteAdmin />}>
+                <Route path="/AgregarProducto" element={<AgregarProducto />} />
+                <Route path="/Publicaciones" element={<Publicaciones />} />
+                <Route path="/Ventas" element={<Ventas />}/>
+                <Route path="Ventas/Detalle" element={<DetalleVenta />} />
+              </Route>
+              <Route element={<PrivateRouteClient />}>
+                <Route path="/Miperfil" element={<MiPerfil />} />    
+                <Route path="/compras" element={<Compras />}/>
+                <Route path="compras/detalle" element={<DetalleCompra />} />               
+                <Route path="/CompraExitosa" element={<CompraExitosa />} />        
+              </Route>
+              <Route path="*" element={<Navigate to="/home" />}/>
+            </Routes>
+            <LoginModal/>     
+          <Footer />
+        </AppContextProviders>
+  </Router>
+</QueryClientProvider>
 );
 
