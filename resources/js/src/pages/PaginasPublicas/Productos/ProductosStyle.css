@@ -1,92 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
 
+:root{
+  --color-box-shadow: #aaaaaa;
+  --color-letter-error: #7a7a7a;
+}
 
-.carga-container-productos{
-
-display: flex;
-align-items: center;
-justify-content: center;
-width: 100%;
-height: 500px;
-align-self: center;
+.carga-container-productos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  align-self: center;
 
 }
 
-.principal-container{
-    
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding:1% 5% 0% 5%;
-    
-    
-    .container-menu-order
-    {
-        width: 70%;
-        display: flex;
-        min-height: 60px;
-        justify-content: flex-end;
-        align-items: center;
-     
-        
-        gap: 15px;
-        h2{
-            font-weight: 500;
-            letter-spacing: 3px;
-            font-family: "Questrial";
-            font-size: medium;
-        }
-    }
+.principal-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1% 5% 0 5%;
+ 
+}
 
-    .filter-menu-container
-    {
-        
-        background-color:#fdfbf6;
-        width: 20%;
-        height: fit-content;
-        display: flex;
-        padding: 2% 0% 2% 0%;
-        align-items: center;
-        flex-direction: column;
-        gap: 30px;
-        border-radius: 10px;
-       
-       
-    }
+.container-menu-order {
+  width: 70%;
+  display: flex;
+  min-height: 60px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
 
-    .products-container{
-        width: 65%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Adaptable */
-        grid-auto-rows: 450px;
-        gap: 16px; 
-        position: relative;
-        margin: 30px 0 50px 0;
-        padding: 10px;
-        align-self:center;
-        place-items: center;
-        justify-items: center;
-    }
+.container-menu-order h2 {
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-family: 'Questrial', sans-serif;
+  font-size: medium;
+}
+
+.filter-menu-container {
+  background-color: #fdfbf6;
+  width: 20%;
+  height: fit-content;
+  display: flex;
+  padding: 2% 0;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 10px;
+}
+
+.products-container {
+  width: 65%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-rows: 450px;
+  gap: 16px;
+  position: relative;
+  margin: 30px 0 50px 0;
+  padding: 10px;
+  align-self: center;
+  place-items: center;
+  justify-items: center;
+  
+}
+
+.error-message-window {
+  opacity: 0;
+  animation: fadeIn 0.7s forwards; /* Ejecuta la animación y mantiene el estado final */
+  grid-column: 1 / -1;
+  grid-row: auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-letter-error);
+  font-family: 'Quicksand';
+  font-size: clamp(1rem, 1vw, 3rem);
+  font-weight: 400;
+  height:fit-content;
+  gap: 10px;
+
+  span{
+    animation: fadeIn 1s ease-in-out;
+    padding:7px;
+  }
 }
 
 
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+ 
+}
 
+
+.beat-animation {
+  animation: beat 1s ease-in-out ;
+}
+
+
+/* Definición de la animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Media Queries */
 @media (max-width: 900px) {
+  .products-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: auto;
+    width: 90%;
+    gap: 10px;
+    padding: 10px;
 
-    .principal-container{
-        .products-container {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-            grid-auto-rows: auto;
-            gap: 10px; 
-            padding: 10px;
+  }
 
-        }
 
-        .container-menu-order
-        {
-           justify-content: center;
-           width: 100%;
-           align-items: center;
-        }
-    }   
+  .container-menu-order {
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
 }

@@ -1,5 +1,6 @@
 import '../css/app.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import ReactDOM from 'react-dom/client';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { HeaderA } from './src/pages/PaginasPublicas/HomePage/components/header/headerSeccionA/headerA';

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./ProductosStyle.css";
 import { ProductCard } from "../.././../components/GenericProductCard/ProductCard";
 import { OrdenMenu } from "./components/ordenMenu/OrdenMenu";
@@ -7,15 +6,18 @@ import { LoadingComponente } from "../../../components/GenericLoadingComponent/L
 import { FilterModelo } from "./components/FilterModelos/FilterModelos";
 import { useSearch } from "../../../Context/searchContext";
 import { usePublicaciones } from "./usePublicaciones";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
+
 
 
 export const Productos = () =>{
     
 
     const { FoundData, loading, Error } = useSearch();
-    
-    usePublicaciones();
 
+    usePublicaciones();
+    
     return (
         <>
             <div className="principal-container">
@@ -47,7 +49,11 @@ export const Productos = () =>{
                         />                
                     ))
                 ): 
-                 <div> {Error} </div>
+                 <div className="error-message-window"> 
+                    <FontAwesomeIcon className= "beat-animation" icon={faCircleExclamation} size="2x" color=' #ff8ed4' />
+                    <span> {Error} </span> 
+
+                 </div>
                 }
                 
                 </div>}

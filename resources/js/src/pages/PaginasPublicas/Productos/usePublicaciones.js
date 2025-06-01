@@ -6,13 +6,11 @@ import { fetchGenerico } from "../../../utils/fetchGenerico";
 export function usePublicaciones() {
   const { inputOrder,setFoundData,searchData,setLoading, setError,} = useSearch();
 
-
   const { data,isLoading,error} = useQuery({
     queryKey: ['publicaciones', inputOrder, searchData],
     queryFn: () => fetchGenerico('/api/publicacion','POST', {inputOrder, searchData}),
     enabled: true, // se ejecuta al recargar el componente
   });
-
 
   useEffect(() => {
     setLoading(isLoading);

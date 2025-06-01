@@ -5,6 +5,7 @@ import { useAuth } from "../../../../../Context/authContext";
 import { Link } from "react-router-dom";
 
 export const AdminMenu = ({ user }) => {
+    
     const { logout } = useAuth();
 
     const CerrarSession = () => {
