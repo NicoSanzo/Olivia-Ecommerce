@@ -5,8 +5,6 @@ import { useAuth } from '../Context/authContext';
 export const PrivateRouteClient = () => {
   const { checkAuthStatus,isTokenValid} = useAuth();
   
-  
-
 
   if (!isTokenValid) {
     return  <Navigate to="/home" replace /> ;

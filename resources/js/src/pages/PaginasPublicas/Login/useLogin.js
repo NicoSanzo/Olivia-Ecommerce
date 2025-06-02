@@ -18,10 +18,10 @@ export function useLogin({onClose,Registrate}) {
       const loginMutation = useMutation({
         mutationFn: ({ username, password }) =>
           fetchGenerico("/api/login", "POST", { username, password }),
-        onSuccess: (data) => {
+        onSuccess: (data) => {      
           if (data.status === "success") {
             queryClient.invalidateQueries({ queryKey: ["session"] });
-            onClose();
+            onClose();   
           } else if (data.error) {
             setLoginError(data.error);
           }
@@ -30,16 +30,14 @@ export function useLogin({onClose,Registrate}) {
           setLoginError("Error de inicio de sesión. Intenta de nuevo.");
         },
       });   
-
-
+  
       const iniciarSesion = (e) => {
         e.preventDefault();
         setLoginError("");
         if (!username || !password) {
           setLoginError("Por favor, completa todos los campos.");
           return;
-        }
-        
+        }   
         loginMutation.mutate({ username, password });
       };    
 

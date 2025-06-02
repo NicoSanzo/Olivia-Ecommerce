@@ -1,60 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap'); 
+.userLogin {
+  width: 150px;
+  height: 33px;
+  position: relative;
+  font-family: "Questrial", sans-serif;
+  cursor: pointer;
 
-
-.userLogin{
-
-    width: 150px ;
-    height: 33px;
+  .container-login {
     position: relative;
-    font-family: "Questrial";
-    cursor: pointer;
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FF5EC0;
     
-    .container-login{
-        position: relative;
-        height: 100%;
-        width: 100%;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #FF5EC0;
-        
-        img{
-            height: 55px;
-            width: 40px;
-            object-fit: cover;
-        }
-        h2{
-            display: flex;
-            flex-direction: column;
-            text-align:left;
-            width: fit-content;
-            font-size: 14px;
-            font-weight: 2px ;   
-            display: flex;
-            flex-direction: row;
-            align-items: center;     
-        }
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit:contain;
     }
+
+    h2 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      width: fit-content;
+      font-size: 15px;
+      font-weight: 600; 
+     
+    }
+  }
 }
 
+/* Responsive para celulares */
+@media (min-width: 220px) and (max-width: 900px) {
+  .userLogin {
+    width: fit-content;
 
-@media (min-width: 220px) and (max-width: 900px)
-{  
-    .userLogin{
-       
-       width: fit-content;
-        .container-login{  
-            display: flex;
-            flex-direction: column;
-            
-            img{
-                height: 40px;
-                width: 100%;   
-                object-fit: contain; 
-            }
-            h2{font-size: 10px;}
-        }
+    .container-login {
+      flex-direction: column;
+
+      img {
+        width: 100%;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      h2 {
+        font-size: 10px;
+        margin-left: 0; 
+        margin-top: 2px;
+      }
     }
+  }
 }

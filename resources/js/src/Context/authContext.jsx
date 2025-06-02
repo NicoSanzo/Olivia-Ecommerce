@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
 
   // Consulta para verificar sesión activa
-  const { data, isLoading: loading, error } = useQuery({
+  const { data, isLoading: loading } = useQuery({
     queryKey: ['session'],
     queryFn: () => fetchGenerico('/api/perfil', 'POST'),
     staleTime: Infinity,
@@ -24,7 +24,6 @@ export const AuthProvider = ({ children }) => {
   });
 
   
-
   useEffect(() => {
     if (data?.status === 'success') {
       setPublicData(queryClient.getQueryData(['session']).user);

@@ -1,91 +1,113 @@
-.header-section-b
-{
-    height: 150px;
-    width: 100%; 
-    background-color: #F1F0EC;
-    display:grid;
-    position: sticky;
-    grid-template-columns: 22.5% 45% 22.5% ;
-    align-items: center;
-    justify-content: center;
-    top:0;
-    z-index: 10;
-            
-    /***LOGO EMPRESA***/
+.header-section-b {
+  height: 165px;
+  width: 100%;
+  background-color: #F1F0EC;
+  display: grid;
+  position: sticky;
+  grid-template-columns: 22.5% 45% 22.5%;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  z-index: 10;
+  transition: height 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+}
 
-    .logo-container{
-       width: 90%;
-       height: 90%;
-       display:flex;
-       justify-content: center;
-       align-items: center;
-       position: relative;
-   
-     
-       
+.logo-container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-    .headerLogo{
-        width: 100%;
-        height: 100%;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        
-        .logo{
-           width: 100%;
-           height: 100%;
-           background-image: url(./Images/Logo_Olivia.jpg); 
-           background-size: contain;
-           background-repeat: no-repeat;
-           background-position: center;  
-               
-            }
-        }  
-    }
+.headerLogo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.2s ease-in-out;
+}
 
-    .navigation{
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 5px; 
-    }              
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../../assets/LogoOlivia.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
-    .user-icons{
-        position: relative;
-        display: flex;
-        height: 100%;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;    
-    }
-} 
+.navigation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  transition: height 0.2s ease-in-out;
+}
 
+.user-icons {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
 
-@media (min-width: 220px) and (max-width: 900px)
-{  
-   .header-section-b
-    {
-       grid-template-rows: 40% ;
-       grid-template-columns: 35% 20% 45% ;
-       gap:0px;
-       height: 200px;
-      
-        .navigation{
-            grid-column: 1/5;
-            padding-bottom: 3px;
-            gap: 0px;
-        }
+/* Estado shrunk para header reducido */
+.header-section-b.shrunk {
+  height: 130px;
+  box-shadow: 0 0 10px 0 #aaaaaa;
+  border-radius: 0 0 10px 10px;
+}
 
-        .user-icons{
-            grid-column: 3/3;
-            grid-row: 1/2;
-            gap: 0px;
-        }
-    }   
+.header-section-b.shrunk .headerLogo {
+  width: 65%;
+}
+
+.header-section-b.shrunk .navigation {
+  height: 130px;
+}
+
+/* Media queries para dispositivos móviles */
+@media (min-width: 220px) and (max-width: 900px) {
+  .header-section-b {
+    grid-template-rows: 40%;
+    grid-template-columns: 35% 20% 45%;
+    gap: 0;
+    height: 200px;
+    transition: height 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  }
+
+  .navigation {
+    grid-column: 1 / 5;
+    padding-bottom: 3px;
+    gap: 0;
+  }
+
+  .user-icons {
+    grid-column: 3 / 3;
+    grid-row: 1 / 2;
+    gap: 0;
+  }
+
+  /* Shrunk para móviles */
+  .header-section-b.shrunk {
+    height: 170px;
+  }
+
+  .header-section-b.shrunk .headerLogo {
+    width: 80%;
+  }
+
+  .header-section-b.shrunk .navigation {
+    height: 100px;
+  }
 }

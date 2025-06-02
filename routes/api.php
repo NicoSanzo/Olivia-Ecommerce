@@ -15,11 +15,10 @@ Route::post ('/contacto',[FormularioContactoController::class , 'EnviarMensaje']
 
 // Rutas protegidas por JWT y roles
 Route::post('/login', [AuthController::class, 'login']);
-
+Route::post('/refresh', [AuthController::class, 'refresh']); 
 
 // Ruta protegida para obtener el perfil del usuario
 Route::middleware(['auth'])->post('/perfil', [PerfilUserController::class,'getUserPerfil']);
-
 Route::middleware(['auth'])->post('/Logout', [AuthController::class, 'logout']);
 
 // Rutas protegidas por roles (admin)
