@@ -1,0 +1,132 @@
+/* Contenedor principal del usuario */
+.user-container {
+  width: 149px;
+  height: 44px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 2px #f64ab4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  position: relative;
+  transition: border 0.2s ease-in-out;
+  border: solid thin transparent ;
+ 
+}
+
+.user-container:hover {
+  border: solid thin #fe8dd3  ;
+  transition: border 0.2s ease-in-out;
+}
+
+/* Icono de flecha (ej. faCaretDown) */
+.icon-media-class-faCaretDown {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+  display: inline-block; 
+}
+
+.user-container:hover .icon-media-class-faCaretDown {
+  transform: rotate(180deg);
+}
+
+/* Contenedores internos */
+.items-user-container,
+.items-container-user-menu {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #ff5ec0;
+  flex-direction: column;
+}
+
+.items-container-user-menu {
+  flex-direction: row;
+}
+
+.user-menu-text {
+  max-width: fit-content;
+  text-align: center;
+  font-family: "Questrial", sans-serif;
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+/* Menú desplegable */
+.desplegable-user {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 250px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  border-radius: 15px;
+  background-color: #f1f0ec;
+  box-shadow: 0 0 3px #666;
+  transition: max-height 0.4s ease-in, opacity 0.2s ease-out;
+}
+
+/* Mostrar el menú al hacer hover */
+.user-container:hover .desplegable-user {
+   
+  max-height: 800px; /* Suficientemente alto para todo el contenido */
+  opacity: 1;
+}
+
+/* Estilo para enlaces dentro del menú */
+.desplegable-user a {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo de los items del menú */
+.desplegable-user li {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: black;
+  font-weight: 550;
+  padding-left: 10px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.desplegable-user li:hover {
+  background-color: #739c84;
+  color: white;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .user-container {
+    width: 150px;
+  }
+
+  .icon-media-class {
+    height: 20px;
+  }
+
+  .user-menu-text {
+    font-size: 12px;
+  }
+
+  .desplegable-user {
+    width: 200px;
+  }
+
+  .desplegable-user li {
+    font-size: 12px;
+  }
+}

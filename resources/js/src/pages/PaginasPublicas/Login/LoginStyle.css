@@ -1,19 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 .Container-Principal
 {
-
-    width: 550px;
-    height: 500px;
-    padding: 60px;
     margin: auto;
+    padding: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     flex-direction: column;
-    gap:35px;
+    align-items: center;
+    gap: 2rem;
     font-family: "Quicksand", sans-serif;
-    background-color: white;
     text-align: center;
     
 

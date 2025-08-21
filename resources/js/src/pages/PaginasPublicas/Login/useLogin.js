@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./LoginStyle.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchGenerico } from "../../../utils/fetchGenerico";
@@ -20,14 +20,13 @@ export function useLogin({onClose,Registrate}) {
           fetchGenerico("/api/login", "POST", { username, password }),
         onSuccess: (data) => {      
           if (data.status === "success") {
+            
             queryClient.invalidateQueries({ queryKey: ["session"] });
             onClose();   
-          } else if (data.error) {
-            setLoginError(data.error);
           }
         },
-        onError: () => {
-          setLoginError("Error de inicio de sesión. Intenta de nuevo.");
+        onError: (error) => {
+          setLoginError(error.message);
         },
       });   
   

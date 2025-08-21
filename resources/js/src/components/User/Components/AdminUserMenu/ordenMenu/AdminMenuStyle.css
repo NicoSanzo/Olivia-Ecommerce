@@ -5,7 +5,11 @@
     font-family: "Questrial";
     cursor: pointer;
     border-radius: 10px;
+    
+
 }
+
+
 
 .items-admin-container,
 .items-container-admin-menu {
@@ -22,6 +26,7 @@
 
 .items-container-admin-menu {
     flex-direction: row;
+   
 }
 
 .items-container-admin-menu .down-arrow-container-admin-menu {
@@ -55,7 +60,21 @@
     left: 0;
     width: 250px;
     position: absolute;
+    animation: Slide 0.2s ease-in-out 
 }
+
+
+@keyframes Slide {
+    from{
+     opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+
 
 .desplegable-admin a {
     text-decoration: none;
@@ -79,6 +98,8 @@
     font-weight: 500;
     padding-left: 10px;
 }
+
+
 
 .desplegable-admin li:hover {
     background-color: #739C84;

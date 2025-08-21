@@ -3,13 +3,12 @@ import "./UserStyle.css";
 import IconUser from "../../assets/Account_icon.svg";
 import { useLoginModal } from "../../Context/LoginPopContext";
 import { useAuth } from "../../Context/authContext";
-import { AdminMenu } from "./Components/AdminUserMenu/ordenMenu/AdminMenu";
-import { ClientMenu } from "./Components/ClientUserMenu/ClientMenu";
-import { LoadingComponente } from "../GenericLoadingComponent/LoadingComponent";
 import { SkeletonLoader } from "../SkeletonLoader/SkeletonLoader";
+import { UserMenu } from "./Components/UserMenu/UserMenu";
+import { Link } from "react-router-dom";
 
 export const UserAccount = () => {
-  const { publicData, autenticado, loading} = useAuth();
+  const { userPublicData, autenticado, loading, logout} = useAuth();
   const { openModal } = useLoginModal();
 
   if (loading) {
@@ -22,15 +21,25 @@ export const UserAccount = () => {
     );
   }
 
-  if (autenticado && publicData) {
+  if (autenticado && userPublicData) {
     return (
       <div className="userLogin">
         <div className="container-login">
-          {publicData.tipo_usuario === "Administrador" && (
-            <AdminMenu user={publicData.nombre} />
-          )}
-          {publicData.tipo_usuario === "Cliente" && (
-            <ClientMenu user={publicData.nombre} />
+          {userPublicData.tipo_usuario === "Administrador" && 
+           
+            <UserMenu user= {userPublicData}>
+               <Link to="/Ventas">Ventas</Link>
+               <Link to="/AgregarProducto">Agregar Producto</Link>
+               <Link to="/Publicaciones">Publicaciones</Link>    
+            </UserMenu>
+           
+
+          }
+          {userPublicData.tipo_usuario === "Cliente" && (
+             <UserMenu user= {userPublicData}>
+               <Link to="/MiPerfil"> Mi perfil </Link>
+               <Link to="/compras">Compras</Link>
+             </UserMenu>
           )}
         </div>
       </div>

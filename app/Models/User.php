@@ -12,26 +12,26 @@ class User extends Authenticatable implements JWTSubject
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public $timestamps=false;
     protected $table= 'usuario';
     protected $primaryKey= 'id';
+    
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    /** The attributes that are mass assignable. @var list<string>*/
+
     protected $fillable = [
-        'nombre',
-        'mail',
-        'contrasena',
-        'tipo_usuario',
+    'nombre',
+    'apellido', 
+    'username',
+    'contrasena',
+    'fecha_alta',
+    'tipo_usuario',
+    'mail',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+
+
+    /** The attributes that should be hidden for serialization. @var list<string>*/
 
     protected $hidden = [
         'contrasena',
@@ -59,6 +59,10 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
+    public function Cliente(){
+
+        return $this->hasOne(Cliente::class,'id_usuario');
+    }
     
 
 

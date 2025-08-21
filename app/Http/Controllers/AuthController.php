@@ -38,8 +38,9 @@ class AuthController extends Controller
         if (!$usuario || !Hash::check($credentials['password'], $usuario->contrasena)) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Credenciales no válidas'
+                'message' => 'Email o contraseña incorrecta'
             ], 401);
+            
         }
 
         // Generar token JWT

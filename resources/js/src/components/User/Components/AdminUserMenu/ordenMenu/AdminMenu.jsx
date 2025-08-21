@@ -8,10 +8,6 @@ export const AdminMenu = ({ user }) => {
     
     const { logout } = useAuth();
 
-    const CerrarSession = () => {
-        logout();
-    }
-
     if (!user) return null;
 
     return (
@@ -29,7 +25,7 @@ export const AdminMenu = ({ user }) => {
                     <li>Resumen</li>
                     <li><Link to="/AgregarProducto">Agregar Producto</Link></li>
                     <li><Link to="/Publicaciones">Publicaciones</Link></li>
-                    <li onClick={CerrarSession}>Salir</li>
+                    <li onClick={logout}>Salir</li>
                 </ul>
             </div>
         </div>

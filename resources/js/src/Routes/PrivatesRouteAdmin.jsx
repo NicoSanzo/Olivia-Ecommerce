@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../Context/authContext';
 
@@ -11,9 +10,9 @@ export const PrivateRouteAdmin = () => {
     return  <Navigate to="/home" replace /> ;
   }
 
-  // Si hay sessionData y el usuario es admin, renderiza las paginas privadas
+  // Si hay publicData y el usuario es admin, renderiza las paginas privadas
   if (autenticado){
-    if( publicData?.tipo_usuario==="Administrador") {
+    if(publicData?.tipo_usuario==="Administrador") {
     return  <Outlet />;
   }}
 

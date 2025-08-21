@@ -3,7 +3,8 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../Context/authContext';
 
 export const PrivateRouteClient = () => {
-  const { checkAuthStatus,isTokenValid} = useAuth();
+
+  const {isTokenValid} = useAuth();
   
 
   if (!isTokenValid) {

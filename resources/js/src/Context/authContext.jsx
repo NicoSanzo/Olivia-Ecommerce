@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchGenerico } from '../utils/fetchGenerico';
@@ -8,7 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 
   const [autenticado, setAutenticado] = useState(false);
-  const [publicData, setPublicData] = useState(null);
+  const [userPublicData, setUserPublicData] = useState(null);
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -26,11 +26,11 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     if (data?.status === 'success') {
-      setPublicData(queryClient.getQueryData(['session']).user);
+      setUserPublicData(queryClient.getQueryData(['session']).user);
       setAutenticado(true);
     } else if (data?.error) {
       setAutenticado(false);
-      setPublicData(null);
+      setUserPublicData(null);
     }
   }, [data]);
 
@@ -41,13 +41,13 @@ export const AuthProvider = ({ children }) => {
     onSuccess: () => {
       queryClient.removeQueries(['session']);
       setAutenticado(false);
-      setPublicData(null);
+      setUserPublicData(null);
       navigate('/login');
     },
     onError: (error) => {
       console.error('Error al cerrar sesión:', error);
       setAutenticado(false);
-      setPublicData(null);
+      setUserPublicData(null);
       navigate('/login');
     }
   });
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ autenticado, logout, publicData, loading }}>
+    <AuthContext.Provider value={{ autenticado, logout, userPublicData, loading }}>
       {children}
     </AuthContext.Provider>
   );

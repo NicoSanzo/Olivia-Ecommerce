@@ -80,7 +80,7 @@
 @media (min-width: 220px) and (max-width: 900px) {
   .header-section-b {
     grid-template-rows: 40%;
-    grid-template-columns: 35% 20% 45%;
+    grid-template-columns: 30% 20% 50%;
     gap: 0;
     height: 200px;
     transition: height 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-radius 0.2s ease-in-out;
@@ -94,8 +94,8 @@
 
   .user-icons {
     grid-column: 3 / 3;
-    grid-row: 1 / 2;
-    gap: 0;
+    grid-row: 1/ 2;
+    gap: 20px;
   }
 
   /* Shrunk para móviles */

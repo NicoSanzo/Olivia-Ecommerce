@@ -1,89 +1,102 @@
+/* Contenedor principal */
 .registro-container {
-    width: 600px;
-    padding: 15px;
     margin: auto;
+    padding: 15px;
     display: flex;
+    position: absolute;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    height: 100%; 
+    gap: 1rem;
+    height: 100%;
     overflow-y: auto;
     font-family: "Quicksand", sans-serif;
-    background-color: white;
     text-align: center;
+    
+    
 }
 
+/* Título del formulario */
 .registro-container .title {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 500;
     color: #87AA96;
     text-transform: capitalize;
 }
 
+
+
+/* Formulario: disposición en columnas */
 .registro-container form {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 1.5rem;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
+/* Entrada individual (grupo de input) */
 .registro-container .Entradas {
     width: 45%;
 }
 
+/* Inputs */
 .registro-container input {
-    height: 45px;
     width: 100%;
-    border: none;
-    border-bottom: 1px solid;
-    background: none;
-    border-radius: 10px;
-    outline: none;
+    height: 45px;
     padding: 2%;
-    font-size: 16px;
-    font-family: "Quicksand", sans-serif;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: 10px;
+    background: transparent;
+    outline: none;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
 }
 
 .registro-container input:focus {
     background-color: #eeeeee;
 }
 
+/* Eliminar los botones de incremento en campos numéricos */
 .registro-container input[type="number"]::-webkit-outer-spin-button,
 .registro-container input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    margin: 0;
 }
 
+/* Mensajes de error */
 .registro-container .error-msg {
-    font-size: 13px;
+    font-size: 0.8rem;
     color: red;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
     width: 100%;
-    font-size: 13px;
+    display: flex;
     flex-direction: column;
 }
 
-
-
+/* Botón de envío */
 .registro-container button {
-    height: 40px;
     width: 40%;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #FDC7E8;
+    height: 40px;
+    font-size: 1rem;
     border: none;
     border-radius: 40px;
-    font-family: "Quicksand", sans-serif;
+    background-color: #FDC7E8;
+    margin-top: 20px;
+    font-family: inherit;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 3px 0 black;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
     transition: background-color 0.4s ease;
 }
 
+/* Efecto hover animado en el botón */
 .registro-container button::before {
-    content: 'Registrarse -->';
+    content: 'Registrarse →';
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,28 +113,59 @@
     left: 0;
 }
 
+/* Texto inferior de navegación */
 .registro-container .registro {
     font-weight: 400;
-    font-family: "Quicksand", sans-serif;
-    font-size: medium;
+    font-size: small;
+    font-family: inherit;
 }
 
+/* Enlace de registro */
 .registro-container .registro .Registrarse {
-    cursor: pointer;
     color: rgba(0, 0, 255, 0.575);
     font-weight: 500;
-    font-family: "Quicksand", sans-serif;
+    cursor: pointer;
+    font-family: inherit;
 }
 
+
+
+.password-requisitos {
+  list-style: none;
+  padding-left: 10px;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 0.7rem;
+  
+}
+.icon-error{
+    color: rgb(246, 89, 89);
+}
+
+.password-requisitos li {
+  transition: color 0.3s ease;
+}
+
+.password-requisitos li.ok {
+  color: green;
+  font-weight: bold;
+}
+
+.hide{
+
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
+
+/* Responsive: ajusta disposición en pantallas pequeñas */
 @media (max-width: 900px) {
     .registro-container {
-        overflow-y: scroll;
         max-height: 700px;
     }
 
     .registro-container form {
-        width: 100%;
-        gap: 15px;
+        gap: 1rem;
     }
 
     .registro-container .Entradas {

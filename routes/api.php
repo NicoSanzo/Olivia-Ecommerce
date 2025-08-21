@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientRegisterController;
 use App\Http\Controllers\DetallePublicacionController;
 use App\Http\Controllers\FormularioContactoController;
 use App\Http\Controllers\PerfilUserController;
@@ -12,6 +13,8 @@ use App\Http\Controllers\PublicacionesController;
 Route::post('/publicacion', [PublicacionesController::class, 'publicaciones']);
 Route::post('/detalle', [DetallePublicacionController::class, 'detallePublicacion']);
 Route::post ('/contacto',[FormularioContactoController::class , 'EnviarMensaje']);
+
+Route::post('/registrarCliente',[ClientRegisterController::class,'ClientRegister']);
 
 // Rutas protegidas por JWT y roles
 Route::post('/login', [AuthController::class, 'login']);
