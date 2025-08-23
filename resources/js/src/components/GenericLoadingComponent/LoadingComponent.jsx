@@ -13,8 +13,14 @@ export const LoadingComponente = ({ height , width}) => {
   }, [height, width]); 
 
   return (
-    <div className="charging" ref={loadingRef}>
+    <>
+    <div className="containerLoading">
+       <div className="charging" ref={loadingRef}>
       
+       </div>
     </div>
+
+    </>
+   
   );
 };

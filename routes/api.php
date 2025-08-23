@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientRegisterController;
+use App\Http\Controllers\DeletePublicacionController;
 use App\Http\Controllers\DetallePublicacionController;
 use App\Http\Controllers\FormularioContactoController;
 use App\Http\Controllers\PerfilUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicacionesController;
+use App\Http\Controllers\ListadoPublicacionesController;
 
 
 // Rutas de la API
@@ -25,9 +27,11 @@ Route::middleware(['auth'])->post('/perfil', [PerfilUserController::class,'getUs
 Route::middleware(['auth'])->post('/Logout', [AuthController::class, 'logout']);
 
 // Rutas protegidas por roles (admin)
-Route::middleware(['auth', 'role:administrador'])->get('/admin', function () {
-    return response()->json(['message' => 'Solo admin tiene acceso a esta ruta']);
+Route::middleware(['auth', 'role:Administrador'])->post('/listaPublicaciones', [PublicacionesController::class, 'listadoPublicaciones'], function () {
+    return response()->json(['message' => 'Solo administradores pueden ver esta ruta']);
 });
+
+Route::middleware(['auth', 'role:Administrador'])->post('/deletePublicacion/{id}', [PublicacionesController::class, 'eliminarPublicacion']);
 
 // Rutas protegidas por roles (cliente)
 Route::middleware(['auth', 'role:cliente'])->get('/cliente', function () {

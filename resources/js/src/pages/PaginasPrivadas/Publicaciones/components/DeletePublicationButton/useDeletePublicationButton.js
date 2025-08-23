@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "../../../../../hooks/PedidoFetchGenerico";
+
+import { useMutation,  useQueryClient } from "@tanstack/react-query";
+import { fetchGenerico } from "../../../../../utils/fetchGenerico";
 
 /**
  * Hook para manejar la eliminación de publicaciones con confirmación y feedback.
@@ -17,6 +19,19 @@ export const useDeletePublicationButton = ({ ActualizarPublicaciones, itemKey })
   const [isSuccessDeleteOpenModal, SetisSuccessDeleteOpenModal] = useState(false);
 
   /** Abre el modal de confirmación de eliminación */
+
+
+    const deleteMutation = useMutation({
+    mutationFn: () => fetchGenerico(`/api/deletePublicacion/${itemKey}`, "POST"),
+    onSuccess: () => {
+      SetisSuccessDeleteOpenModal(true);
+      queryClient.invalidateQueries(["listaPublicaciones"]); // Actualiza lista
+    },
+    onError: (error) => {
+      console.error("Error al eliminar publicación:", error);
+    },
+  });
+
   const ModalDeEliminacion = () => {
     SetIsConfirmationDeleteModalOpen(true);
   };
@@ -25,6 +40,7 @@ export const useDeletePublicationButton = ({ ActualizarPublicaciones, itemKey })
   const ConfirmarEliminacion = () => {
     SetIsConfirmationDeleteModalOpen(false);
     setDeleteTrigger(true);
+    deleteMutation.mutate();
   };
 
   /** Cierra el modal de éxito al eliminar y actualiza las publicaciones */
@@ -33,19 +49,9 @@ export const useDeletePublicationButton = ({ ActualizarPublicaciones, itemKey })
     ActualizarPublicaciones(true);
   };
 
-  const { data: delete_data, loading: delete_loading, error: delete_error } = useFetch(
-    '/api/baja_publicaciones.php',
-    'POST',
-    { itemKey },
-    deleteTrigger
-  );
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    if (delete_data?.success === true) {
-      setDeleteTrigger(false);
-      SetisSuccessDeleteOpenModal(true);
-    }
-  }, [delete_data, delete_error]);
+
 
   return {
     ModalDeEliminacion,

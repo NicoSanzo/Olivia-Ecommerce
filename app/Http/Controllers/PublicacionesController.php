@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ListadoPublicacionesResource;
 use App\Http\Resources\PublicacionResource;
 use App\Models\Publicacion;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -97,5 +99,44 @@ class PublicacionesController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+
+
+    public function eliminarPublicacion($id)
+    {
+     try {
+         $publicacion = Publicacion::findOrFail($id);
+        $publicacion->deleted = 1;
+        $publicacion->save();
+        
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Publicación eliminada correctamente.'
+         ], 200);
+        
+     } catch (ModelNotFoundException $e) {
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Publicación no encontrada.'
+         ], 404);
+     } catch (\Exception $e) {
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Ocurrió un error inesperado.',
+             'error' => $e->getMessage()
+         ], 500);
+     }
+    }
+
+    public function listadoPublicaciones()
+    {
+      $publicaciones = Publicacion::all()->where('deleted', 0);
+
+        if ($publicaciones->isEmpty()) {
+            return response()->json(['status' => 'error'], 404);
+        }
+
+        return response()->json(['status' => 'success', 'publicaciones' => ListadoPublicacionesResource::collection($publicaciones)]);
     }
 }

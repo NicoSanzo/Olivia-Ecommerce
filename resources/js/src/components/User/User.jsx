@@ -8,8 +8,10 @@ import { UserMenu } from "./Components/UserMenu/UserMenu";
 import { Link } from "react-router-dom";
 
 export const UserAccount = () => {
-  const { userPublicData, autenticado, loading, logout} = useAuth();
+  const { userPublicData, autenticado, loading} = useAuth();
   const { openModal } = useLoginModal();
+
+
 
   if (loading) {
     return (

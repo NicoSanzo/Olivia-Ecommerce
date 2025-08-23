@@ -7,7 +7,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-  const [autenticado, setAutenticado] = useState(false);
+  const [autenticado, setAutenticado] = useState(null);
   const [userPublicData, setUserPublicData] = useState(null);
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     if (data?.status === 'success') {
-      setUserPublicData(queryClient.getQueryData(['session']).user);
+      setUserPublicData(data.user);
       setAutenticado(true);
     } else if (data?.error) {
       setAutenticado(false);

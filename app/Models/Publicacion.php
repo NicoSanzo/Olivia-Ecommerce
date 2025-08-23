@@ -10,6 +10,10 @@ class Publicacion extends Model
     
     protected $table = 'publicaciones';  // Tabla en la base de datos
     protected $primaryKey = 'id';       // Clave primaria de la tabla
+    public $timestamps = false;         // Desactiva las marcas de tiempo automáticas
+  
+
+
 
      // Relación muchos a muchos con el modelo Producto.
      // La publicación puede estar relacionada con múltiples productos a través de la tabla intermedia 'produ_publi'.

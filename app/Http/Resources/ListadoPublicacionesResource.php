@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PublicacionResource extends JsonResource
+class ListadoPublicacionesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,16 +15,16 @@ class PublicacionResource extends JsonResource
     public function toArray(Request $request): array
     {
 
-        return  [
-            'id' => $this->id,
-            'titulo' => $this->titulo,
-            'precio' => $this->precio,
-            'deleted' => $this->deleted,
-            'paused' => $this->paused,
-            'imagen'  => $this->imagenes->isNotEmpty()
+       return [
+    'id'      => $this->id,
+    'titulo'  => $this->titulo,
+    'precio'  => $this->precio,
+    'deleted' => $this->deleted,
+    'paused'  => $this->paused,
+    'imagen'  => $this->imagenes->isNotEmpty()
         ? new ImagenesResource($this->imagenes->first())
         : null,
-        ];
+];
 
     }
 }

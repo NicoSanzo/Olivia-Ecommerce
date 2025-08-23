@@ -41,7 +41,7 @@ export const Productos = () =>{
                     FoundData.map((publicacion) => (  
                         <ProductCard 
                             key={publicacion.id} 
-                            imagen={publicacion.imagenes[0].image_url} 
+                            imagen={publicacion.imagen.image_url} 
                             titulo={publicacion.titulo} 
                             price={publicacion.precio} 
                             stock={publicacion.stock} 
