@@ -27,7 +27,7 @@ return(
             
             </button>   
             <ModificationModal isOpen={isModificationModalOpen} onClose={closeModificationModal} onClick={(e) => e.stopPropagation()} >
-                    <ModificarPublicacion itemKey={itemKey} onClose={closeModificationModal} onSuccess={openSuccessModal} />
+                    <ModificarPublicacion itemKey={itemKey} onClose={closeModificationModal} onSuccess={openSuccessModal}/>
             </ModificationModal>
 
             <GenericExitoso isSuccess={isSuccessModalOpen} onClose={closeSuccessModal} Leyenda={"¡Producto Modificado Con Exito!"} /> 

@@ -15,7 +15,8 @@ class MarcaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'nombre'=> $this-> nombre
+            'nombre'=> $this-> nombre,
+            'id'=> $this->id
         ];
     }
 }

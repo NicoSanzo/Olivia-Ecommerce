@@ -13,6 +13,8 @@ import { BotonComprar } from "./Components/BotonComprar/BotonComprar";
 export const ProductoDetail = () => {
   const { dataPublicacion, imagenes, isLoading } = UseProductoDetail();
 
+
+
   return (
     <div className="general-product-container">
       {isLoading && (
@@ -31,7 +33,7 @@ export const ProductoDetail = () => {
 
           <div className="features-container Responsive">
             <h2 className="categorias Responsive">
-              Categoria: {dataPublicacion.producto[0].categoria.nombre}
+              Categoria: {dataPublicacion.producto.categoria.nombre}
             </h2>
             <h2 className="titulo-detail Responsive">{dataPublicacion.titulo}</h2>
             <h2 className="id-Producto Responsive">ID: {dataPublicacion.id}</h2>

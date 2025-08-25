@@ -10,6 +10,11 @@ export const PrivateRouteAdmin = () => {
   if (userPublicData === null || loading) {
     return <LoadingComponente height={50} width={50}/>
   }
+
+  if (!autenticado) {
+    // Si NO está autenticado, lo mandamos al login
+    return <Navigate to="/home" replace />;
+  }
  
   // Solo si es admin y está autenticado
   if (autenticado && userPublicData?.tipo_usuario === "Administrador") {

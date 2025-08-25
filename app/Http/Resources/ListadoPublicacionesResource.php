@@ -21,6 +21,7 @@ class ListadoPublicacionesResource extends JsonResource
     'precio'  => $this->precio,
     'deleted' => $this->deleted,
     'paused'  => $this->paused,
+    'stock'   => $this->stock,
     'imagen'  => $this->imagenes->isNotEmpty()
         ? new ImagenesResource($this->imagenes->first())
         : null,

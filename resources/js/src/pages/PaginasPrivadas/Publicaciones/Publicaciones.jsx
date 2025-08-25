@@ -1,6 +1,5 @@
 import { PublicacionesCard } from "./components/ProductPubliCard/PublicacionesCard";
 import "./PublicacionesStyle.css";
-import { useState } from "react";
 import { LoadingComponente } from "../../../components/GenericLoadingComponent/LoadingComponent";
 import { useQuery } from "@tanstack/react-query";
 import { fetchGenerico } from "../../../utils/fetchGenerico";
@@ -12,18 +11,14 @@ import LogoOlivia from "../../../assets/LogoOlivia.png"; // Asegúrate de que la
 export const Publicaciones=()=> {
 
 
-const[triggerfetchPublicaciones,setTriggerFetchPublicaciones]=useState(false);
-
-
-
-     const{data, isLoading,error}= useQuery({
+     const{data, isLoading,error,refetch,isFetching}= useQuery({
        queryKey: ['listaPublicaciones'],
-       queryFn: () => fetchGenerico("/api/listaPublicaciones","POST",null,triggerfetchPublicaciones),
+       queryFn: () => fetchGenerico("/api/listaPublicaciones","POST",null),
        enabled:true,
      })
-   
 
- if(isLoading){return <LoadingComponente height={50} width={50}/>}
+
+ if(isLoading || isFetching){return <LoadingComponente height={50} width={50}/>}
 
      return (
   <>
@@ -41,7 +36,7 @@ const[triggerfetchPublicaciones,setTriggerFetchPublicaciones]=useState(false);
             price={publis.precio}
             stock={publis.stock}
             paused={publis.paused}
-            ActualizarPublicaciones={setTriggerFetchPublicaciones}
+            ActualizarPublicaciones={refetch}
           />
         ))
       ) : (

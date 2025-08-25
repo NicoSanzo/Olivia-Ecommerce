@@ -11,7 +11,14 @@ class Publicacion extends Model
     protected $table = 'publicaciones';  // Tabla en la base de datos
     protected $primaryKey = 'id';       // Clave primaria de la tabla
     public $timestamps = false;         // Desactiva las marcas de tiempo automáticas
-  
+
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'precio',
+        'descripcion',
+        'stock'
+    ];
 
 
 

@@ -25,7 +25,9 @@ class PublicacionCompletaResouce extends JsonResource
             'deleted' => $this->deleted,
             'paused' => $this->paused,
             'imagenes'=> ImagenesResource::collection($this->imagenes),
-            'producto'=> ProductosResource::collection($this->whenLoaded('productos'))
+            'producto'=> $this->productos->count() === 1 
+        ? new ProductosResource($this->productos->first())
+        : ProductosResource::collection($this->whenLoaded('productos')),
         ];
 
     }

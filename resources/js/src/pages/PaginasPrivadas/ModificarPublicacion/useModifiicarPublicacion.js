@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { useFetch } from "../../../hooks/PedidoFetchGenerico";
+import {  useEffect, useRef, useState } from "react";
+
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { fetchGenerico } from "../../../utils/fetchGenerico";
 
 export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
     
@@ -23,38 +25,49 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
         });
     
         const [errors, setErrors] = useState({});
-        const [triggerfetch, setTriggerfetch] = useState(false);
         
+   
+        const [loading_confirmar,setLoading_confirmar] = useState(false);
+     
         const principal_container = useRef(null)
         const [submitted, setSubmitted] = useState(false); // Estado para controlar el envío
         const [errorEnvio, setErrorEnvio] = useState(false);
-        const[FORMDATA,SetFormData]=useState({data:[]});
-        const { data: data_rellenar, loading: loading_relleno, error: error_relleno } = useFetch("api/fetch_publicaciones.php", "POST", { itemKey }, true);
     
-        
-    
+
+        const {data:data_rellenar, isLoading:loading_relleno,error:error_relleno}=useQuery({
+          queryKey: ['fetch_publicacion',itemKey],
+          queryFn: () => fetchGenerico("api/detalle", "POST", {itemKey} ),
+          refetchOnMount:"always",
+          
+          
+        });
+
+     
+       
+        console.log(data_rellenar)
         // Cargar los datos en el formulario al recibir la respuesta
         useEffect(() => {
-            if (data_rellenar && data_rellenar.data) {
-                const data = data_rellenar.data[0];
+            if (data_rellenar?.status==="success") {
+                const data = data_rellenar.publicacion;
                 setFormValues({
+                    id_publicacion: data.id,
                     titulo: data.titulo,
                     precio: data.precio.replace(",", "."),
                     stock: data.stock,
-                    modelo: data.modelo,
-                    alto: data.alto || "",
-                    ancho: data.ancho || "",
-                    profundidad: data.profundidad || "",
-                    descripcion: data.descripcion || "",
-                    peso: data.peso || "",
-                    color: data.color || "",
-                    marca_id: data.marca_id,
-                    categoria_id: data.categoria_id,
                     imagenes: data.imagenes || [],
-                    id_publicacion: data.id_publicacion,
-                    codigo_producto:  data.codigo_producto
+                    codigo_producto:  data.producto.codigo,
+                    descripcion: data.descripcion || "",
+                    categoria_id: data.producto.categoria.id,
+                    marca_id: data.producto.categoria.id,
+                    modelo: data.producto.modelo || "",
+                    ancho: data.producto.ancho || "",
+                    alto: data.producto.alto || "",
+                    profundidad: data.producto.profundidad || "",
+                    peso: data.producto.peso || "",
+                    color: data.producto.color || "",
                 });
             }
+            
         }, [data_rellenar]);
 
 
@@ -155,9 +168,7 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
                 ...prev,
                 [name]: value
             }));  
-           
-
-            
+               
         };
         
 
@@ -165,7 +176,7 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
             event.preventDefault();
             setSubmitted(true);
             const validationErrors = validate();
-        
+            
             if (Object.keys(validationErrors).length === 0) {
                 const formData = new FormData();
                 const old_images_info = []; // Para almacenar los datos de imágenes con URLs
@@ -198,8 +209,14 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
                     }
                 });
         
-                SetFormData(formData);
-                setTriggerfetch(true);
+                
+               /* for (const [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }*/
+                modifyMutation.mutate(formData);
+                
+
+
             } else {
                 setErrors(validationErrors);
                 setErrorEnvio(true);
@@ -207,27 +224,27 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
             }
         };
     
-        const { data, loading:loading_confirmar, error } = useFetch('api/controllers/publicaciones/modi_publicaciones.php', 'POST', FORMDATA, triggerfetch);
+       // const { data, loading:loading_confirmar, error } = useFetch('api/controllers/publicaciones/modi_publicaciones.php', 'POST', FORMDATA, triggerfetch);
 
-         
-        useEffect(() => {
-            if (data ) {
-                if(data.data==true){
+
+
+
+        const modifyMutation=useMutation({
+            mutationFn: (formData) => fetchGenerico('api/modificarPublicacion', 'POST', formData),
+            onSuccess: (data) => {
+                if (data.status === "success") {
+                    
                     onClose();
-                    onSuccess()
+                    onSuccess();
+                } else {
+                    setErrorEnvio(true);
                 }
-            }
-            console.log(data)
-        }, [data]);
-    
-    
-        useEffect(() => {
-            if (triggerfetch) {
-                setTriggerfetch(false);
-            }
-
-            console.log(error)
-        }, [data, error, triggerfetch]);
+                setSubmitted(false); 
+             
+            },
+            
+             
+        });
 
 
         return ({
@@ -240,7 +257,8 @@ export const useModificarPublicacion = ({itemKey,onClose, onSuccess }) => {
             loading_relleno,
             submitted,
             loading_confirmar,
-            principal_container
+            principal_container,
+            
 
         })
 };

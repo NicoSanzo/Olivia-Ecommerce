@@ -1,14 +1,16 @@
 import "./MenuStyle.css"
-import React, { useEffect, useRef } from "react"
 import { Link } from "react-router-dom";
 import { UseMenu } from "./useMenu";
+
+
+
 
 
 export const Menu = ({placeOrientation,itemsDistance}) =>{
 
 
     const {inicio,settings} = UseMenu ({placeOrientation,itemsDistance})
-
+        
 
     return(
     <>
@@ -17,7 +19,8 @@ export const Menu = ({placeOrientation,itemsDistance}) =>{
                 <Link to={"/Productos"} onClick ={inicio} className="item">productos</Link>
                 <Link to={"/infoCompra"}  className="item">info de compra</Link>
                 <Link to={"/Contacto"} className="item">contacto</Link>
-                <Link className="item">nuestras politicas</Link>
+                <Link className="item"  >nuestras politicas</Link>
+               
             </ul>
     </>
 

@@ -1,22 +1,34 @@
-import React, { useEffect, useState, forwardRef, useRef } from "react";
+import React, { useEffect, useState} from "react";
 import { useFetch } from "../../../../../hooks/PedidoFetchGenerico";
 import "./SelectsStyle.css";
 import { LoadingComponente } from "../../../../../components/GenericLoadingComponent/LoadingComponent";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { fetchGenerico } from "../../../../../utils/fetchGenerico";
 
 
 export const Selects = ({ valueCat,valueMar,ErrorCat,ErrorMarca ,onChange})=>{
 
 
-const[triggerfetch,setTriggerFetch]=useState(true);
 
-/*AGREGO LAS MARCAS Y CATEGORIAS*/
 
-  const{data:data_marca_categoria,loading:loading_Marca_cat,error:error_marca_cat} = useFetch("api/fetch_marca_y_categoria.php","POST",null,triggerfetch);
+/*querys para LAS MARCAS Y CATEGORIAS*/
 
-  useEffect(()=>{
-    setTriggerFetch(false);  
+  const results= useQueries({
+    queries: [
+      {
+        queryKey: ['marcas'],
+        queryFn: () => fetchGenerico('/api/marcas', 'POST', null)
+      },
+      {
+        queryKey: ['categorias'],
+        queryFn: () => fetchGenerico('/api/categorias', 'POST', null)
+      }
+    ]
+  })
 
-  },[data_marca_categoria])
+const Marcas= results[0].data?.marcas;
+const Categorias= results[1].data?.categorias;
+
 
 
 /*********************************CONTROLAN LOS SELECT ACTUALIZNDO EL VALOR AL SELECCIONAR UNA OPCION*****************/
@@ -174,9 +186,10 @@ useEffect(() => {
                 </label>
                 <select name="Marca" value={selectedMarca} onChange={handleChangeMarca}   >
                   <option value="" disabled>Seleccione una Marca</option>
-                  {data_marca_categoria && data_marca_categoria.data.marca.map((Marca) => (
+                  {Marcas && Marcas.map((Marca) => (
                     <option key={Marca.id} value={Marca.id}>
                       {Marca.nombre}
+                      
                     </option>
                   ))}
                 </select>
@@ -210,10 +223,10 @@ useEffect(() => {
                 </label>
                 <select name="categoria" value={selectedCategoria} onChange={handleChangeCat} >
                   <option value="" disabled>Seleccione una categoría</option>
-                  
-                 { data_marca_categoria && data_marca_categoria.data.categoria.map((Categoria) => (
-                    <option key={Categoria.id} value={Categoria.id}>
-                      {Categoria.nombre}
+
+                 { Categorias && Categorias.map((categoria) => (
+                    <option key={categoria.id} value={categoria.id}>
+                      {categoria.nombre}
                     </option>
                   ))}
                 </select>

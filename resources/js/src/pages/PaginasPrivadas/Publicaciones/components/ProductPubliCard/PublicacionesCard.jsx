@@ -1,10 +1,7 @@
-import React from "react";
 import "./PublicacionesCardStyle.css"
 import { usePublicacionCard } from "./usePublicacionesCard";
 import { ModifyPublicationButton } from "../ModifyPublicationButton/ModifyPublicationButton";
-import { DeletePublicationButton } from "../DeletePublicationButton/DeletePublicationButton";
-import { PausePublicationButton } from "../PausePublicationButton/PausePublicationButton";
-import { ActivePublicationButton } from "../ActivePublicationButton/ActivePublicationButton";
+import { ActionButton } from "../PublicationActionbutton/ActionButton";
 
 
 
@@ -13,9 +10,7 @@ export const PublicacionesCard = ({imagen,titulo,price,itemKey,stock,paused,Actu
 
   const {
     mostrarDetalleProducto,
-   
    } = usePublicacionCard	({itemKey,titulo,ActualizarPublicaciones});
-
 
 
  return(
@@ -33,11 +28,13 @@ export const PublicacionesCard = ({imagen,titulo,price,itemKey,stock,paused,Actu
                       <ModifyPublicationButton itemKey={itemKey} ActualizarPublicaciones={ActualizarPublicaciones}/>  
                       
                       {paused==='1' ? 
-                          <ActivePublicationButton itemKey={itemKey} ActualizarPublicaciones= {ActualizarPublicaciones} /> :
-                          <PausePublicationButton itemKey={itemKey} ActualizarPublicaciones= {ActualizarPublicaciones}/> 
+                          <ActionButton ActualizarPublicaciones={ActualizarPublicaciones} endpoint={`/api/PublicationHandle/${itemKey}/activate`} label="activar" className="activate-button" />:
+                          <ActionButton ActualizarPublicaciones={ActualizarPublicaciones} endpoint={`/api/PublicationHandle/${itemKey}/pause`} label="pausar" className="pause-button" />
                       }
-                      <DeletePublicationButton itemKey={itemKey} ActualizarPublicaciones={ActualizarPublicaciones}/>
+                      {/*<DeletePublicationButton itemKey={itemKey} ActualizarPublicaciones={ActualizarPublicaciones}*/}
+                      {<ActionButton ActualizarPublicaciones={ActualizarPublicaciones} endpoint={`/api/PublicationHandle/${itemKey}/delete`} label="eliminar" className="delete-button" />}
 
+                     
                   </div>
                   {paused === '1' && stock === '0' && <p className="pause-text"> Publicación pausada: SIN STOCK  </p>}
                   {paused === '1' && stock > '0' && <p className="pause-text"> Publicación pausada: POR USUARIO  </p>}

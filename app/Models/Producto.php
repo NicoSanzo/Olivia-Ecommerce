@@ -10,6 +10,17 @@ class Producto extends Model
     
     protected $table = 'productos';    // Tabla en la base de datos
     protected $primaryKey = 'codigo';  // Clave primaria de la tabla
+    public $timestamps = false;       // Desactiva las marcas de tiempo automáticas
+
+    protected $fillable = [
+        'color',
+        'alto',
+        'ancho',
+        'profundidad',
+        'peso',
+        'marca_id',
+        'categoria_id'
+    ];
 
     // Relación muchos a muchos con el modelo Publicacion.
     // El producto puede estar relacionado con múltiples publicaciones a través de la tabla intermedia 'produ_publi'.

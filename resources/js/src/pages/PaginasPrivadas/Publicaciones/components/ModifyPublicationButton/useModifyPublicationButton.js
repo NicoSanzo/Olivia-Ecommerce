@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {useQuery } from "@tanstack/react-query";
 
 /**
  * Hook para manejar la eliminación de publicaciones con confirmación y feedback.
@@ -15,6 +15,8 @@ export const useModifyPublicationButton = ({ActualizarPublicaciones}) => {
 
 const [isModificationModalOpen, setIsModificationModalOpen] = useState(false);
 const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); 
+
+
   
   
 /** Abre el modal de modificación.*/

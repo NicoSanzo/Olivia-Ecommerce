@@ -18,7 +18,7 @@ class DetallePublicacionController extends Controller
         try {
             
             $request->validate([
-                'itemKey' => 'required|string',
+                'itemKey' => 'required',
             ]);
 
             $itemKey = $request->input('itemKey');
