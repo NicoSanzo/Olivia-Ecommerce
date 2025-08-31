@@ -1,24 +1,14 @@
-import React from "react"
+
 import { useAddCarrito } from "../../../../../Context/addCarritoContext";
 import { useValidarCompra } from "../../../../../Context/validarComprar";
-import { useAuth } from "../../../../../Context/authContext";
+
 
 export function UseMetodosDePago() {
 
-    const {isTokenValid}=useAuth();
+
     const {setPorcentajeDescuento,setMostrarDescuento} =useAddCarrito()
-    const {setMetodoPago,
-          setTerminosCondiciones,
-          handleRealizarCompraTransfer, 
-          isSubmitted,
-          errors,
-          metodo_pago,
-          handleFinalizarCompra,
-          validacionExitosa,
-          IDMercadopago,
-          setIDMercadopago,
-          loading_MP,
-          abrirCompraExitosa }=useValidarCompra()
+    
+    const {setMetodoPago, metodo_pago,handleFinalizarCompra,}=useValidarCompra()
 
 
   /********************ESTABLECE EL DESCUENTO AL ELEGIR UN EVENTO DE LOS METODOS DE PAGO ***********************/
@@ -31,9 +21,10 @@ export function UseMetodosDePago() {
       {
        setPorcentajeDescuento(10);
        setMostrarDescuento(true);
-       setIDMercadopago(null);
+       
       }
     else if (metodo_pago==="Mercadopago"){
+   
      setMostrarDescuento(false); 
      setPorcentajeDescuento(0);
     } 
@@ -41,26 +32,19 @@ export function UseMetodosDePago() {
     {
      setPorcentajeDescuento(0)
      setMostrarDescuento(false);
-     setIDMercadopago(null);
-     }
+    }
      
 }
 
 
     return ( {
 
-        handleChangeOpcionesPago,
-        setTerminosCondiciones,
-        handleRealizarCompraTransfer, 
-        isSubmitted,
-        errors,
+        handleChangeOpcionesPago,   
         metodo_pago,
         handleFinalizarCompra,
-        validacionExitosa,
-        IDMercadopago,
-        isTokenValid,
-        abrirCompraExitosa,
-        loading_MP
+        
+        
+       
         
     })
     

@@ -2,44 +2,44 @@ import { useAddCarrito } from "../../../../../Context/addCarritoContext";
 import "./ProductCarritoCardStyle.css";
 
 
-export function ProductCarritoCard({datosProducto}) {
+export function ProductCarritoCard({item}) {
 
-    const {EliminarProductoCarrito} = useAddCarrito();
-    const {AgregarStock} = useAddCarrito();
-    const {RestarStock} = useAddCarrito();
+    const {eliminarProductoCarrito,AgregarStock,RestarStock} = useAddCarrito();
+    
+
 
     return (
         <>
-            <div className="Product-Carrito-card">
-                <div className="image-container">
-                    <img className="product-image" src={datosProducto.data.data.imagen} loading="lazy" />
+            <div className="product-carrito-card">
+                <div className="image-container-product-carrito-card">
+                    <img className="product-image-product-carrito-card" src={item.imagen} loading="lazy" />
                 </div>
-                <h2 className="tituloStyle"> {datosProducto.data.data.titulo}</h2>
-                <h2 className="stylePrice" > $ {datosProducto.data.data.price} </h2>
+                <h2 className="tituloStyle-product-carrito-card"> {item.titulo}</h2>
+                <h2 className="stylePrice-product-carrito-card" > $ {item.precio} </h2>
 
-                <div className="container-spin-button">
-                    <div className="custom-spin-button">
+                <div className="container-spin-button-product-carrito-card">
+                    <div className="custom-spin-button-product-carrito-card">
                         <button 
                             type="button" 
-                            className="decrement" 
-                            onClick={()=>RestarStock(datosProducto.data.data.itemKey)}>
+                            className="decrement-product-carrito-card" 
+                            onClick={()=>RestarStock(item.itemKey)}>
                             -
                         </button>
-                            <input type="number" value={datosProducto.stock} disabled  />
+                            <input type="number" value={item.cantidadSeleccionada} disabled  />
                         <button 
                             type="button" 
-                            className="increment" 
-                            disabled={datosProducto.data.data.stock == datosProducto.stock }
-                            style={{backgroundColor: datosProducto.data.data.stock == datosProducto.stock  ? "#dddddd" : "#FDC7E8"} } 
-                            onClick={()=>AgregarStock(datosProducto.data.data.itemKey)}>
+                            className="increment-product-carrito-card" 
+                            disabled={item.stock == item.cantidadSeleccionada }
+                            style={{backgroundColor: item.stock == item.cantidadSeleccionada  ? "#dddddd" : "#FDC7E8"} } 
+                            onClick={()=>AgregarStock(item.itemKey)}>
                             +
                         </button> 
                     </div>
-                    <h2 className="stock-disponble">Stock disponible: {datosProducto.data.data.stock}</h2>
+                    <h2 className="stock-disponble-product-carrito-card"> Stock disponible: {item.stock}</h2>
                 </div>
-               
-                <button type="button" className="delete-button" onClick={()=>EliminarProductoCarrito(datosProducto.data.data.itemKey)} > x</button>   
-                
+
+                <button type="button" className="delete-button-product-carrito-card" onClick={()=>eliminarProductoCarrito(item.itemKey)} > x</button>   
+
 
             </div>
             

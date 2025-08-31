@@ -24,7 +24,10 @@ import { CompraExitosa } from './src/pages/PaginasPrivadas/CompraExitosa/CompraE
 import { LoginModal } from './src/pages/PaginasPublicas/Login/LoginModal/loginModal';
 import { AppContextProviders } from './src/Context/Providers';
 import { Footer } from './src/pages/PaginasPublicas/HomePage/components/footer/Footer';
+import { initMercadoPago } from "@mercadopago/sdk-react";
 
+// 👇 Inicializa Mercado Pago UNA sola vez
+initMercadoPago("TEST-b58085c3-f394-42ec-8aa4-8f3f1bbb3045", { locale: "es-AR" });
 
 
 const queryClient= new QueryClient();

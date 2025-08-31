@@ -3,8 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearch } from "../../../Context/searchContext";
 import { fetchGenerico } from "../../../utils/fetchGenerico";
 
-export function usePublicaciones() {
-  const { inputOrder,setFoundData,searchData,setLoading, setError,} = useSearch();
+export function useProductos() {
+  
+  const { inputOrder,setFoundData,searchData,setLoading, setError,normalizarDatos} = useSearch();
 
   const { data,isLoading,error} = useQuery({
     queryKey: ['publicaciones', inputOrder, searchData],
@@ -17,7 +18,7 @@ export function usePublicaciones() {
 
     if (data) {
       if (data.status === 'success') {
-        setFoundData(data.publicaciones);
+        setFoundData(normalizarDatos(data.publicaciones));
         setError(null);
       } else {
         setError(data.message || 'Error inesperado');

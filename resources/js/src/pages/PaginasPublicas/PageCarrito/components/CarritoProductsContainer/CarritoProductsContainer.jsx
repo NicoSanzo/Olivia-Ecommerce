@@ -18,10 +18,10 @@ export function CarritoProductsContainer() {
                  <h2 className="titulo"> Productos</h2>
                 <div className="Products-container">
                     {arrayProductsCarrito.length > 0 ? (
-                        arrayProductsCarrito.map((item) => (
+                        arrayProductsCarrito.map((item,index) => (
                             <ProductCarritoCard 
-                                datosProducto={item} 
-                                key={item.data.data.itemKey}
+                                item={item} 
+                                key={index}
                             />
                         ))
                     ) : (

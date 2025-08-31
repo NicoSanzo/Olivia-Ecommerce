@@ -16,7 +16,7 @@ export function useResumenCarrito(OcultarButtonComprar) {
     Envio,
   } = useAddCarrito();
   
-  const { sessionData,isTokenValid,token} = useAuth();
+  const { autenticado,userPublicData} = useAuth();
   const { openModal } = useLoginModal();
 
 
@@ -24,11 +24,11 @@ export function useResumenCarrito(OcultarButtonComprar) {
   const ContinuarCompra = () => {
 
 
-    if (!sessionData || sessionData.data.isAdmin===true || !isTokenValid ) {
+    if (!autenticado || userPublicData.tipo_usuario === "Administrador") {
       openModal();
       setMostrarMetodosDePago(false);
-    
-    } else if (arrayProductsCarrito.length !== 0 &&  sessionData.data.isAdmin==false ) {
+
+    } else if (arrayProductsCarrito.length !== 0 && userPublicData.tipo_usuario === "Cliente") {
       setMostrarMetodosDePago(true);
       OcultarButtonComprar.current.style.display = "none";
     }
@@ -58,6 +58,6 @@ export function useResumenCarrito(OcultarButtonComprar) {
     MostrarDescuento,
     cantidadDescuento,
     subtotal,
-    isTokenValid
+    
   };
 }

@@ -5,7 +5,7 @@ import { FilterCategorias } from "./components/FilterMenu/FilterCategorias";
 import { LoadingComponente } from "../../../components/GenericLoadingComponent/LoadingComponent";
 import { FilterModelo } from "./components/FilterModelos/FilterModelos";
 import { useSearch } from "../../../Context/searchContext";
-import { usePublicaciones } from "./usePublicaciones";
+import { useProductos } from "./useProductos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
 
@@ -14,12 +14,14 @@ import { faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
 export const Productos = () =>{
     
 
-    const { FoundData, loading, Error } = useSearch();
+    const { foundData, loading, Error } = useSearch();
 
-    usePublicaciones();
+    useProductos();
+
     
     return (
         <>
+
             <div className="principal-container">
 
                 <div className="container-menu-order">
@@ -30,6 +32,7 @@ export const Productos = () =>{
                     <FilterModelo/>  
                 </div>*/}
               
+            
                 {loading?  (
                     <div className="carga-container-productos">
                         <LoadingComponente height={70} width={70}/>
@@ -37,11 +40,11 @@ export const Productos = () =>{
                 
                 ) :
                 <div className="products-container"> {
-                FoundData?.length > 0 ? (
-                    FoundData.map((publicacion) => (  
+                foundData?.length > 0 ? (
+                    foundData.map((publicacion) => (  
                         <ProductCard 
                             key={publicacion.id} 
-                            imagen={publicacion.imagen.image_url} 
+                            imagen={publicacion.imagen} 
                             titulo={publicacion.titulo} 
                             price={publicacion.precio} 
                             stock={publicacion.stock} 

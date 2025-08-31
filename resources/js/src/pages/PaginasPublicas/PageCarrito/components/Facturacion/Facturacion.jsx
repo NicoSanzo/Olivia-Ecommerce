@@ -3,11 +3,11 @@ import "./FacturacionStyle.css";
 import { UseFacturacion } from "./useFacturacion";
 import { LoadingComponente } from "../../../../../components/GenericLoadingComponent/LoadingComponent";
 import { ModalDatosFis } from "./ModalDatosFiscales/ModalDatosFis";
-import { useValidarCompra } from "../../../../../Context/validarComprar";
+
 
 export function Facturacion() {
     
-    const { data, loading, error, Abrir_Mod_DomFis_User, onClose, AbrirEditableDomFis, setTriggerFetch,isSubmitted,errors } = UseFacturacion();
+    const { data, isLoading, Abrir_Mod_DomFis_User, onClose, AbrirEditableDomFis, setTriggerFetch,isSubmitted,errors } = UseFacturacion();
    
 
     const style = errors && errors.datosFacturacion ? { border: "1px solid red" } : {};
@@ -17,10 +17,10 @@ export function Facturacion() {
             <h2 className="titulo">Facturación</h2>
             
             {/* Indicador de carga */}
-            {loading ? (
+            {isLoading ? (
                 <LoadingComponente width={20} height={20} />
             ) : (
-                data && data.data && (
+                data && data.fiscal_data && (
                     <div className="domicilio">
                         {/* Modal para los datos fiscales */}
                         <ModalDatosFis 
@@ -33,22 +33,22 @@ export function Facturacion() {
                         {/* Datos del usuario */}
                         <div className="Datos">
                             <h2>Nombre:</h2>
-                            <p>{data.data?.nombre} {data.data?.apellido}</p>
+                            <p>{data.cliente_data.nombre} {data.cliente_data.apellido}</p>
                         </div>
 
                         <div className="Datos">
                             <h2>DNI:</h2>
-                            <p>{data.data?.dni}</p>
+                            <p>{data.cliente_data.dni}</p>
                         </div>
 
                         <div className="Datos">
                             <h2>Domicilio de facturación:</h2>
-                            {data.data.direccion ? (
+                            {data.fiscal_data.direccion ? (
                                 <>
-                                    <p>{data.data.direccion},</p>
-                                    <p>CP: {data.data.codigo_postal},</p>
-                                    <p>{data.data.localidad},</p>
-                                    <p>{data.data.provincia}</p>
+                                    <p>{data.fiscal_data.direccion},</p>
+                                    <p>CP: {data.fiscal_data.codigo_postal},</p>
+                                    <p>{data.fiscal_data.localidad},</p>
+                                    <p>{data.fiscal_data.provincia}</p>
                                 </>
                             ) : (
                                 <span style={{ color: 'red' }}>Incompleto</span>

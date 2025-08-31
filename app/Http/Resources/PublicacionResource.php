@@ -20,6 +20,7 @@ class PublicacionResource extends JsonResource
             'titulo' => $this->titulo,
             'precio' => $this->precio,
             'deleted' => $this->deleted,
+            'stock' => $this->stock,
             'paused' => $this->paused,
             'imagen'  => $this->imagenes->isNotEmpty()
         ? new ImagenesResource($this->imagenes->first())

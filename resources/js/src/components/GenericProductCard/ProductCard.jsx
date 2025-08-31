@@ -9,6 +9,8 @@ import { useProductCard } from "./useProductCard";
 export const ProductCard = ({ imagen, titulo, price, itemKey, stock }) => {
 
 
+
+
   const [isImageLoaded, setIsImageLoaded] = useState(false); // Estado para saber si la imagen se ha cargado
 
   const handleImageLoad = () => {
@@ -20,6 +22,9 @@ export const ProductCard = ({ imagen, titulo, price, itemKey, stock }) => {
     e.target.src = LogoOlivia; // Si la imagen no se carga correctamente, mostrar LogoOlivia
     e.target.classList.add("imagen-cargando"); // Agrega clase para efectos si deseas
   };
+
+
+  const producto = { imagen, titulo, price, itemKey, stock };
 
   const {ClickMostrarDetalle} = useProductCard({itemKey,titulo})
 
@@ -41,7 +46,7 @@ export const ProductCard = ({ imagen, titulo, price, itemKey, stock }) => {
       <h2 className="transferStyle">10% off con Transferencia</h2>
       <div className="Botonera">
         <ButtonVer />
-        <AgregarAlCarrito data={{ imagen, titulo, price, itemKey, stock }} />
+        <AgregarAlCarrito producto={producto} />
       </div>
     </div>
   );

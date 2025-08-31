@@ -5,7 +5,7 @@ import { Agenda3dModal } from "../Agenda3dModal/Agenda3dModal";
 
 export const FichaTecnica = ({Datos})=>{
 
-    const datos= Datos;
+    
     const [isModificationModalOpen, setIsModificationModalOpen] = useState(false);
 
     
@@ -23,10 +23,10 @@ export const FichaTecnica = ({Datos})=>{
                    <h2 className="titulo">Características Principales</h2>
                    <ul className="specs-box">
                        {[
-                           {titulo:'codigo:' , value:datos.codigo},
-                           {titulo:'modelo:' , value:datos.modelo},
-                           {titulo:'Categoria:' , value:datos.categoria.nombre},
-                           {titulo:'Marca:' , value:datos.marca.nombre}
+                           {titulo:'codigo:' , value:Datos.codigoProducto},
+                           {titulo:'modelo:' , value:Datos.modelo},
+                           {titulo:'Categoria:' , value:Datos.categoria},
+                           {titulo:'Marca:' , value:Datos.marca}
                            ].map((carc_generales,index)=> (
                             carc_generales && (
                             <li className="item-box" key={index}>
@@ -37,16 +37,16 @@ export const FichaTecnica = ({Datos})=>{
                        ))}        
                    </ul>
             </div>
-            {(datos.alto || datos.ancho || datos.profundidad || datos.peso || datos.color)&&       
+            {(Datos.alto || Datos.ancho || Datos.profundidad || Datos.peso || Datos.color)&&       
             <div className="specifications">
                 <h2 className="titulo">Especificaciones</h2>
                         <ul className="specs-box">
                             {[
-                                {titulo:'alto:' , value: datos.alto},
-                                {titulo:'ancho:' , value: datos.ancho},
-                                {titulo:'profundidad:' , value: datos.profundidad},
-                                {titulo:'color:' , value: datos.color},
-                                {titulo:'peso:' , value: datos.peso}
+                                {titulo:'alto:' , value: Datos.alto},
+                                {titulo:'ancho:' , value: Datos.ancho},
+                                {titulo:'profundidad:' , value: Datos.profundidad},
+                                {titulo:'color:' , value: Datos.color},
+                                {titulo:'peso:' , value: Datos.peso}
                             ].map((spec,index)=>(
                                 spec.value && (
                                  <li className="item-box" key={index}>

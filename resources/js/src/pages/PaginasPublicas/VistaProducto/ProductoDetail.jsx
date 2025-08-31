@@ -11,13 +11,12 @@ import { BotonAgregarAlCarritoDetail } from "./Components/BotonAgregarAlCarritoD
 import { BotonComprar } from "./Components/BotonComprar/BotonComprar";
 
 export const ProductoDetail = () => {
-  const { dataPublicacion, imagenes, isLoading } = UseProductoDetail();
-
+  const { dataPublicacion, imagenes, detalleMutation } = UseProductoDetail();
 
 
   return (
     <div className="general-product-container">
-      {isLoading && (
+      {detalleMutation.isPending && (
         <div className="container-carga">
           <LoadingComponente height={60} width={60} />
         </div>
@@ -33,7 +32,7 @@ export const ProductoDetail = () => {
 
           <div className="features-container Responsive">
             <h2 className="categorias Responsive">
-              Categoria: {dataPublicacion.producto.categoria.nombre}
+              Categoria: {dataPublicacion.categoria}
             </h2>
             <h2 className="titulo-detail Responsive">{dataPublicacion.titulo}</h2>
             <h2 className="id-Producto Responsive">ID: {dataPublicacion.id}</h2>
@@ -58,20 +57,20 @@ export const ProductoDetail = () => {
             <div className="container-button-agregar-carrito-detail">
               <BotonComprar
                 data={{
-                  imagen: dataPublicacion.imagenes[0].image_url,
+                  imagen: dataPublicacion.imagen,
                   titulo: dataPublicacion.titulo,
                   price: dataPublicacion.precio,
-                  itemKey: dataPublicacion.publicacion_id,
+                  itemKey: dataPublicacion.id,
                   stock: dataPublicacion.stock,
                 }}
               />
 
               <BotonAgregarAlCarritoDetail
                 data={{
-                  imagen: dataPublicacion.imagenes[0].image_url,
+                  imagen: dataPublicacion.imagen,
                   titulo: dataPublicacion.titulo,
                   price: dataPublicacion.precio,
-                  itemKey: dataPublicacion.publicacion_id,
+                  itemKey: dataPublicacion.id,
                   stock: dataPublicacion.stock,
                 }}
               />
@@ -79,7 +78,7 @@ export const ProductoDetail = () => {
           </div>
 
           <div className="Especificaciones">
-            <FichaTecnica Datos={dataPublicacion.producto} />
+            <FichaTecnica Datos={dataPublicacion} />
           </div>
 
           {dataPublicacion.descripcion && (

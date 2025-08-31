@@ -11,7 +11,7 @@ export const HeaderB = () => {
   const {  Logo, NavBar, shrunk } = useHeaderB();
 
   return (
-    <section
+    <header
       className={`header-section-b ${shrunk ? "shrunk" : ""}`}
     >
       <div className="logo-container">
@@ -32,6 +32,6 @@ export const HeaderB = () => {
         <UserAccount />
         <Carrito />
       </div>
-    </section>
+    </header>
   );
 };

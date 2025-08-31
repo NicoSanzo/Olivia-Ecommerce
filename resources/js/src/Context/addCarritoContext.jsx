@@ -23,6 +23,7 @@ export const ContextCarritoProvider = ({ children }) => {
       /********************GUARDA EL CARRITO PARA QUE AL RECARGAR LA PAGINA NO SE BORRE ***********************/
 
     useEffect(() => {
+
         const carritoGuardado = localStorage.getItem('carrito');
         if (carritoGuardado) {
           SetproductosToCarrito(JSON.parse(carritoGuardado));
@@ -34,37 +35,54 @@ export const ContextCarritoProvider = ({ children }) => {
         if (arrayProductsCarrito.length > 0) {
           localStorage.setItem('carrito', JSON.stringify(arrayProductsCarrito));
         }
-        if (arrayProductsCarrito.length == 0){
+        if (arrayProductsCarrito.length === 0){
           setMostrarMetodosDePago(false);
         }
 
       }, [arrayProductsCarrito]);
 
- /********************AGREGA LOS PRODUCTOS AL CARRITO SI ES NUEVO, SINO LE AGREGA UNO A LA CANTIDAD DE ELEGIDOS ***********************/
-    const agregarProductoAlCarrito = (producto) => {  
-        SetproductosToCarrito((prevCarrito) => {
-            // Verificar si el producto ya existe en el carrito
-            const productoExistente = prevCarrito.find(item => item.data.data.itemKey === producto.data.itemKey);
-            
-            if (productoExistente) {
-                // Si ya existe, incrementar la cantidad
-                return prevCarrito.map(item => 
-                   ( item.data.data.itemKey === producto.data.itemKey && item.stock< item.data.data.stock)   
-                        ? { ...item, stock: item.stock + 1 }  // Aumentar la cantidad
-                        : item
-                );
-            } else {
-                // Si no existe, agregar el producto con cantidad 1
-                return [...prevCarrito, { data: producto, stock: 1 }];
-            }
-        });
-    };
 
-      
- /********************CALCULA EL SUBTOTAL DE LOS PRODUCTOS, ES UNA PROPIEDAD QUE CUENTA UN DETERMINADO CAMPO DEL ARRAY Y LO GUARDA EN UNA CONSTANTE ***********************/
+ /********************AGREGA LOS PRODUCTOS AL CARRITO SI ES NUEVO, SINO LE AGREGA UNO A LA CANTIDAD DE ELEGIDOS ***********************/
+
+ 
+const agregarProductoAlCarrito = (producto) => {
+  if (producto.stock === 0) {
+    return;
+  }
+  SetproductosToCarrito((prevCarrito) => {
+    // Buscar si ya existe en el carrito
+    const index = prevCarrito.findIndex(
+      (item) => item.itemKey === producto.itemKey
+    );
+
+    /* Normalizo el objeto producto para que siempre tenga la misma estructura sin importar de qué componente o función lo invoque. Si cambia algo en el futuro, solo debo actualizarlo acá. */
+    if (index === -1) {
+      return [
+        ...prevCarrito,
+        {
+          itemKey: producto.itemKey,
+          titulo: producto.titulo,
+          precio: producto.price,
+          imagen: producto.imagen,
+          stock: producto.stock,
+          cantidadSeleccionada: 1,
+        },
+      ];
+    }
+    return prevCarrito.map((item, i) =>
+      i === index && item.stock > item.cantidadSeleccionada
+        ? { ...item, cantidadSeleccionada: item.cantidadSeleccionada + 1 }
+        : item
+    );
+  });
+};
+
+
+
+/********************CALCULA EL SUBTOTAL DE LOS PRODUCTOS, ES UNA PROPIEDAD QUE CUENTA UN DETERMINADO CAMPO DEL ARRAY Y LO GUARDA EN UNA CONSTANTE ***********************/
     useEffect(() => {
       const subtotal = arrayProductsCarrito.reduce(
-          (total, item) => total + item.data.data.price * item.stock,0);
+          (total, item) => total + item.precio * item.cantidadSeleccionada,0);
       
 /********************CALCULA EL DESCUENTO AL ELEGIR TRANSFERENCIA BANCARIA + ENVIO ***********************/
       const totalConDescuento = subtotal - (subtotal * porcentajeDescuento) / 100;
@@ -80,7 +98,7 @@ export const ContextCarritoProvider = ({ children }) => {
 /********************CUENTA LA CANTIDAD DE ITEMS QUE SE ENCUENTRAN EN EL CARRITO INCLUYENDO LOS REPETIDOS PARA PARA QUE SE VISUALICE EN EL ICONO DEL CARRITO DEL HOME ***********************/
     useEffect(() => {
         if(arrayProductsCarrito ){
-            setCantidadItemsCarrito(arrayProductsCarrito.reduce((cantidad, items) => cantidad + (items.stock),0));
+            setCantidadItemsCarrito(arrayProductsCarrito.reduce((cantidadSeleccionada, items) => cantidadSeleccionada + (items.cantidadSeleccionada),0));
         }
     }, [arrayProductsCarrito]);
 
@@ -89,8 +107,8 @@ export const ContextCarritoProvider = ({ children }) => {
 
     const AgregarStock = (itemKey) => {
         const updatedProducts = arrayProductsCarrito.map(item => 
-          ((item.data.data.itemKey === itemKey) && (item.stock < item.data.data.stock))
-            ? { ...item, stock: item.stock + 1 }  
+          ((item.itemKey === itemKey) && (item.stock > item.cantidadSeleccionada))
+            ? { ...item, cantidadSeleccionada: item.cantidadSeleccionada + 1 }  
             : item
         );
         SetproductosToCarrito(updatedProducts);
@@ -99,8 +117,8 @@ export const ContextCarritoProvider = ({ children }) => {
 /********************FUNCION DEL SPIN  BUTTON DE RESTAR UNO EN CANTIDAD DE PRODUCTO EN EL CARRITO (TARJETA DE PRODUCTO DE CARRITO) ***********************/
       const RestarStock = (itemKey) => {
         const updatedProducts = arrayProductsCarrito.map(item => 
-          (item.data.data.itemKey === itemKey && item.stock>1)
-            ? { ...item, stock: item.stock - 1 }  
+          (item.itemKey === itemKey && item.cantidadSeleccionada > 1)
+            ? { ...item, cantidadSeleccionada: item.cantidadSeleccionada - 1 }  
             : item
         );
         SetproductosToCarrito(updatedProducts);
@@ -108,17 +126,17 @@ export const ContextCarritoProvider = ({ children }) => {
 
     
 /********************ELIMINAR UN TIPO DE PRODUCTO DEL CARRITO(X que aparece en el costadod de la tarjeta de producto) ***********************/
-    const EliminarProductoCarrito=(productoId)=>{ 
+    const eliminarProductoCarrito=(productoId)=>{ 
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        const nuevoCarrito = carrito.filter(item => item.data.data.itemKey !== productoId);
+        const nuevoCarrito = carrito.filter(item => item.itemKey !== productoId);
         localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
         SetproductosToCarrito(nuevoCarrito);
     };
 
 
 
+    /******************** FUNCION PARA VACIAR TODO EL CARRITO  ***********************/
 
-/******************** FUNCION PARA VACIAR TODO EL CARRITO  ***********************/
     const EliminarTodoElCarrito = () => {
         localStorage.removeItem('carrito');
         SetproductosToCarrito([]);   
@@ -133,7 +151,7 @@ export const ContextCarritoProvider = ({ children }) => {
                 arrayProductsCarrito, 
                 total, 
                 cantidaditemsCarrito,
-                EliminarProductoCarrito,
+                eliminarProductoCarrito,
                 EliminarTodoElCarrito,
                 AgregarStock,
                 RestarStock,
@@ -148,6 +166,7 @@ export const ContextCarritoProvider = ({ children }) => {
                 subtotal,
                 subtotalConDescuento,
                 porcentajeDescuento,
+              
                 
 
             }}>

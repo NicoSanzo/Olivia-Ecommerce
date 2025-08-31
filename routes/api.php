@@ -6,10 +6,12 @@ use App\Http\Controllers\ClientRegisterController;
 use App\Http\Controllers\DetallePublicacionController;
 use App\Http\Controllers\FormularioContactoController;
 use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\MercadopagoController;
+use App\Http\Controllers\PerfilClientController;
 use App\Http\Controllers\PerfilUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicacionesController;
-use App\Models\Publicacion;
+
 
 // Rutas de la API
 Route::post('/publicacion', [PublicacionesController::class, 'publicaciones']);
@@ -38,8 +40,11 @@ Route::middleware(['auth', 'role:Administrador'])->group(function () {
 
 
 // Rutas protegidas por roles (cliente)
-Route::middleware(['auth', 'role:cliente'])->get('/cliente', function () {
-    return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
+Route::middleware(['auth', 'role:Cliente'])->group(function () {
+
+    Route::post('/createPreferenceId', [MercadopagoController::class, 'ObtenerPreferenceId']);
+    Route::post('/getDataFiscal',[PerfilClientController::class,'getFiscalData']);
+    //return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
 });
 
 

@@ -22,6 +22,7 @@ export function PageCarrito() {
            <ResumenCarrito/>
             { MostrarMetodosDepago===true  &&
                 <>
+                
                     <Facturacion/>
                     <Entrega/>
                     <MetodosDePago/>                        

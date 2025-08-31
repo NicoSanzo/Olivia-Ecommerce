@@ -15,8 +15,6 @@ class ClientRegisterController extends Controller
     public function ClientRegister(Request $request)
     {
 
-        Log::info('Datos recibidos:', $request->all());
-
 
         $validator = Validator::make($request->all(),[
 
@@ -34,6 +32,7 @@ class ClientRegisterController extends Controller
             return response()->json(['message'=>$validator->errors()],422);
         }
 
+  
 
 
         $usuario = User::create ([

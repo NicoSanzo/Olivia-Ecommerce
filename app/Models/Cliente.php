@@ -21,13 +21,16 @@ class Cliente extends Model
     ];
 
 
-    
     public function ClienteUser (){
 
         return $this->belongsTo(User::class,'id_usuario');
 
     }
 
+   public function domicilioFiscal()
+    {
+        return $this->hasOne(DataFiscal::class, 'cliente_id', 'id_usuario');
+    }
 
 
 }

@@ -1,25 +1,30 @@
-
 import "./AgregarAlcarritoStyle.css";
-import React from 'react';
-import { UseAgregarAlCarrito } from "./useAgregarAlCarrito";
+import { useAddCarrito } from "../../Context/addCarritoContext";
 
-
-export const AgregarAlCarrito=({data}) => {
+export const AgregarAlCarrito = ({ producto }) => {
   
+  const { agregarProductoAlCarrito, arrayProductsCarrito } = useAddCarrito();
 
-    const {handleCarritoClick,arrayProductsCarrito}= UseAgregarAlCarrito({data});
-  
-    return (
+  return (
+    <div className="Container-Agrega-Carrito-Button">
+      {arrayProductsCarrito.map((item) => {
+        if (producto.itemKey === item.itemKey && item.stock > 0) {
+          return (
+            <div className="Cantidad-Agregada" key={item.itemKey}>
+              {item.cantidadSeleccionada}
+            </div>
+          );
+        }
+        return null; // importante para no romper el map
+      })}
 
-        <div className="Container-Agrega-Carrito-Button">
-           {arrayProductsCarrito.map((item)=>{
-              if(data.itemKey==item.data.data.itemKey && item.stock > 0 ){           
-                return <div className="Cantidad-Agregada" key={item.data.data.itemKey}>{item.stock}</div>
-              }
-              
-          })}
-        
-        <button className='AgregarAlCarrito' onClick={handleCarritoClick}></button>
-        </div>
-  )
-}
+      <button
+        className="AgregarAlCarrito"
+        onClick={(e) => {
+          e.stopPropagation(); // evita que el click se propague al padre
+          agregarProductoAlCarrito(producto);
+        }}
+      ></button>
+    </div>
+  );
+};

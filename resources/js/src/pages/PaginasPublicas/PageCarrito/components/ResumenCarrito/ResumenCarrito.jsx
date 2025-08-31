@@ -1,14 +1,15 @@
 import "./ResumenCarritoStyle.css";
 import React, { useRef } from "react"
 import { useResumenCarrito } from "./useResumenCarrito";
+import { useAuth } from "../../../../../Context/authContext";
 
 
 export function ResumenCarrito() {
 
     const OcultarButtonComprar= useRef(null);
     const {Envio,total,ContinuarCompra,arrayProductsCarrito,MostrarDescuento,cantidadDescuento,subtotal}=useResumenCarrito(OcultarButtonComprar);
+    const {autenticado} = useAuth();
 
-  
     return (
         <>
 
@@ -42,7 +43,7 @@ export function ResumenCarrito() {
                         className="comprar-button" 
                         onClick={ContinuarCompra}
                         ref={OcultarButtonComprar}
-                        disabled= {arrayProductsCarrito.length === 0}
+                        disabled= {arrayProductsCarrito.length === 0 || !autenticado}
                     >
                     Continuar Compra
                     </button>        

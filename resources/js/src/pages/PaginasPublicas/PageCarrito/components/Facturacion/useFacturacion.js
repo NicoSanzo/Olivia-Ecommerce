@@ -1,11 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
 import { useValidarCompra } from "../../../../../Context/validarComprar";
-import { useFetch } from "../../../../../hooks/PedidoFetchGenerico";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
+import { fetchGenerico } from "../../../../../utils/fetchGenerico";
 
 export function UseFacturacion() {
 
     
-    const {isSubmitted,errors ,Validate,setDatosFacturacion } = useValidarCompra()
+    const {isSubmitted,errors,setDatosFacturacion } = useValidarCompra()
     const [ Abrir_Mod_DomFis_User,  set_Abrir_Mod_DomFis_User]= useState(false);
     const[triggerFetch,setTriggerFetch]=useState(false);
 
@@ -18,14 +19,12 @@ export function UseFacturacion() {
         setTriggerFetch(true);
     }, []);
 
-    const {data, loading, error} = useFetch("./api/fetch_dom_fiscal.php","POST", null , triggerFetch);
 
-    useEffect(() => {
-        if(data && data.data)
-        setTriggerFetch(false);
-        setDatosFacturacion(false)
-    }, [data]);
-
+    const {data, isLoading,error}=useQuery(({
+        queryKey:['getDataFiscal'],
+        queryFn:()=>fetchGenerico("/api/getDataFiscal","POST", null),
+    }))
+ 
     
     const onClose=()=>{
         set_Abrir_Mod_DomFis_User(false);
@@ -35,7 +34,7 @@ export function UseFacturacion() {
 
     return { 
         data, 
-        loading,
+        isLoading,
         error,
         Abrir_Mod_DomFis_User,
         onClose,

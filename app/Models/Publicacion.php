@@ -20,7 +20,10 @@ class Publicacion extends Model
         'stock'
     ];
 
-
+    protected $casts = [
+        'precio' => 'float',
+        'stock' => 'integer',
+    ];
 
      // Relación muchos a muchos con el modelo Producto.
      // La publicación puede estar relacionada con múltiples productos a través de la tabla intermedia 'produ_publi'.
