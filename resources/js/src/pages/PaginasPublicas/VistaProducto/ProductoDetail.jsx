@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Stock_icon from "../../../assets/Stock_icon.svg";
-import shipping_icon from "../../../assets/shipping_icon.svg";
+import shipping_icon from "../../../assets/Shipping_Icon.svg";
 import Shield_icon from "../../../assets/Shield_icon.svg";
 import "./ProductoDetailStyle.css";
 import { Carrousel } from "../../../components/GenericCarrousel/Carrousel";

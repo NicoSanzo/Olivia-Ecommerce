@@ -1,4 +1,4 @@
-import "./AgregarAlcarritoStyle.css";
+import "./AgregarAlCarritoStyle.css";
 import { useAddCarrito } from "../../Context/addCarritoContext";
 
 export const AgregarAlCarrito = ({ producto }) => {
