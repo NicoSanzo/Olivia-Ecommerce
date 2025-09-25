@@ -28,7 +28,7 @@ class PerfilClientController extends Controller
             ->with('domicilioFiscal')
             ->first();
 
-          log:info($cliente);
+          //log:info($cliente);
 
 
            if (!$cliente) {

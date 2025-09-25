@@ -143,6 +143,19 @@ const agregarProductoAlCarrito = (producto) => {
     }
 
 
+    const CarritoStateReset = ()=>{
+
+      setMostrarMetodosDePago,setPrecioEnvio,setMostrarDescuento
+        setMostrarMetodosDePago(false);
+        setPrecioEnvio(0);
+        setPorcentajeDescuento(0);
+        setMostrarDescuento(null);
+    }
+
+
+
+
+
     return (
         <AddCarritoContext.Provider 
             value={{ 
@@ -154,18 +167,19 @@ const agregarProductoAlCarrito = (producto) => {
                 eliminarProductoCarrito,
                 EliminarTodoElCarrito,
                 AgregarStock,
-                RestarStock,
-                setMostrarDescuento,
+                RestarStock,                
                 MostrarDescuento,
                 cantidadDescuento,
-                MostrarMetodosDepago, 
+                MostrarMetodosDepago,
                 setMostrarMetodosDePago,
-                Envio,
-                setPrecioEnvio,
+                setMostrarDescuento,
                 setPorcentajeDescuento,
+                setPrecioEnvio,
+                Envio,   
                 subtotal,
                 subtotalConDescuento,
                 porcentajeDescuento,
+                CarritoStateReset,
               
                 
 
