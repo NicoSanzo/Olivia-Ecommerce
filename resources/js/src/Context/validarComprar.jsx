@@ -13,7 +13,8 @@ const validarComprar = createContext();
 export const ContextvalidarAndComprar = ({ children }) => {
     //const navigate = useNavigate(); // hook para manejar la navegación
 
-const  {arrayProductsCarrito,subtotalConDescuento,Envio,porcentajeDescuento,total,setMostrarMetodosDePago,setPrecioEnvio,setMostrarDescuento,setPorcentajeDescuento} = useAddCarrito(); 
+const  {arrayProductsCarrito,Envio,porcentajeDescuento,CarritoStateReset} = useAddCarrito(); 
+
 
 const {autenticado, logout}=useAuth();
 
@@ -57,10 +58,7 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
         setTerminosCondiciones(false);
         setMetodoPago(null);
         setIsSubbmited(false);
-        setMostrarMetodosDePago(false);
-        setPrecioEnvio(0);
-        setPorcentajeDescuento(0);
-        setMostrarDescuento(null);
+        CarritoStateReset()
     }, [logout,Navigate]); 
     
 
@@ -99,7 +97,7 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
 const MutateCatchPaymentID = useMutation({
   mutationKey: ['createPreferenceId'],
   mutationFn: async () => {
-    return await fetchGenerico("api/createPreferenceId","POST", null);
+    return await fetchGenerico("api/createPreferenceId","POST", {arrayProductsCarrito,porcentajeDescuento,Envio});
   },
   onSuccess: (data) => {
    console.log(data)

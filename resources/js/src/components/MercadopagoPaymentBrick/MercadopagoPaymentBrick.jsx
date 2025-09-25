@@ -12,6 +12,8 @@ export function MercadopagoPaymentBrick() {
      preferenceId: MutateCatchPaymentID.data?.id,
 
     };
+
+    console.log(MutateCatchPaymentID.data)
     
     const customization = {
                       visual: {
@@ -31,7 +33,7 @@ export function MercadopagoPaymentBrick() {
      { selectedPaymentMethod, formData }
     ) => {
      // callback llamado al hacer clic en el botón enviar datos
-     console.log(formData)
+    // console.log(formData)
      return new Promise((resolve, reject) => {
        fetch("/process_payment", {
          method: "POST",
