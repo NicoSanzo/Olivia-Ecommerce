@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -12,7 +13,8 @@ class RoleMiddleware
      public function handle(Request $request, Closure $next, ...$roles)
     {
         // Obtener el usuario autenticado usando el token JWT
-        $user = JWTAuth::parseToken()->authenticate();
+        //$user = JWTAuth::parseToken()->authenticate();
+         $user = Auth::user(); // o auth()->user()
 
         if (!$user) {
             return response()->json(['error' => 'Usuario no autenticado'], 401);

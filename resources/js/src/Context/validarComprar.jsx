@@ -97,7 +97,7 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
 const MutateCatchPaymentID = useMutation({
   mutationKey: ['createPreferenceId'],
   mutationFn: async () => {
-    return await fetchGenerico("api/createPreferenceId","POST", {arrayProductsCarrito,porcentajeDescuento,Envio});
+    return await fetchGenerico("api/process_payment","POST", {arrayProductsCarrito,porcentajeDescuento,Envio});
   },
   onSuccess: (data) => {
    console.log(data)

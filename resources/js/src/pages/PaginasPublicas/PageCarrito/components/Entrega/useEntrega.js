@@ -16,7 +16,7 @@ export function UseEntrega() {
 
     if(metodo_entrega==="Envio")
       {
-        setPrecioEnvio(7000);  
+        setPrecioEnvio(50);  
       }
     else if (metodo_entrega==="Acordar"){
         setPrecioEnvio(null);

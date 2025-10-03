@@ -56,7 +56,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="/Miperfil" element={<MiPerfil />} />    
                 <Route path="/compras" element={<Compras />}/>
                 <Route path="compras/detalle" element={<DetalleCompra />} />               
-                <Route path="/CompraExitosa" element={<CompraExitosa />} />        
+                <Route path="CompraExitosa" element={<CompraExitosa />} />        
               </Route>
               <Route path="*" element={<Navigate to="/home" />}/>
             </Routes>

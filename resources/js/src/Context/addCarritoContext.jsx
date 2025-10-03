@@ -81,8 +81,10 @@ const agregarProductoAlCarrito = (producto) => {
 
 /********************CALCULA EL SUBTOTAL DE LOS PRODUCTOS, ES UNA PROPIEDAD QUE CUENTA UN DETERMINADO CAMPO DEL ARRAY Y LO GUARDA EN UNA CONSTANTE ***********************/
     useEffect(() => {
+
       const subtotal = arrayProductsCarrito.reduce(
           (total, item) => total + item.precio * item.cantidadSeleccionada,0);
+       
       
 /********************CALCULA EL DESCUENTO AL ELEGIR TRANSFERENCIA BANCARIA + ENVIO ***********************/
       const totalConDescuento = subtotal - (subtotal * porcentajeDescuento) / 100;

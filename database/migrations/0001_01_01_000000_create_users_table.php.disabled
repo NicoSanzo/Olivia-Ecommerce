@@ -1,3 +1,4 @@
+ 
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -46,4 +47,4 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
-};
+};#

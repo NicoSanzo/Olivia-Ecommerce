@@ -7,6 +7,7 @@ use App\Http\Controllers\DetallePublicacionController;
 use App\Http\Controllers\FormularioContactoController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MercadopagoController;
+use App\Http\Controllers\MercadoPagoWebhookController;
 use App\Http\Controllers\PerfilClientController;
 use App\Http\Controllers\PerfilUserController;
 use Illuminate\Support\Facades\Route;
@@ -41,11 +42,16 @@ Route::middleware(['auth', 'role:Administrador'])->group(function () {
 
 // Rutas protegidas por roles (cliente)
 Route::middleware(['auth', 'role:Cliente'])->group(function () {
-
-    Route::post('/createPreferenceId', [MercadopagoController::class, 'ObtenerPreferenceId']);
+    Route::post('/cards_process_payment', [MercadopagoController::class, 'cardsProcessPayment']);
+    Route::post('/process_payment', [MercadopagoController::class, 'processPayment']);
     Route::post('/getDataFiscal',[PerfilClientController::class,'getFiscalData']);
     //return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
 });
+
+
+ Route::post('/mercadopago/webhook',[MercadoPagoWebhookController::class,'handle']);
+ 
+
 
 
    //Route::get('/prueba', [pruebaController::class, 'pruebaAPI']);

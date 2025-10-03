@@ -18,7 +18,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => Authenticate::class,  // Middleware para autenticar usuarios
             'role' => RoleMiddleware::class, // Middleware para verificar roles
         ]);
+
+        
     })
+
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
