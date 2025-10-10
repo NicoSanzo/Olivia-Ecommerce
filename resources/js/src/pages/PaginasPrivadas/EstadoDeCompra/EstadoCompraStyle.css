@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.compra-container-opaco {
+  position: relative;
+  box-shadow: 0 0 2px #929292;
+  border-radius: 10px;
+  height: max-content;
+  justify-self: center;
+  margin: 15px;
+  min-width: 75%;
+  max-width: max-content;
+  flex-direction: column;
+  gap: 19px;
+  padding: 2%;
+  background-color:white; /* Fondo opaco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  transition: opacity 0.9s ease-in-out;
+  opacity: 0;
+  pointer-events: none; /* Bloquea interacciones cuando está oculto */
+}
+  
+  .compra-container-opaco.visible {
+    opacity: 1;
+    pointer-events: all; /* Permite interacciones cuando está visible */
+   
+  }
+
+
+  .compra-text-mail-container{
+    height:30%;
+    color: #a8a8a8;
+    font-size: 15px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-family: "Quicksand", sans-serif;
+    text-align: center;
+  }
+
+  .data-compra-container{
+    border: solid 1px rgb(227, 227, 227) ;
+    box-shadow: 0 0 2px 0 #399f65  ;
+    border-radius: 7px;
+    height: max-content;
+    min-width:70%;
+    max-width: max-content;
+    padding: 1%;
+  }
+
+  .data-compra-container.success
+  {box-shadow: 0 0 3px 0 #399f65}
+  .data-compra-container.rejected
+  {box-shadow: 0 0 3px 0 #ff0000 }
+   .data-compra-container.in-process
+  {box-shadow: 0 0 3px 0 #f59e0b }
+  
+  .separation-line{
+  margin: auto;
+  width: 90%;
+  border: solid 1px #dddddd;  
+  border-bottom: none;
+  margin-top:  20px;
+} 
+/*
+  .compra-success-container.visible {
+    opacity: 1;
+    
+  }*/
+
+
+
+
+.payment-resumen-box{
+  width: 95%;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(0.7rem,0.72vw,2rem);
+  gap:12px;
+  margin: auto;
+  margin-top: 15px;
+ 
+ }
+
+ .payment-resumen-dato-linea, .payment-resumen-dato-linea-total
+ {
+  display: flex;
+  justify-content: space-between;
+ font-weight: 700;
+ align-items: center;
+ }
+ .payment-resumen-dato-linea-total{
+  margin: auto;
+  margin-top: 20px;
+  width: 95%;
+ }
+ .payment-resumen-dato-key{
+  
+  font-weight: 400;
+ }
+
+ .payment-resumen-dato-total{
+   font-size: clamp(1.2rem,1.7vw,2rem);
+   font-weight: 400;
+ }
+
+  .payment-resumen-dato-total-value{
+   font-size: clamp(1rem,1.1vw,2rem);
+   font-weight: 500;
+   box-shadow: 0 0 2px #919191dd;
+   border-radius:5px;
+   padding: 2px;
+ }
+
+
+
+.products-data-compra-container-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; 
+  gap: 15px;
+  width: 99%;
+  height: max-content;
+  max-height: 230px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent;
+  box-shadow: 0 0 5px 0 #dddddd;
+  position: relative;
+
+  .products-data-compra-container-image {
+    display: flex;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    max-height: 300px;
+    margin: 5px;
+    
+    border-radius: 10px;
+    
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+ 
+
+
+  .products-data-compra-price ,.products-data-compra-title-stock ,.products-data-compra-title{
+    width: max-content;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #cccccc;
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(0.68rem,0.75vw,2rem);
+    letter-spacing: 1px;
+    color: black;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 500;
+  }
+  .products-data-compra-title{
+
+    box-shadow:none;
+    white-space: wrap;
+    text-align: left;
+    width: 70%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

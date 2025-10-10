@@ -31,7 +31,6 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
 
 
 
-
     const Validate= ()=>{
 
         const newErrors= {}
@@ -93,14 +92,12 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
     
     
 
-
 const MutateCatchPaymentID = useMutation({
   mutationKey: ['createPreferenceId'],
   mutationFn: async () => {
     return await fetchGenerico("api/process_payment","POST", {arrayProductsCarrito,porcentajeDescuento,Envio});
   },
   onSuccess: (data) => {
-   console.log(data)
   },
   onError: (error) => {
     console.error(error);

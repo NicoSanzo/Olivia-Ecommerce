@@ -3,7 +3,7 @@ import { LoadingComponente } from "../../../../../components/GenericLoadingCompo
 import { UseMetodosDePago } from "./useMetodosDePago";
 import { Link } from "react-router-dom";
 import { CustomCheckbox } from "../../../../../components/GenericCheckbox/CheckBox";
-import { CompraExitosa } from "../../../../PaginasPrivadas/CompraExitosa/CompraExitosa";
+
 import { MercadopagoPaymentBrick } from "../../../../../components/MercadopagoPaymentBrick/MercadopagoPaymentBrick.jsx";
 import { useValidarCompra } from "../../../../../Context/validarComprar.jsx";
 
@@ -96,7 +96,7 @@ export function MetodosDePago() {
       )}
 
       {/* Compra exitosa */}
-      {abrirCompraExitosa && <CompraExitosa />}
+     
     </div>
   );
 }

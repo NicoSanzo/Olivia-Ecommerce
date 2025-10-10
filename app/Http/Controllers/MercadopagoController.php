@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CarritoRequest;
+use App\Models\Operacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\Client\Common\RequestOptions;
@@ -12,20 +14,26 @@ use MercadoPago\MercadoPagoConfig;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use MercadoPago\Exceptions\MPApiException;
 
+
 class MercadopagoController extends Controller
 {
+    protected $userID;
+
+    public function __construct(){
+        $this->userID = JWTAuth::parseToken()->authenticate()->id;
+    }
 
     public function cardsProcessPayment(Request $request, CarritoRequest $itemsRequest)
     {
   
         MercadoPagoConfig::setAccessToken(env('MERCADOPAGO_ACCESS_TOKEN'));
 
-        $userId = JWTAuth::parseToken()->authenticate()->id; // utilizo el id del usuario autenticado para crear el custom header
+       
         $items= $this->CreateItems($itemsRequest); // creo el array de items a traves de la request Personalizada y utilizando la funcion de Creacion de esta misma clase, 
 
         $opts = new RequestOptions();
         $opts->setCustomHeaders([
-            'x-idempotency-key' => "user_{$userId}_" . uniqid('', true),
+            'x-idempotency-key' => "user_{$this->userID}_" . uniqid('', true),
         ]);
 
         $payload = [
@@ -40,37 +48,30 @@ class MercadopagoController extends Controller
                     'type'   => $request->input('identificationType'),
                     'number' => $request->input('number'),
                 ],
-            ],
-           
+            ],    
            'shipping_amount' =>(float)$request->envio ?? 0,
             'metadata' => [
-                'UserId'          => $userId,
+                'UserId'          => $this->userID,
                 'publicaciones' => $items,
                 'descuento_total' => 0,
             ],
             'notification_url' => env('NOTIFICATION_URL'),
         ];
-
         try {
             $client  = new PaymentClient();
             $payment = $client->create($payload, $opts);
-            //$publicaciones = json_decode(json_encode($payment->metadata->publicaciones), true);
-            Log::info('Tipo de metadata: ' . gettype($payment->metadata));
-           
-
+            $queryData = [
+                'estado'      => $payment->status,   
+                'fecha'       => $payment->date_created,
+                'payment_id'          => $payment->id,
+            ];
+     
+            $queryString=http_build_query($queryData);
 
             return response()->json([
-                "paymentData" => [
-                    'estado_compra'=>$payment->status,
-                    'fecha_compra'=>$payment->date_created,
-                    'costo_envio'=>$payment->shipping_amount,
-                    'tipo_pago'=>$payment->payment_type_id,
-                    'subtotal'=> $payment->transaction_amount,
-                    'total'=> $payment->transaction_details->total_paid_amount,
-                    'productos' => $items,
-                    
-                ]
-            ]);
+                        "responseUrl" => "/EstadoCompra?". $queryString,           
+                   ]);
+
         } catch (MPApiException $e) {
 
             /** @var \MercadoPago\Net\MPResponse $api */
@@ -127,14 +128,55 @@ class MercadopagoController extends Controller
                 "descuento_total" => 0
             ],
             "back_urls" => [
-                 "success" => "http://localhost:8000/CompraExitosa",
-                 "failure" => "http://localhost:3000/failure",
-                 "pending" => "http://localhost:3000/pending",
+                 "success" => "https://localhost/EstadoCompra",
+                 "pending" => "https://localhost/EstadoCompra",
+                 "failure" => "https://localhost/EstadoCompra",
             ],
+            "auto_return" => "approved",
             "notification_url" => env("NOTIFICATION_URL"),
         ]);
 
         return response()->json($preference);    
+    }
+
+
+    public function PaymentStatus(Request $request)
+    {         
+        $validator = Validator::make($request->all(), [
+            'MPPaymentId' => 'required|string',
+        ]);   
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
+        }       
+
+        //  Obtiene el valor validado
+        $MPPaymentId = $validator->validated()['MPPaymentId'];      
+
+        // Buscar la operación con los datos nececsarios
+        $data = Operacion::with([
+        'detalle_operacion:operacion_id,cantidad,imagen_publicacion,precio_unitario,titulo_publicacion',
+        'user:mail' //  Agrego la relación con los campos que necesito
+        ])
+        ->select([
+            'id',
+            'descuento_total',
+            'estado_pago',
+            'fecha_creacion_mp',
+            'tipo_pago',
+            'subtotal',
+            'total',
+            'forma_envio',
+            'monto_envio',
+            'Cliente_id', // importante incluirlo para que se resuelva la relación con user()
+        ])
+        ->where('id_operacion_mp', $MPPaymentId)
+        ->where('Cliente_id', $this->userID)
+        ->first();
+
+        if (!$data) {return response()->json(['message' => 'Operación no encontrada'], 404);}       
+
+        return response()->json(['datosPago' => $data]);
     }
 
 
@@ -154,4 +196,9 @@ class MercadopagoController extends Controller
         }
         return $items;
     }
+
+
+
+
+
 }

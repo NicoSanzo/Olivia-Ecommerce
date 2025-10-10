@@ -45,6 +45,7 @@ Route::middleware(['auth', 'role:Cliente'])->group(function () {
     Route::post('/cards_process_payment', [MercadopagoController::class, 'cardsProcessPayment']);
     Route::post('/process_payment', [MercadopagoController::class, 'processPayment']);
     Route::post('/getDataFiscal',[PerfilClientController::class,'getFiscalData']);
+    Route::post('/OperacionStatusMP',[MercadoPagoController::class,'PaymentStatus']);
     //return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
 });
 

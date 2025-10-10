@@ -16,13 +16,10 @@ class PerfilUserController extends Controller
         $user= new UserResource($user);
     
         
-        return response()->json(['user'=>$user,
-                            'status' => 'success'
+        return response()->json([
+                    'user'=>$user,
+                    'status' => 'success'
                  ]);
-
-
-             
-
     }
 
 

@@ -1,0 +1,118 @@
+/* contenedor (puedes reutilizar el de success cambiando nombres/colores) */
+.compra-error-container {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 25px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+}
+.compra-error-container.visible { opacity: 1; }
+
+.compra-error-logo-container{
+  width: 100%;
+  height: fit-content;
+  padding: 10px;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reutiliza tu wrapper; añadimos el modificador .danger */
+.checkbox-wrapper-31 {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+}
+
+.checkbox-wrapper-31 .background {
+  fill: #ccc;
+  transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 .stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition:ease-in-out 1s;
+}
+
+/* Lineas de la X */
+.checkbox-wrapper-31 .x-line {
+  fill: none;
+  stroke: #fff;            /* blanco para contraste sobre fondo rojo */
+  stroke-linecap: round;
+  stroke-width: 2.8px;
+  stroke-dasharray: 19;    /* longitud aproximada de cada linea */
+  stroke-dashoffset: 19;   /* empieza "oculta" */
+  transition: ease all 1s;
+}
+
+.checkbox-wrapper-31 input[type=checkbox] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+/* === Estados marcados (animación) === */
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+  stroke-dashoffset: 0;
+}
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .x-line {
+  stroke-dashoffset: 0;    /* dibuja la X */
+}
+
+/* === Colores para "danger" (rechazado) === */
+.checkbox-wrapper-31.danger input[type=checkbox]:checked + svg .background {
+  /* rojo de fondo cuando esta marcado */
+  fill: #e74c3c;
+}
+
+/* Texto en rojo para el estado */
+.text-payment-status.error {
+  color: #e74c3c;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  
+}
+
+/* Puedes reutilizar tal cual estas reglas de tu CSS existente */
+.data-payment-status-error-container{
+  width: 50%;
+  gap: 0px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.additional-text-payment-status-error{
+  width: 100%;
+  padding: 10px;
+font-size: clamp(0.7rem,0.9vw,2rem);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.data-payment-status-error-container.visible { opacity: 1; }

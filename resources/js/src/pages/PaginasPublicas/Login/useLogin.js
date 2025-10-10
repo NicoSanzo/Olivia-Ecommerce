@@ -20,7 +20,6 @@ export function useLogin({onClose,Registrate}) {
           fetchGenerico("/api/login", "POST", { username, password }),
         onSuccess: (data) => {      
           if (data.status === "success") {
-            
             queryClient.invalidateQueries({ queryKey: ["session"] });
             onClose();   
           }

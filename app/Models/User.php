@@ -29,13 +29,12 @@ class User extends Authenticatable implements JWTSubject
     'mail',
     ];
 
-
-
     /** The attributes that should be hidden for serialization. @var list<string>*/
 
     protected $hidden = [
         'contrasena',
         'remember_token',
+        'laravel_through_key' // key interna en laravel que se utiliza para relacionar varios modelos en diferentes tablas un solo campo, en MODELO OPERACION se puede ver el ejemplo
     ];
 
     /**

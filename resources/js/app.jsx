@@ -20,14 +20,14 @@ import { PrivateRouteClient } from './src/Routes/PrivatesRouteClient';
 import { MiPerfil } from './src/pages/PaginasPrivadas/Cliente/MiPerfil/MiPerfil';
 import { Compras } from './src/pages/PaginasPrivadas/Compras/Compras';
 import { DetalleCompra } from './src/pages/PaginasPrivadas/DetalleCompra/DetalleCompra';
-import { CompraExitosa } from './src/pages/PaginasPrivadas/CompraExitosa/CompraExitosa';
+import { EstadoCompra } from './src/pages/PaginasPrivadas/EstadoDeCompra/EstadoCompra';
 import { LoginModal } from './src/pages/PaginasPublicas/Login/LoginModal/loginModal';
 import { AppContextProviders } from './src/Context/Providers';
 import { Footer } from './src/pages/PaginasPublicas/HomePage/components/footer/Footer';
 import { initMercadoPago } from "@mercadopago/sdk-react";
 
 // Inicializa Mercado Pago UNA sola vez
-initMercadoPago("TEST-b58085c3-f394-42ec-8aa4-8f3f1bbb3045", { locale: "es-AR" });
+initMercadoPago(import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY, { locale: "es-AR" });
 
 
 const queryClient= new QueryClient();
@@ -56,7 +56,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="/Miperfil" element={<MiPerfil />} />    
                 <Route path="/compras" element={<Compras />}/>
                 <Route path="compras/detalle" element={<DetalleCompra />} />               
-                <Route path="CompraExitosa" element={<CompraExitosa />} />        
+                <Route path="/EstadoCompra" element={<EstadoCompra />} />        
               </Route>
               <Route path="*" element={<Navigate to="/home" />}/>
             </Routes>

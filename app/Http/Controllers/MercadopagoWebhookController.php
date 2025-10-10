@@ -30,13 +30,12 @@ class MercadoPagoWebhookController extends Controller
             return response()->json(['status' => 'error'], 500);
         }
 
-
         $payment = $response->json(); // ← array asociativo
 
          //Log::info(json_encode($payment['status'],JSON_PRETTY_PRINT) );
-          Log::info(json_encode($payment,JSON_PRETTY_PRINT) );
+          //Log::info(json_encode($payment,JSON_PRETTY_PRINT) );
 
-         return;
+         //return;
      
         //verifica que la operacion de Mercadopago no exista en la BBDD actualmente
         $operacion= Operacion::where('id_operacion_mp',$payment['id'])->first();
@@ -45,7 +44,7 @@ class MercadoPagoWebhookController extends Controller
         if($operacion){
              $operacion->estado_pago     = $payment['status'];
              $operacion->detalle_estado_pago = $payment['status_detail'];
-             $operacion->estado_compra   = $payment['status'] === 'rejected'? 'Cancelada' : ($payment['status'] === 'approved' ? 'Pendiente de entrega' : 'Pendiente');
+             $operacion->estado_compra   = $payment['status'] === 'rejected'? 'Cancelada' : 'Pendiente de entrega';
              $operacion->fecha_actualizacion_mp      = Carbon::parse($payment['date_last_updated']);
              $operacion->fecha_pago_aprobado = !empty($payment['date_approved'])? Carbon::parse($payment['date_approved']): null;
              $operacion->save();
@@ -60,6 +59,7 @@ class MercadoPagoWebhookController extends Controller
             $operacion = new Operacion();
             $operacion->cliente_id      = $payment['metadata']['user_id'];
             $operacion->id_operacion_mp = $payment['id'];
+            $operacion->subtotal           = $payment['transaction_amount'];
             $operacion->total           = $payment['transaction_details']['total_paid_amount'];
             $operacion->metodo_pago     = $payment['point_of_interaction']['business_info']['sub_unit'] ==='checkout_pro'? 'MercadoPago: Billetera':'Mercadopago: Tarjeta' ;
             $operacion->digitos_tarjeta_ref = $payment['card']['last_four_digits'] ?? null;
@@ -73,6 +73,7 @@ class MercadoPagoWebhookController extends Controller
             $operacion->estado_pago     = $payment['status'];
             $operacion->detalle_estado_pago     = $payment['status_detail'];
             $operacion->descuento_total     = $payment['metadata']['descuento_total'];
+            $operacion->email_pago          = $payment['payer']['email'];
             $operacion->save();
 
             # crea un registro para cada publicacion/producto que se encuentra en la operacion, a través del modelo Det_oper de la BBDD crea un registro para cada item

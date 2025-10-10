@@ -1,0 +1,114 @@
+.compra-success-container {
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 25px;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    
+  }
+  
+  .compra-success-logo-container{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .compra-success-container.visible { opacity: 1; }
+
+  .data-payment-status-container{
+    width: 50%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .data-payment-status-container.visible {   
+    opacity: 1;
+  }
+
+  .text-payment-status{
+    height:30%;
+    color: #68b98e;
+    font-size: 25px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-family: "Quicksand", sans-serif;
+    text-align: center;
+
+  }
+
+  
+
+  .checkbox-wrapper-31 {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .checkbox-wrapper-31 .background {
+    fill: #ccc;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  
+  .checkbox-wrapper-31 .stroke {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100;
+    transition: ease all 1.2s;
+    -webkit-transition: ease all 1.2s;
+  }
+  
+  .checkbox-wrapper-31 .check {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    stroke-dashoffset: 22;
+    stroke-dasharray: 22;
+    transition: ease all 1.2s;
+    -webkit-transition: ease all 1.2s;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .background {
+    fill: #68b98e ;; /* Cambia el color cuando está marcado */
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+    stroke-dashoffset: 0;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
+    stroke-dashoffset: 0;
+  }

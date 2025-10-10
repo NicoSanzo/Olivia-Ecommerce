@@ -28,8 +28,11 @@ export const AuthProvider = ({ children }) => {
     if (data?.status === 'success') {
       setUserPublicData(data.user);
       setAutenticado(true);
+      sessionStorage.setItem('autenticado',true);
+      sessionStorage.setItem('usuario',data.user.tipo_usuario);
     } else if (data?.error) {
       setAutenticado(false);
+      queryClient.removeQueries(['session']);
       setUserPublicData(null);
     }
   }, [data]);
@@ -43,12 +46,15 @@ export const AuthProvider = ({ children }) => {
       setAutenticado(false);
       setUserPublicData(null);
       navigate('/login');
+      sessionStorage.removeItem('autenticado');
+      sessionStorage.removeItem('usuario');
     },
     onError: (error) => {
       console.error('Error al cerrar sesión:', error);
       setAutenticado(false);
       setUserPublicData(null);
       navigate('/login');
+     
     }
   });
 

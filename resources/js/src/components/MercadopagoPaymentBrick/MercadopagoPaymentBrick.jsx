@@ -31,7 +31,6 @@ export function MercadopagoPaymentBrick() {
          },
     }
  
-
 const onSubmit = async (
  { selectedPaymentMethod, formData }
 ) => {
@@ -41,7 +40,7 @@ const onSubmit = async (
   }
 
    const fd = new FormData();
-  // renombramos el token de tarjeta para no chocar con JWT en el back
+  // renombre el token por posible incompatibilidad con el JWT del backend
 
 
   // campos principales (dejamos nombres que leeremos en el back)
@@ -67,8 +66,7 @@ fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
 
      .then((response) => {
        // recibir el resultado del pago
-       
-       navigate("/CompraExitosa");
+       navigate(response.responseUrl);
        resolve();
      })
      .catch((error) => {

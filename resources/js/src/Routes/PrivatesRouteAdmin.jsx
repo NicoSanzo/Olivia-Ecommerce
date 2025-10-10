@@ -7,17 +7,13 @@ export const PrivateRouteAdmin = () => {
   const { userPublicData, autenticado, loading } = useAuth();
 
   // Mientras no sabemos si está autenticado, mostramos loader
-  if (userPublicData === null || loading) {
-    return <LoadingComponente height={50} width={50}/>
-  }
-
-  if (!autenticado) {
+  if (!sessionStorage.getItem('autenticado')=== 'true') {
     // Si NO está autenticado, lo mandamos al login
     return <Navigate to="/home" replace />;
   }
  
   // Solo si es admin y está autenticado
-  if (autenticado && userPublicData?.tipo_usuario === "Administrador") {
+  if (sessionStorage.getItem('autenticado')=== 'true' && sessionStorage.getItem('usuario') === "Admin") {
     return <Outlet />;
   }
 
