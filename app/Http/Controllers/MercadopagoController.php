@@ -127,9 +127,9 @@ class MercadopagoController extends Controller
                 "descuento_total" => 0
             ],
             "back_urls" => [
-                 "success" => "https://localhost/EstadoCompra",
-                 "pending" => "https://localhost/EstadoCompra",
-                 "failure" => "https://localhost/EstadoCompra",
+                 "success" => env("MERCADOPAGO_BACK_URLS"),
+                 "pending" => env("MERCADOPAGO_BACK_URLS"),
+                 "failure" => env("MERCADOPAGO_BACK_URLS"),
             ],
             "auto_return" => "approved",
             "notification_url" => env("NOTIFICATION_URL"),
