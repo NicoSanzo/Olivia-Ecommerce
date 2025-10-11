@@ -7,7 +7,7 @@ use App\Http\Controllers\DetallePublicacionController;
 use App\Http\Controllers\FormularioContactoController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\MercadopagoController;
-use App\Http\Controllers\MercadoPagoWebhookController;
+use App\Http\Controllers\MercadopagoWebhookController;
 use App\Http\Controllers\PerfilClientController;
 use App\Http\Controllers\PerfilUserController;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +50,7 @@ Route::middleware(['auth', 'role:Cliente'])->group(function () {
 });
 
 
- Route::post('/mercadopago/webhook',[MercadoPagoWebhookController::class,'handle']);
+ Route::post('/mercadopago/webhook',[MercadopagoWebhookController::class,'handle']);
  
 
 

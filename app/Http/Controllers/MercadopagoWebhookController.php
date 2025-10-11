@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class MercadoPagoWebhookController extends Controller
+class MercadopagoWebhookController extends Controller
 {
     public function handle(Request $request)
     {
