@@ -57,7 +57,7 @@ fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
 //fd.append("total",total);
  // callback llamado al hacer clic en el botón enviar datos
  return new Promise((resolve, reject) => {
-   fetch("/api/cards_process_payment", {
+   fetch("api/cards_process_payment", {
      method: "POST",
      credentials:'include',
      body: fd,

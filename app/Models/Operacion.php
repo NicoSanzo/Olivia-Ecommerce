@@ -3,11 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
-
 class Operacion extends Model
 {
 
@@ -20,7 +17,6 @@ class Operacion extends Model
         return  $this->hasMany(Det_oper::class,'operacion_id');
     }
     
-
 /** Relación con el modelo User a través del modelo Cliente.
  *
  * Laravel agrega automáticamente el atributo `laravel_through_key`

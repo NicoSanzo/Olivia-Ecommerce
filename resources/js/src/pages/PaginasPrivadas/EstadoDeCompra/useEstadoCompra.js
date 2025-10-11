@@ -21,7 +21,7 @@ const MPPaymentId=query.get('payment_id') ;
 
 const {data:pago,isFetching,error}= useQuery(({
 queryKey: ['pago', MPPaymentId],
-queryFn: ()=>fetchGenerico("/api/OperacionStatusMP","POST", {'MPPaymentId':MPPaymentId}),
+queryFn: ()=>fetchGenerico("api/OperacionStatusMP","POST", {'MPPaymentId':MPPaymentId}),
 enabled: !!MPPaymentId,
 retry:2,
 }))

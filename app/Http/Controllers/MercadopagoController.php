@@ -27,8 +27,7 @@ class MercadopagoController extends Controller
     {
   
         MercadoPagoConfig::setAccessToken(env('MERCADOPAGO_ACCESS_TOKEN'));
-
-       
+  
         $items= $this->CreateItems($itemsRequest); // creo el array de items a traves de la request Personalizada y utilizando la funcion de Creacion de esta misma clase, 
 
         $opts = new RequestOptions();
