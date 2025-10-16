@@ -12,7 +12,7 @@ use App\Http\Controllers\PerfilClientController;
 use App\Http\Controllers\PerfilUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicacionesController;
-
+use App\Http\Controllers\TransferenciaController;
 
 // Rutas de la API
 Route::post('/publicacion', [PublicacionesController::class, 'publicaciones']);
@@ -45,7 +45,8 @@ Route::middleware(['auth', 'role:Cliente'])->group(function () {
     Route::post('/cards_process_payment', [MercadopagoController::class, 'cardsProcessPayment']);
     Route::post('/process_payment', [MercadopagoController::class, 'processPayment']);
     Route::post('/getDataFiscal',[PerfilClientController::class,'getFiscalData']);
-    Route::post('/OperacionStatusMP',[MercadoPagoController::class,'PaymentStatus']);
+    Route::post('/OperacionStatusMP',[MercadopagoController::class,'PaymentStatus']);
+    Route::post('/transferProcessPayment',[TransferenciaController::class,'handleTransferencia']);
     //return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
 });
 

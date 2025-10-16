@@ -8,7 +8,7 @@ export function UseMetodosDePago() {
 
     const {setPorcentajeDescuento,setMostrarDescuento} =useAddCarrito()
     
-    const {setMetodoPago, metodo_pago,handleFinalizarCompra,}=useValidarCompra()
+    const {setMetodoPago, metodo_pago,handleFinalizarCompra,showTransferButton,setShowTransferButton}=useValidarCompra()
 
 
   /********************ESTABLECE EL DESCUENTO AL ELEGIR UN EVENTO DE LOS METODOS DE PAGO ***********************/
@@ -21,10 +21,10 @@ export function UseMetodosDePago() {
       {
        setPorcentajeDescuento(10);
        setMostrarDescuento(true);
-       
+         
       }
     else if (metodo_pago==="Mercadopago"){
-   
+     setShowTransferButton(false)
      setMostrarDescuento(false); 
      setPorcentajeDescuento(0);
     } 
@@ -42,6 +42,7 @@ export function UseMetodosDePago() {
         handleChangeOpcionesPago,   
         metodo_pago,
         handleFinalizarCompra,
+        showTransferButton
         
         
        

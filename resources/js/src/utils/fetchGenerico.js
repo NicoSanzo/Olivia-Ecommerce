@@ -32,7 +32,7 @@ export const fetchGenerico = async (url, method, body = null) => {
     } catch (e) {}
 
     const tokenExpirado =
-      res.status === 403 && errorData?.error === 'Token expirado';
+      res.status === 401 && errorData?.message === 'El token ha expirado.';
 
     if (tokenExpirado) {
       const refreshResponse = await fetch('/api/refresh', {

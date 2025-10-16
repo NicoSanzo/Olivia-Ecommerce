@@ -2,7 +2,7 @@ import  { createContext, useContext, useEffect, useState } from 'react';
 import { useAddCarrito } from './addCarritoContext';
 import { useAuth } from './authContext';
 import { Navigate } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { fetchGenerico } from '../utils/fetchGenerico';
 
 
@@ -13,9 +13,7 @@ const validarComprar = createContext();
 export const ContextvalidarAndComprar = ({ children }) => {
     //const navigate = useNavigate(); // hook para manejar la navegación
 
-const  {arrayProductsCarrito,Envio,porcentajeDescuento,CarritoStateReset} = useAddCarrito(); 
-
-
+const  {arrayProductsCarrito,Envio,porcentajeDescuento,CarritoStateReset,total,subtotal} = useAddCarrito(); 
 const {autenticado, logout}=useAuth();
 
    
@@ -23,11 +21,11 @@ const [tipoEntrega,setTipoEntrega]=useState(null);
 const [terminosCondiciones,setTerminosCondiciones]=useState(false)
 const [metodo_pago,setMetodoPago]= useState(null);
 const [isSubmitted,setIsSubbmited] = useState(false);
+const [showTransferButton,setShowTransferButton]=useState(false);
 const [datosFacturacion, setDatosFacturacion]=useState(false);
-const [publisEnviadas,setPublisEnviadas]=useState({})
 const [validacionExitosa,setValidacionExitosa]=useState(false);
 const [errors, setErrors] = useState({});
-const [abrirCompraExitosa,setCompraExitosa]=useState(false);
+const [paymentError, setPaymentError]= useState(null);
 
 
 
@@ -58,6 +56,7 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
         setMetodoPago(null);
         setIsSubbmited(false);
         CarritoStateReset()
+        setShowTransferButton(false)
     }, [logout,Navigate]); 
     
 
@@ -65,33 +64,28 @@ const [abrirCompraExitosa,setCompraExitosa]=useState(false);
 
     useEffect(() => {
         Validate();
-        setValidacionExitosa(false)      
+        setValidacionExitosa(false)  
+        setPaymentError(null)    
     }, [tipoEntrega,terminosCondiciones,metodo_pago,datosFacturacion]);
     
 
-/************  Armo el Json de productos que le voy a enviar al completarse la compra *******************/ 
+//creacion De pago Por transferencia//
 
-    //console.log(arrayProductsCarrito)
-/*
-    useEffect(() => {
-        const productos = arrayProductsCarrito.map(({ data: { data }, stock }) => ({
-            id: data.itemKey,
-            imagen:data.imagen,
-            precio: data.price,
-            titulo:data.titulo,
-            stock: stock
-        }));
-        
-        setPublisEnviadas(JSON.stringify(productos));
+const MutateTrasnsferPayment=useMutation({
+    mutationKey:['TransferPayment'],
+    mutationFn: ()=>{ return fetchGenerico("/api/transferProcessPayment","POST",{arrayProductsCarrito,porcentajeDescuento,Envio,total,subtotal})},
+    onSuccess:(data) =>{
+        console.log(data)
+    },
+    onError:(error)=>{
+        console.log(error)
+    }
 
-    }, [arrayProductsCarrito]);*/
+})
 
-   // console.log(arrayProductsCarrito)
 
-    //const {data:data_transfer,loading:loading_transfer,error:error_transfer} = useFetch("api/operacion_transferencia.php","POST" ,{publisEnviadas, subtotalConDescuento,Envio, tipoEntrega,porcentajeDescuento,metodo_pago} , triggerCompraTransfer);
     
-    
-
+//Creacion de pago a traves de Mercadopago//
 const MutateCatchPaymentID = useMutation({
   mutationKey: ['createPreferenceId'],
   mutationFn: async () => {
@@ -100,10 +94,16 @@ const MutateCatchPaymentID = useMutation({
   onSuccess: (data) => {
   },
   onError: (error) => {
-    console.error(error);
-  }
+    setPaymentError('Ocurrió un error al intentar pagar con Mercadopago, inténtelo nuevamente más tarde')
+  },
   
 });
+
+const handleFinalizarTransfer=()=>{
+
+    MutateTrasnsferPayment.mutate();
+
+}
 
 
 const handleFinalizarCompra = () => {
@@ -117,19 +117,17 @@ const handleFinalizarCompra = () => {
     }
     if (Object.keys(errors).length === 0) {
         setValidacionExitosa(true);
-        if(metodo_pago=="Transferencia"){
-            setTriggerCompraTransfer(true);
+        if(metodo_pago==="Transferencia"){
+            setShowTransferButton(true);
         }
-        if(metodo_pago=="Mercadopago"){
+        if(metodo_pago==="Mercadopago"){
                 
-                MutateCatchPaymentID.mutate();
-            }
+            MutateCatchPaymentID.mutate();
+        }
     }   
 };
 
  
-
-
 
     return (
         <validarComprar.Provider 
@@ -139,6 +137,8 @@ const handleFinalizarCompra = () => {
             setTerminosCondiciones,
             setMetodoPago,
             handleFinalizarCompra,
+            handleFinalizarTransfer,
+            showTransferButton,
             isSubmitted,
             errors,
             setErrors,
@@ -147,9 +147,9 @@ const handleFinalizarCompra = () => {
             metodo_pago,
             validacionExitosa,
             MutateCatchPaymentID,
-            abrirCompraExitosa,
-            setCompraExitosa,
-            
+            paymentError,
+            setPaymentError,
+            setShowTransferButton
            }}>
             
         {children}

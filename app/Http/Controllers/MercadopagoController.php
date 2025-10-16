@@ -48,7 +48,7 @@ class MercadopagoController extends Controller
                     'number' => $request->input('number'),
                 ],
             ],    
-           'shipping_amount' =>(float)$request->envio ?? 0,
+           'shipping_amount' =>(float)$request->envio ?? null,
             'metadata' => [
                 'UserId'          => $this->userID,
                 'publicaciones' => $items,
@@ -119,7 +119,7 @@ class MercadopagoController extends Controller
                 ]
             ],
             "shipments" => [
-                "cost" => $request->Envio ?? 0,
+                "cost" => $request->Envio ?? null,
             ],
             "metadata" => [
                 "UserId" => JWTAuth::parseToken()->authenticate()->id,

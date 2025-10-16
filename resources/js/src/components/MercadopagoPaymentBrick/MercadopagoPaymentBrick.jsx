@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 export function MercadopagoPaymentBrick() {
 
-    const{arrayProductsCarrito,subtotal,total,Envio} =useAddCarrito()
-    const{MutateCatchPaymentID}=useValidarCompra()
+    const{arrayProductsCarrito,subtotal,Envio} =useAddCarrito()
+    const{MutateCatchPaymentID,setPaymentError}=useValidarCompra()
       const navigate = useNavigate();
     
     const initialization = {
@@ -54,7 +54,7 @@ fd.append("identificationType", formData?.payer?.identification?.type ?? "");
 fd.append("number", formData?.payer?.identification?.number ?? "");
 fd.append("envio", Envio);
 fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
-//fd.append("total",total);
+
  // callback llamado al hacer clic en el botón enviar datos
  return new Promise((resolve, reject) => {
    fetch("api/cards_process_payment", {
@@ -62,21 +62,26 @@ fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
      credentials:'include',
      body: fd,
    })
-     .then((response) => response.json())
+      .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
 
      .then((response) => {
-       // recibir el resultado del pago
        navigate(response.responseUrl);
        resolve();
      })
      .catch((error) => {
        // manejar la respuesta de error al intentar crear el pago
-       reject();
+       setPaymentError('No se pudo procesar el pago, inténtelo nuevamente más tarde');
+       console.log(error)
+       reject(error);
      });
  });
 };
 
-    
     const onError = async (error) => {
      // callback llamado para todos los casos de error de Brick
      console.log(error);
@@ -88,7 +93,6 @@ fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
        Aquí puede ocultar cargamentos de su sitio, por ejemplo.
      */
     };
-
 
     
     return (

@@ -16,8 +16,10 @@ export function MetodosDePago() {
     isSubmitted,
     errors,
     setTerminosCondiciones,
-    abrirCompraExitosa,
     validacionExitosa,
+    paymentError,
+    handleFinalizarTransfer,
+    showTransferButton
   } = useValidarCompra();
 
   const style =
@@ -63,39 +65,31 @@ export function MetodosDePago() {
       {isSubmitted && errors?.terminos && (
         <span style={{ color: "red" }}>{errors.terminos}</span>
       )}
+    <div className="wallet-container">
+          {/* Botón finalizar compra */}
+          {!validacionExitosa || !metodo_pago ? (
+            <button className="terminar-comprar-button" onClick={handleFinalizarCompra}>
+              Finalizar compra
+            </button>
+          ) : metodo_pago === "Transferencia" && showTransferButton ? (
+            <button className="pagar-transfer-button" onClick={handleFinalizarTransfer}>
+              Pagar con Transferencia
+            </button>
+          ) : metodo_pago === "Mercadopago" ? (
+            <>
+              {MutateCatchPaymentID.isPending && (
+                <LoadingComponente width={30} height={30} />
+              )}
+              {MutateCatchPaymentID.data?.id && (
+                <MercadopagoPaymentBrick />
+              )}
+            </>
+          ) : null}
+    </div>
 
-      {/* Botón Transferencia */}
-      {validacionExitosa && metodo_pago === "Transferencia" && (
-        <div className="wallet-container">
-          <button className="pagar-transfer-button" onClick={handleFinalizarCompra}>
-            Pagar con Transferencia
-          </button>
-        </div>
-      )}
 
-      {/* MercadoPago */}
-      {validacionExitosa && metodo_pago === "Mercadopago" && (
-        <>
-          {MutateCatchPaymentID.isPending && <LoadingComponente width={30} height={30} />}
-          {MutateCatchPaymentID.data?.id && (
-            <div className="wallet-container">
-              <MercadopagoPaymentBrick />
-            </div>
-          )}
-        </>
-      )}
-
-      {/* Botón finalizar compra */}
-      {!(
-        (validacionExitosa && metodo_pago === "Transferencia") ||
-        (validacionExitosa && metodo_pago === "Mercadopago" )
-      ) && (
-        <button className="terminar-comprar-button" onClick={handleFinalizarCompra}>
-          Finalizar compra
-        </button>
-      )}
-
-      {/* Compra exitosa */}
+      
+      { paymentError && <span className="Payment-Error">{paymentError}</span>}
      
     </div>
   );

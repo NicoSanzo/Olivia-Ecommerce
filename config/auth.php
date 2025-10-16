@@ -36,8 +36,7 @@ return [
     */
 
     'guards' => [
-
-        
+  
         'api' => [
             'driver' => 'jwt', // ← este es el cambio importante
             'provider' => 'users',
