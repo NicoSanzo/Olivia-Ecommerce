@@ -26,7 +26,7 @@ export const HeaderB = () => {
       </div>
       <nav className={`navigation ${shrunk ? "shrunk" : ""}`} ref={NavBar}>
         <NavegationBar />
-        <Menu placeOrientation={"horizontal"} itemsDistance={25} />
+        <Menu placeOrientation={"horizontal"} itemsDistance={35} />
       </nav>
       <div className="user-icons">
         <UserAccount />

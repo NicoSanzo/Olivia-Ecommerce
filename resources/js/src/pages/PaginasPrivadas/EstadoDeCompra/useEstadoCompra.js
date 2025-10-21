@@ -24,6 +24,9 @@ queryKey: ['pago', MPPaymentId],
 queryFn: ()=>fetchGenerico("api/OperacionStatusMP","POST", {'MPPaymentId':MPPaymentId}),
 enabled: !!MPPaymentId,
 retry:2,
+refetchOnWindowFocus: false,
+refetchOnMount: false,
+refetchOnReconnect: false,
 }))
 
   const data = [{

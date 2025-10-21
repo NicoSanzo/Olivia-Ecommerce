@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CarritoRequest;
+
 use App\Models\Operacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Validator;
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\Client\Common\RequestOptions;
 use MercadoPago\MercadoPagoConfig;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use MercadoPago\Exceptions\MPApiException;
 
 
@@ -20,7 +22,8 @@ class MercadopagoController extends Controller
     protected $userID;
 
     public function __construct(){
-        $this->userID = JWTAuth::parseToken()->authenticate()->id;
+        $this->userID = Auth::user()->id;
+        
     }
 
     public function cardsProcessPayment(Request $request, CarritoRequest $itemsRequest)
@@ -122,7 +125,7 @@ class MercadopagoController extends Controller
                 "cost" => $request->Envio ?? null,
             ],
             "metadata" => [
-                "UserId" => JWTAuth::parseToken()->authenticate()->id,
+                "UserId" => $this->userID,
                 "publicaciones" => $items,
                 "descuento_total" => 0
             ],
@@ -173,7 +176,9 @@ class MercadopagoController extends Controller
         ->where('Cliente_id', $this->userID)
         ->first();
 
-        if (!$data) {return response()->json(['message' => 'Operación no encontrada'], 404);}       
+        
+        if (!$data) {return response()->json(['message' => 'Operación no encontrada'], 404);}   
+        
 
         return response()->json(['datosPago' => $data]);
     }

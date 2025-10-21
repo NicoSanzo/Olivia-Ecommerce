@@ -50,11 +50,7 @@ Route::middleware(['auth', 'role:Cliente'])->group(function () {
     //return response()->json(['message' => 'Solo clientes pueden ver esta ruta']);
 });
 
-
  Route::post('/mercadopago/webhook',[MercadopagoWebhookController::class,'handle']);
- 
-
-
 
    //Route::get('/prueba', [pruebaController::class, 'pruebaAPI']);
 ?>

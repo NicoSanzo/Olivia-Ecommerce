@@ -1,45 +1,53 @@
-.menu
-{
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    text-transform: uppercase;
-    font-size: 15px;
-    align-items: center;
-    justify-content: center;
+.menu {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  text-transform: uppercase;
+  font-size: clamp(0.8rem,0.75vw,2rem);
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+   text-wrap: nowrap;
+ 
+}
 
+.item {
+ 
+  width:min-content ;
+  height: 35px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-family: "Questrial", sans-serif;
+  font-weight: bold;
+  color: #FF5EC0;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding:0;
+  
+}
 
-    .item{       
-        width: fit-content;
-        height: 25px;
-        display: flex;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        font-family: "Questrial", sans-serif ;
-        font-weight: bold;
-        color: #FF5EC0;
-        cursor: pointer; 
-        text-align: center;
-        text-decoration: none; 
-        padding: 0;
+/* Hover */
+.item:hover {
+  border-bottom: solid 3px #FF5EC0;
+}
 
-    }
+/* Activo */
+.item.active {
+  color: #87AA96;            
+  border-bottom: solid 3px #87AA96;
+}
 
-    #home
-    {color: #87AA96;}
+@media (min-width: 220px) and (max-width: 990px) {
+  .menu {
+    width: 86%;
+    text-wrap: wrap;
 
-    .item:hover
-    {border-bottom: solid 3px; }
-}    
+   
+   
+    
 
-
-@media (min-width: 220px) and (max-width: 990px)
-{        
-        .menu {   
-            width: 85%;
-            height: 40%;
-            font-size: 11px;   
-
-        }       
+  }
 }

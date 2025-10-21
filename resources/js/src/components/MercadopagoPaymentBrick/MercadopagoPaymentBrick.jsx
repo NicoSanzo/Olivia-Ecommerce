@@ -76,7 +76,6 @@ fd.append("arrayProductsCarrito",JSON.stringify(arrayProductsCarrito));
      .catch((error) => {
        // manejar la respuesta de error al intentar crear el pago
        setPaymentError('No se pudo procesar el pago, inténtelo nuevamente más tarde');
-       console.log(error)
        reject(error);
      });
  });

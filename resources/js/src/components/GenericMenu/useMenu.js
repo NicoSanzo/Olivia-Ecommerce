@@ -11,10 +11,12 @@ import { useEffect, useRef } from "react";
 export function UseMenu({ placeOrientation, itemsDistance }) {
     // Referencia al contenedor del menú para modificar estilos dinámicamente
     const settings = useRef(null);
+     
 
     // Función que lleva el scroll al inicio de la página con una animación suave
     const inicio = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     };
 
     // Efecto que se ejecuta cada vez que cambia la orientación o distancia entre ítems
@@ -37,6 +39,7 @@ export function UseMenu({ placeOrientation, itemsDistance }) {
     // Devolucion de funciones y referencias como objeto
     return {
         inicio,
-        settings
+        settings,
+       
     };
 }

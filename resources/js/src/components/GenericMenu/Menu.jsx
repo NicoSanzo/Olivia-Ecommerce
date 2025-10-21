@@ -1,6 +1,7 @@
 import "./MenuStyle.css"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UseMenu } from "./useMenu";
+import { useState } from "react";
 
 
 
@@ -9,17 +10,29 @@ import { UseMenu } from "./useMenu";
 export const Menu = ({placeOrientation,itemsDistance}) =>{
 
 
-    const {inicio,settings} = UseMenu ({placeOrientation,itemsDistance})
-        
+const {inicio,settings} = UseMenu ({placeOrientation,itemsDistance})
+
+  const location = useLocation(); //toma la ruta actual
+
+const menuItems = [
+    { label: 'INICIO', url: '/' },
+    { label: 'PRODUCTOS', url: '/productos' },
+    { label: 'INFO DE COMPRA', url: '/infoCompra' },
+    { label: 'CONTACTO', url: '/contacto' },
+    { label: 'NUESTRAS POLÍTICAS', url: '/politicas' },
+  ];
 
     return(
     <>
            <ul className="menu" ref={settings}>
-                <Link to={"/"} className="item" id="home" onClick={inicio}> inicio </Link>
-                <Link to={"/Productos"} onClick ={inicio} className="item">productos</Link>
-                <Link to={"/infoCompra"}  className="item">info de compra</Link>
-                <Link to={"/Contacto"} className="item">contacto</Link>
-                <Link className="item"  >nuestras politicas</Link>
+            {menuItems.map((item)=>{
+            return(
+              <Link key={item.url}  onClick={inicio} to={item.url} className={`item ${location.pathname === item.url ? 'active' : ''}`}> {item.label} </Link>
+                )
+
+            })}
+                
+             
                
             </ul>
     </>

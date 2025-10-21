@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CarritoRequest;
 use App\Http\Requests\OperationRequest;
+use App\Mail\MailCompraMercadolibre;
 use App\Models\Det_oper;
 use App\Models\Operacion;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TransferenciaController extends Controller
 {
@@ -53,7 +53,12 @@ class TransferenciaController extends Controller
                 $newItem->imagen_publicacion = $item['imagen'];
                 $newItem->save();
             }
-        });
+
+            
+        }
+    );
+
+   
 
         return response()->json(['status' => 'success']);
 
