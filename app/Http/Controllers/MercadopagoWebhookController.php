@@ -105,7 +105,7 @@ class MercadopagoWebhookController extends Controller
             
             $nombreUsuario= User::where('id',$payment['metadata']['user_id'])->value('nombre');
 
-             if($save===true){Mail::to('sanzo170@gmail.com')->send(new MailCompraMercadolibre($payment,$nombreUsuario));} 
+            if($save===true && isset($payment['status'])){Mail::to('sanzo170@gmail.com')->send(new MailCompraMercadolibre($payment,$nombreUsuario));} 
                      // Log opcional para auditoría
                          /*Log::info('Pago registrado de MercadoPago', [
                              'operacion_id' => $operacion->id_operacion_mp,

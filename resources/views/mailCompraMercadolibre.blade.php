@@ -27,17 +27,50 @@
   </td>
 </tr>
 
-    <!-- Estado de compra -->
+
+<!-- Estado de compra -->
+@php
+  switch ($data['estado']) {
+      case 'approved':
+          $color = '#399f65';
+          $titulo = 'Gracias por tu compra!';
+          $mensaje = 'Tu pago fue aprobado';
+          $imagen = 'success.png';
+          break;
+
+      case 'pending':
+          $color = '#e6840bff';
+          $titulo = 'Gracias por tu compra!';
+          $mensaje = 'Tu pago está pendiente';
+          $imagen = 'pending.png';
+          break;
+
+      case 'rejected':
+          $color = '#d9534f';
+          $titulo = 'Lo sentimos, tu compra no fue aprobada';
+          $mensaje = 'Tu pago fue rechazado';
+          $imagen = 'cancel.png';
+          break;
+
+      default:
+          $color = '#ccc';
+          $titulo = 'Estado desconocido';
+          $mensaje = 'No pudimos determinar el estado de tu pago.';
+          $imagen = 'info.png';
+          break;
+  }
+@endphp
+
 <tr>
   <td style="padding:10px 0;">
-    <table width="95%" align="center" cellpadding="0" cellspacing="0" style="border-left:5px solid #399f65; border-radius:8px; background-color:#f9f9f9; padding:15px 25px ;height:110px;">
+    <table width="95%" align="center" cellpadding="0" cellspacing="0" style="border-left:5px solid '{{ $color }}'; border-radius:8px; background-color:#f9f9f9; padding:15px 25px; height:110px;">
       <tr>
         <td style="vertical-align:middle;">
-          <p style="font-size:18px; color:#222; margin:0 0 8px;">Gracias por tu compra</p>
-          <p style="font-size:15px; font-weight:bold; color:#399f65; margin:0;">Tu pago fue aprobado</p>
+          <p style="font-size:18px; color:#222; margin:0 0 8px;">{{ $titulo }}</p>
+          <p style="font-size:15px; font-weight:bold; color:'{{ $color }}'; margin:0;">{{ $mensaje }}</p>
         </td>
         <td align="right">
-          <img src="{{ asset('images/success.svg') }}" alt="Éxito" width="65" style="display:block;" />
+          <img src="{{ asset('images/' . $imagen) }}" alt="{{ $data['estado'] }}" width="65" style="display:block;" />
         </td>
       </tr>
     </table>
@@ -72,7 +105,7 @@
         <hr style="border:none; border-top:1px solid #ddd; margin:15px 0;">
         <table width="100%" style="font-size:14px; color:#333;">
           @foreach($data as $key => $value)
-            @if($key !== "items" && $key !== "nombre" && !($key === 'precio envio' && ($value === null || $value === 0)))
+            @if($key !== "items" && $key !== "nombre" && $key !== "total" && !($key === 'precio envio' && ($value === null || $value === 0)))
             <tr>
               <td style="padding:4px 0;">{{ ucfirst($key) }}</td>
               <td align="right" style="padding:4px 0;">
