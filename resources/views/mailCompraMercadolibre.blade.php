@@ -31,21 +31,21 @@
 <!-- Estado de compra -->
 @php
   switch ($data['estado']) {
-      case 'approved':
+      case 'Aprobado':
           $color = '#399f65';
           $titulo = 'Gracias por tu compra!';
           $mensaje = 'Tu pago fue aprobado';
           $imagen = 'success.png';
           break;
 
-      case 'pending':
+      case 'En proceso':
           $color = '#e6840bff';
           $titulo = 'Gracias por tu compra!';
           $mensaje = 'Tu pago está pendiente';
           $imagen = 'pending.png';
           break;
 
-      case 'rejected':
+      case 'Rechazado':
           $color = '#d9534f';
           $titulo = 'Lo sentimos, tu compra no fue aprobada';
           $mensaje = 'Tu pago fue rechazado';
